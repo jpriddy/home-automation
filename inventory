@@ -1,44 +1,71 @@
 ---
 appliance:
   hosts:
-    synology ansible_host: "192.168.1.30"
+    synology:
+      ansible_host: "192.168.1.30"
 network switch:
   hosts:
-    bassw00 ansible_host: "192.168.1.11"
-    bassw01 ansible_host: "192.168.1.12"
-    garsw00 ansible_host: "192.168.1.14"
-    garsw01 ansible_host: "192.168.1.15"
-    offsw00 ansible_host: "192.168.1.18"
-    batsw00 ansible_host: "192.168.1.23"
+    bassw00:
+      ansible_host: "192.168.1.11"
+    bassw01:
+      ansible_host: "192.168.1.12"
+    garsw00:
+      ansible_host: "192.168.1.14"
+    garsw01:
+      ansible_host: "192.168.1.15"
+    offsw00:
+      ansible_host: "192.168.1.18"
+    batsw00:
+      ansible_host: "192.168.1.23"
 network access point:
   hosts:
-    ap01 ansible_host: "192.168.1.26"
-    ap02 ansible_host: "192.168.1.27"
-    ap03 ansible_host: "192.168.1.28"
+    ap01:
+      ansible_host: "192.168.1.26"
+    ap02:
+      ansible_host: "192.168.1.27"
+    ap03:
+      ansible_host: "192.168.1.28"
 linux client:
   hosts:
-    xps ansible_host: "192.168.1.107"
+    xps:
+      ansible_host: "192.168.1.107"
 mac client:
   hosts:
-    mac ansible_host: "192.168.1.109"
+    mac:
+      ansible_host: "192.168.1.109"
 windows client:
   hosts:
-    desktop ansible_host: "192.168.1.102"
+    desktop:
+      ansible_host: "192.168.1.102"
 linux server:
   hosts:
-    roon ansible_host: "192.168.1.160"
-    media ansible_host: "192.168.1.150"
-    nuc1 ansible_host: "192.168.1.141"
-    nuc2 ansible_host: "192.168.1.142"
-    nuc3 ansible_host: "192.168.1.143"
-    container1 ansible_host: "192.168.1.163"
-    ipa1 ansible_host: "192.168.1.151"
-    ipa2 ansible_host: "192.168.1.152"
-    idm1 ansible_host: "192.168.1.31"
-    idm2 ansible_host: "192.168.1.32"
-    sat ansible_host: "192.168.1.154"
-    ropie ansible_host: "192.168.1.155"
+    roon:
+      ansible_host: "192.168.1.160"
+    media:
+      ansible_host: "192.168.1.150"
+    nuc1:
+      ansible_host: "192.168.1.141"
+    nuc2:
+      ansible_host: "192.168.1.142"
+    nuc3:
+      ansible_host: "192.168.1.143"
+    container1:
+      ansible_host: "192.168.1.163"
+    ipa1:
+      ansible_host: "192.168.1.151"
+    ipa2:
+      ansible_host: "192.168.1.152"
+    idm1:
+      ansible_host: "192.168.1.31"
+    idm2:
+      ansible_host: "192.168.1.32"
+    sat:
+      ansible_host: "192.168.1.154"
+    ropie:
+      ansible_host: "192.168.1.155"
 windows server:
   hosts:
-    dc1 ansible_host: "192.168.1.161"
-    dc2 ansible_host: "192.168.1.162"
+    dc1:
+      ansible_host: "192.168.1.161"
+    dc2:
+      ansible_host: "192.168.1.162"
