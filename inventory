@@ -3,7 +3,7 @@ appliance:
   hosts:
     synology:
       ansible_host: "192.168.1.30"
-network switch:
+network_switch:
   hosts:
     bassw00:
       ansible_host: "192.168.1.11"
@@ -17,7 +17,7 @@ network switch:
       ansible_host: "192.168.1.18"
     batsw00:
       ansible_host: "192.168.1.23"
-network access point:
+network_access point:
   hosts:
     ap01:
       ansible_host: "192.168.1.26"
@@ -25,19 +25,19 @@ network access point:
       ansible_host: "192.168.1.27"
     ap03:
       ansible_host: "192.168.1.28"
-linux client:
+linux_client:
   hosts:
     xps:
       ansible_host: "192.168.1.107"
-mac client:
+mac_client:
   hosts:
     mac:
       ansible_host: "192.168.1.109"
-windows client:
+windows_client:
   hosts:
     desktop:
       ansible_host: "192.168.1.102"
-linux server:
+linux_server:
   hosts:
     roon:
       ansible_host: "192.168.1.160"
@@ -63,7 +63,7 @@ linux server:
       ansible_host: "192.168.1.154"
     ropie:
       ansible_host: "192.168.1.155"
-windows server:
+windows_server:
   hosts:
     dc1:
       ansible_host: "192.168.1.161"
