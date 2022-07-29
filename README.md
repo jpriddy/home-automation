@@ -1,3 +1,3 @@
-# jpriddy.com
+# home-automation
 
 This is the readme file.
