@@ -17,7 +17,7 @@ network_switch:
       ansible_host: "192.168.1.18"
     batsw00:
       ansible_host: "192.168.1.23"
-network_access point:
+network_access_point:
   hosts:
     ap01:
       ansible_host: "192.168.1.26"
