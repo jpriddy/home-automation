@@ -1,8 +1,3 @@
----
-name: Remove useless packages from cache
-  apt:
-    autoclean: yes
-
-name: Remove dependencies that are no longer required
-  apt:
-    autoremove: yes
+- name: Install the correct web server for RHEL
+  import_tasks: redhat.yml
+  when: ansible_facts['os_family']|lower == 'redhat'
