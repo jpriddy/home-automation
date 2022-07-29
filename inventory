@@ -1,5 +1,6 @@
 ---
-synology ansible_host: "192.168.1.30"
+appliance:
+  synology ansible_host: "192.168.1.30"
 network switch:
   bassw00 ansible_host: "192.168.1.11"
   bassw01 ansible_host: "192.168.1.12"
