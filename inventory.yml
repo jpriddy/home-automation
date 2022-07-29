@@ -14,7 +14,6 @@ ap01 ansible_host=192.168.1.26
 ap02 ansible_host=192.168.1.27
 ap03 ansible_host=192.168.1.28
 
-
 [linux client]
 xps ansible_host=192.168.1.107
 
@@ -23,7 +22,6 @@ mac ansible_host=192.168.1.109
 
 [windows client]
 desktop ansible_host=192.168.1.102
-
 
 [linux server]
 roon ansible_host=192.168.1.160
