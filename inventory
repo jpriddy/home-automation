@@ -1,6 +1,5 @@
 [appliance]
 synology ansible_host=192.168.1.30
-
 [network switch]
 bassw00 ansible_host=192.168.1.11
 bassw01 ansible_host=192.168.1.12
@@ -8,15 +7,12 @@ garsw00 ansible_host=192.168.1.14
 garsw01 ansible_host=192.168.1.15
 offsw00 ansible_host=192.168.1.18
 batsw00 ansible_host=192.168.1.23
-
 [network access point]
 ap01 ansible_host=192.168.1.26
 ap02 ansible_host=192.168.1.27
 ap03 ansible_host=192.168.1.28
-
 [linux client]
 xps ansible_host=192.168.1.107
-
 [mac client]
 mac ansible_host=192.168.1.109
 
