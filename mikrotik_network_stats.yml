@@ -1,6 +1,10 @@
 ---
 - name: Display resource statistics (routeros)
-  routeros_command:
-    commands: /system resource print
-  register: routeros_resources
-  when: ansible_network_os == 'routeros'
+  hosts: all
+  become: true
+  tasks:
+    - name: Print system resources
+      routeros_command:
+      commands: /system resource print
+      register: routeros_resources
+      when: ansible_network_os == 'routeros'
