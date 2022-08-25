@@ -19,7 +19,7 @@ network_switch:
       ansible_host: "192.168.1.23"
   vars:
     ansible_connection: ansible.netcommon.network_cli
-    ansible_network_os: community.routeros.routeros
+    ansible_network_os: community.routeros
       
 network_access_point:
   hosts:
@@ -65,8 +65,6 @@ linux_server:
       ansible_host: "192.168.1.32"
     sat:
       ansible_host: "192.168.1.154"
-    ropie:
-      ansible_host: "192.168.1.155"
 windows_server:
   hosts:
     dc1:
