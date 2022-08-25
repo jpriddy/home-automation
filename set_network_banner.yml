@@ -1,5 +1,8 @@
 ---
 - name: Update login banner
+  hosts: all
+  become: true
+  tasks:
   routeros_command:
     commands:
       - /system note set show-at-login=yes
