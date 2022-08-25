@@ -4,6 +4,5 @@
   become: true
   tasks:
     - name: set system note:
-    routeros_command:
-       commands:
-         - /system note set show-at-login=yes
+      routeros_command:
+        commands: /system note set show-at-login=yes
