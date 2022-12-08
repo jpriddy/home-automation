@@ -59,12 +59,6 @@ linux_server:
       ansible_host: "192.168.1.151"
     ipa2:
       ansible_host: "192.168.1.152"
-    idm1:
-      ansible_host: "192.168.1.31"
-    idm2:
-      ansible_host: "192.168.1.32"
-    sat:
-      ansible_host: "192.168.1.154"
 windows_server:
   hosts:
     dc1:
