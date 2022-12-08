@@ -3,7 +3,7 @@ appliances:
   hosts:
     synology:
       ansible_host: "192.168.1.30"
-network_switchs:
+network_switches:
   hosts:
     bassw00:
       ansible_host: "192.168.1.11"
