@@ -20,7 +20,6 @@ network_switchs:
   vars:
     ansible_connection: ansible.netcommon.network_cli
     ansible_network_os: community.routeros
-      
 network_access_points:
   hosts:
     ap01:
