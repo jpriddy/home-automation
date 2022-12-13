@@ -6,8 +6,10 @@ appliances:
 network_switches:
   hosts:
     bassw00:
-      ansible_host: "192.168.1.11"
+      ansible_host: "192.168.1.10"
     bassw01:
+      ansible_host: "192.168.1.11"
+    bassw02:
       ansible_host: "192.168.1.12"
     garsw00:
       ansible_host: "192.168.1.14"
@@ -15,6 +17,8 @@ network_switches:
       ansible_host: "192.168.1.15"
     offsw00:
       ansible_host: "192.168.1.18"
+    offsw01:
+      ansible_host: "192.168.1.19"
     batsw00:
       ansible_host: "192.168.1.23"
   vars:
