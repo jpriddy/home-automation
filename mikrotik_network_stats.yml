@@ -1,5 +1,5 @@
 ---
-- name: Display resource statistics (routeros)
+- name: Display resource statistics
   hosts: all
   become: true
   tasks:
