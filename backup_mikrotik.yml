@@ -13,4 +13,3 @@
         dest: "{{ backup_dir }}/{{ inventory_hostname }}_config.{{ lookup('pipe', 'date +%Y-%m-%d@%H:%M:%S') }}"
       when: export is defined
       delegate_to: localhost
-    
