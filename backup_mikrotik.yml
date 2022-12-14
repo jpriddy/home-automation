@@ -1,5 +1,6 @@
 ---
 - name: Backup Mikrotik
+  hosts: all
   vars:
     backup_dir: "/tmp"
   tasks:
