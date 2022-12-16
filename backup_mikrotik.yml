@@ -10,7 +10,6 @@
                 sshpass -p '{{ ansible_password }}' ssh -o StrictHostKeyChecking=no {{ ansible_user }}@{{ inventory_hostname }} /export
       register: export
       delegate_to: localhost
-
    - name: Backup
       ansible.builtin.copy:
         content: "{{ export.stdout }}"
