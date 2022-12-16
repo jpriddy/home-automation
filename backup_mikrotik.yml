@@ -1,18 +1,11 @@
----
-- name: Backup Mikrotik
+- name: Mikrotik Backup Device Configuration
   hosts: all
-  gather_facts: false
   vars:
-    backup_dir: "/tmp"
+  user: admin
+  gather_facts: no
   tasks:
-    - name: Export
-      ansible.builtin.shell: >-
-                sshpass -p '{{ ansible_password }}' ssh -o StrictHostKeyChecking=no {{ ansible_user }}@{{ inventory_hostname }} /export
-      register: export
-      delegate_to: localhost
-   - name: Backup
-      ansible.builtin.copy:
-        content: "{{ export.stdout }}"
-        dest: "{{ backup_dir }}/{{ inventory_hostname }}_config.{{ lookup('pipe', 'date +%Y-%m-%d@%H:%M:%S') }}"
-      when: export is defined
-      delegate_to: localhost
+   - name: Performing backup of Mikrotik to local storage
+     raw: /system backup save name {{inventory_hostname}}
+
+   - name: Exporting current configuration to text
+     raw: /export file={{inventory_hostname}}
