@@ -1,5 +1,5 @@
 ---
-- name: reboot 
+- name: mikrotik_test 
   hosts: all
   become: true
       routeros_command:
