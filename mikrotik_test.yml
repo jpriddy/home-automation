@@ -1,7 +1,0 @@
----
-- name: mikrotik_test
-  hosts: all
-  become: true
-      routeros_command:
-        commands: /system routerboard print
-      register: output
