@@ -23,8 +23,7 @@ network_switches:
       ansible_host: "192.168.1.23"
   vars:
     ansible_connection: "ansible.netcommon.network_cli"
-    ansible_network_os: "community.routeros.routeros"
-    ansible_python_interpreter: "/usr/bin/python3"
+    ansible_network_os: "community.network.routeros"
 network_access_points:
   hosts:
     ap01:
@@ -34,8 +33,8 @@ network_access_points:
     ap03:
       ansible_host: "192.168.1.28"
   vars:
-    ansible_connection: ansible.netcommon.network_cli
-    ansible_network_os: community.network.icx
+    ansible_connection: "ansible.netcommon.network_cli"
+    ansible_network_os: "community.network.icx"
 linux_clients:
   hosts:
     xps:
