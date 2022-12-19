@@ -33,6 +33,9 @@ network_access_points:
       ansible_host: "192.168.1.27"
     ap03:
       ansible_host: "192.168.1.28"
+  vars:
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_network_os: community.network.icx
 linux_clients:
   hosts:
     xps:
