@@ -1,7 +1,7 @@
 ---
-# tasks file for mtk-firmware-upgrade
-    - name: Get Firmware
-      hosts: all
+- name: reboot 
+  hosts: all
+  become: true
       routeros_command:
         commands: /system routerboard print
       register: output
