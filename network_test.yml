@@ -1,7 +1,7 @@
 ---
 
 - name: Network Playbook Test
-  connection: ansible.netcommon.network_cli
+  #connection: ansible.netcommon.network_cli
   gather_facts: false
   hosts: all
   tasks:
