@@ -1,9 +1,11 @@
 ---
+
 - name: Network Playbook Test
   connection: ansible.netcommon.network_cli
   gather_facts: false
   hosts: all
   tasks:
+  
     - name: Get config for RouterOS devices
       community.routeros.api_facts:
         gather_subset: all
