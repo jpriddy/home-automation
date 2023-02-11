@@ -3,12 +3,12 @@
   connection: ansible.netcommon.network_cli
   gather_facts: false
   hosts: all
-  tasks:
 
-  - name: Get info from RouterOS devices
-    community.routeros.api_facts:
+  tasks:
+- name: Get info from RouterOS devices
+  community.routeros.api_facts:
       gather_subset: all
 
-  - name: Display some stuff
-    debug:
-      msg: "The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}"      
+- name: Display some stuff
+  debug:
+    msg: "The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}"      
