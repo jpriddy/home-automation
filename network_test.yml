@@ -1,18 +1,17 @@
----
-- name: Network Playbook Test
-  gather_facts: false
+- name: RouterOS test with network_cli connection
   hosts: all
-
+  gather_facts: false
   tasks:
-- name: Get info from RouterOS devices
-  community.routeros.api_facts:
-      gather_subset: all
+    - name: Run a command
+      community.routeros.command:
+        commands:
+          - /system resource print
+      register: system_resource_print
+    - name: Print its output
+      ansible.builtin.debug:
+        var: system_resource_print.stdout_lines
 
-- name: Display some stuff
-  debug:
-    msg: "The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}"
-
-- name: Retrieve facts
-  community.routeros.api_facts:
+    - name: Retrieve facts
+      community.routeros.facts:
     - ansible.builtin.debug:
         msg: "First IP address: {{ ansible_net_all_ipv4_addresses[0] }}"
