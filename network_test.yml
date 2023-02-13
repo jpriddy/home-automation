@@ -16,11 +16,3 @@
   community.routeros.api_facts:
     - ansible.builtin.debug:
         msg: "First IP address: {{ ansible_net_all_ipv4_addresses[0] }}"
-
-- name: Get "ip address print"
-  community.routeros.api:
-  path: ip address
-  register: print_path
-  - name: Print the result
-  ansible.builtin.debug:
-  var: print_path.msg
