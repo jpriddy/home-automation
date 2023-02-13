@@ -1,6 +1,5 @@
 ---
 - name: Network Playbook Test
-  connection: ansible.netcommon.network_cli
   gather_facts: false
   hosts: all
 
@@ -11,4 +10,17 @@
 
 - name: Display some stuff
   debug:
-    msg: "The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}"      
+    msg: "The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}"
+
+- name: Retrieve facts
+  community.routeros.api_facts:
+    - ansible.builtin.debug:
+        msg: "First IP address: {{ ansible_net_all_ipv4_addresses[0] }}"
+
+- name: Get "ip address print"
+  community.routeros.api:
+  path: ip address
+  register: print_path
+  - name: Print the result
+  ansible.builtin.debug:
+  var: print_path.msg
