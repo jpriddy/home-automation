@@ -5,7 +5,7 @@
   tasks:
     - name: Display Package/OS version
       community.routeros.command:
-        commands:
+        command:
           - /system package print
       register: system_package_print
     - name: Print its output
