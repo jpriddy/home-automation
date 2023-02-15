@@ -6,3 +6,7 @@
   - name: Gather facts
     community.routeros.facts:
       gather_subset: all
+- name: Retrieve facts
+  community.routeros.api_facts:
+  - ansible.builtin.debug:
+      msg: "First IP address: {{ ansible_net_all_ipv4_addresses[0] }}"
