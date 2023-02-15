@@ -3,12 +3,6 @@
   hosts: all
   gather_facts: no
   tasks:
-  - name: Gather system resources
-    community.routeros.command:
-      commands:
-        - /system resource print
-    register: system_resource_print
-
   - name: Show system resources
     ansible.builtin.debug:
       var: system_resource_print.stdout_lines
