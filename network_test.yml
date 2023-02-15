@@ -1,11 +1,12 @@
-- name: RouterOS test
-  hosts: all
-  gather_facts: false
-  tasks:
-  - name: Display resource statistics (routeros)
-    community.routeros.command:
-      commands: /system resource print
-    register: system_resource_print
-  - name: Print its output
-    ansible.builtin.debug:
-      var: system_resource_print.stdout_lines
+---
+   - name: RouterOS test
+     hosts: all
+     gather_facts: false
+     tasks:
+       - name: Display resource statistics
+         community.routeros.command:
+         commands: /system resource print
+         register: system_resource_print
+   - name: Print its output
+     ansible.builtin.debug:
+     var: system_resource_print.stdout_lines
