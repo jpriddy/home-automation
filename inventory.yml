@@ -22,8 +22,8 @@ network_switches:
     batsw00:
       ansible_host: "192.168.1.23"
   vars:
-    ansible_connection: "network_cli"
-    ansible_network_os: "routeros"
+    ansible_connection: "ansible.netcommon.network_cli"
+    ansible_network_os: "community.network.routeros"
     ansible_user: "admin"
 network_access_points:
   hosts:
