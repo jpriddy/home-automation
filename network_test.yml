@@ -1,8 +1,8 @@
-- name: RouterOS test 
+- name: RouterOS test
   hosts: all
   gather_facts: false
 
-  tasks:    
+  tasks:
 
   - name: Display resource statistics (routeros)
     community.routeros.command:
@@ -14,6 +14,5 @@
 
   - name: Retrieve facts
     community.routeros.facts:
-  - ansible.builtin.debug:
+    - ansible.builtin.debug:
       msg: "First IP address: {{ ansible_net_all_ipv4_addresses[0] }}"
-      
