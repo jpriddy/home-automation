@@ -9,10 +9,10 @@
           - /system package print
       register: system_package_print
     - name: Print its output
-      ansible.builtin.debug
+      debug:
       var: system_package_print.stdout_lines
       
     - name: Retrieve facts
       community.routeros.facts:
-    - ansible.builtin.debug:
+    - debug:
         msg: "First IP address: {{ ansible_net_all_ipv4_addresses[0] }}"
