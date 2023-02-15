@@ -2,16 +2,7 @@
   hosts: all
   gather_facts: yes
   
-  tasks:
-    - name: Display Package/OS version
-      community.routeros.command:
-        command:
-          - /system package print
-      register: system_package_print
-    - name: Print its output
-      debug:
-      var: system_package_print.stdout_lines
-      
+  tasks:    
     - name: Retrieve facts
       community.routeros.facts:
     - debug:
