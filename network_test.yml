@@ -1,17 +1,14 @@
 - name: RouterOS test with network_cli connection
   hosts: all
-  gather_facts: false
+  connection: network_cli
+  gather_facts: no
+  
   tasks:
-    - name: Run a command
-      community.routeros.command:
+    - name: Display Package/OS version
+      routeros_command:
         commands:
-          - /system resource print
-      register: system_resource_print
+          - "/system package print"
+      register: system_package_print
     - name: Print its output
-      ansible.builtin.debug:
-        var: system_resource_print.stdout_lines
-
-    - name: Retrieve facts
-      community.routeros.facts:
-    - ansible.builtin.debug:
-        msg: "First IP address: {{ ansible_net_all_ipv4_addresses[0] }}"
+      debug: var=system_package_print['stdout_lines']
+      
