@@ -1,8 +1,11 @@
 ---
 - name: RouterOS test with network_cli connection
   hosts: all
-  gather_facts: false
+  gather_facts: no
   tasks:
+
+
+  
   - name: Gather system resources
     community.routeros.command:
       commands:
@@ -10,12 +13,12 @@
     register: system_resource_print
 
   - name: Show system resources
-    debug:
+    ansible.builtin.debug:
       var: system_resource_print.stdout_lines
 
   - name: Gather facts
     community.routeros.facts:
 
   - name: Show a fact
-    debug:
+    ansible.builtin.debug:
       msg: "First IP address: {{ ansible_net_all_ipv4_addresses[0] }}"
