@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: no
   tasks:
-  - name: Show system resources
+     - name: Show system resources
     ansible.builtin.debug:
       var: system_resource_print.stdout_lines
 
