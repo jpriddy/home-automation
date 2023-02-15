@@ -3,7 +3,6 @@
   hosts: all
   gather_facts: false
   tasks:
-
   - name: Gather system resources
     community.routeros.command:
       commands:
