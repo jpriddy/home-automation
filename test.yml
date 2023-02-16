@@ -8,7 +8,6 @@
       gather_subset: all
   - name: Retrieve facts
     community.routeros.api_facts:
-
 #  - name: Get "ip address print"
 #    community.routeros.api:
 #      hostname: "{{ hostname }}"
@@ -20,7 +19,6 @@
 #      tls: false
 #      validate_certs: false
 #      validate_cert_hostname: false
-
   - name: Show IP address of first interface
     ansible.builtin.debug:
       msg: "{{ print_path.msg[0].address }}"
