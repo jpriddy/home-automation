@@ -24,7 +24,3 @@
   - name: Show IP address of first interface
     ansible.builtin.debug:
       msg: "{{ print_path.msg[0].address }}"
-
-  - name: Run command on remote devices
-    community.network.routeros_command:
-      commands: /system routerboard print
