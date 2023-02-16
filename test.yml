@@ -19,6 +19,6 @@
 #      tls: false
 #      validate_certs: false
 #      validate_cert_hostname: false
-  - name: Show IP address of first interface
-    ansible.builtin.debug:
-      msg: "{{ print_path.msg[0].address }}"
+#  - name: Show IP address of first interface
+#    ansible.builtin.debug:
+#      msg: "{{ print_path.msg[0].address }}"
