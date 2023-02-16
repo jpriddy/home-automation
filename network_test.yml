@@ -1,9 +1,9 @@
 ---
-name: RouterOS test with network_cli connection
-hosts: all
-gather_facts: no
-tasks:
-- name: Run show version and check to see if output contains ICX
+- name: RouterOS test with network_cli connection
+  hosts: all
+  gather_facts: no
+  tasks:
+  - name: Run show version and check to see if output contains ICX
     community.network.icx_command:
       commands: show version
 #- name: RouterOS test with network_cli connection
