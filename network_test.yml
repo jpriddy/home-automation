@@ -11,3 +11,17 @@
   - name: Show a fact
     ansible.builtin.debug:
     msg: "First IP address: {{ ansible_net_all_ipv4_addresses[0] }}"
+#  - name: Get "ip address print"
+#    community.routeros.api:
+#      hostname: "{{ hostname }}"
+#      password: "{{ password }}"
+#      username: "{{ username }}"
+#      path: "ip address"
+#      # The following options configure TLS/SSL.
+#      # Depending on your setup, these options need different values:
+#      tls: false
+#      validate_certs: false
+#      validate_cert_hostname: false
+#  - name: Show IP address of first interface
+#    ansible.builtin.debug:
+#      msg: "{{ print_path.msg[0].address }}"
