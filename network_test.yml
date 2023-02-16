@@ -1,34 +1,16 @@
 ---
-- name: ICX test with network_cli connection
+- name: Test community.routeros.api connection
   hosts: all
   gather_facts: no
   tasks:
-  - name: Run show version and check to see if output contains ICX
-    community.network.icx_command:
-      commands: show version
-#- name: RouterOS test with network_cli connection
-#  hosts: all
-#  gather_facts: no
-#  tasks:
-#  - name: Show system resources
-#    ansible.builtin.debug:
-#    var: system_resource_print.stdout_lines
-#  - name: Gather facts
-#    community.routeros.facts:
-#  - name: Show a fact
-#    ansible.builtin.debug:
-#    msg: "First IP address: {{ ansible_net_all_ipv4_addresses[0] }}"
-#  - name: Get "ip address print"
-#    community.routeros.api:
-#      hostname: "{{ hostname }}"
-#      password: "{{ password }}"
-#      username: "{{ username }}"
-#      path: "ip address"
-#      # The following options configure TLS/SSL.
-#      # Depending on your setup, these options need different values:
-#      tls: false
-#      validate_certs: false
-#      validate_cert_hostname: false
-#  - name: Show IP address of first interface
-#    ansible.builtin.debug:
-#      msg: "{{ print_path.msg[0].address }}"
+  - name: Get "ip address print"
+    community.routeros.api:
+      path: "ip address"
+      # The following options configure TLS/SSL.
+      # Depending on your setup, these options need different values:
+      tls: false
+      validate_certs: false
+      validate_cert_hostname: false
+  - name: Show IP address of first interface
+    ansible.builtin.debug:
+      msg: "{{ print_path.msg[0].address }}"
