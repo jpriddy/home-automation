@@ -1,5 +1,5 @@
 ---
-- name: Use routeros command to print out system resources
+- name: Use RouterOS command to print out system resources
   hosts: all
   gather_facts: no
   tasks:
