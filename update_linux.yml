@@ -1,4 +1,4 @@
-- name: Update
+- name: Update both RH and Debian based distros
   hosts: all
   become: true
   tasks:
@@ -9,9 +9,9 @@
       state: latest
       update_cache: yes
       #cache_valid_time: 3600
-    #when:
-    #- ansible_os_family == "RedHat"
-    #- ansible_distribution == "CentOS"
+    when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution == "CentOS"
 
   - name: Install system updates for debian and ubuntu
     apt:
@@ -19,6 +19,6 @@
       state: latest
       update_cache: yes
       #cache_valid_time: 3600
-    #when:
-    #- ansible_os_family == "Debian"
-    #- ansible_distribution == "Ubuntu"
+    when:
+    - ansible_os_family == "Debian"
+    - ansible_distribution == "Ubuntu"
