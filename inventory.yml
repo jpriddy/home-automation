@@ -3,7 +3,7 @@ appliances:
   hosts:
     synology:
       ansible_host: "192.168.1.30"
-network_switches:
+network_mikrotik:
   hosts:
     bassw00:
       ansible_host: "192.168.1.10"
@@ -25,7 +25,7 @@ network_switches:
     ansible_connection: "ansible.netcommon.network_cli"
     ansible_network_os: "community.routeros.routeros"
     ansible_user: "admin"
-network_access_points:
+network_ruckus:
   hosts:
     ap01:
       ansible_host: "192.168.1.26"
@@ -33,9 +33,6 @@ network_access_points:
       ansible_host: "192.168.1.27"
     ap03:
       ansible_host: "192.168.1.28"
-  vars:
-    ansible_connection: "ansible.netcommon.network_cli"
-    ansible_network_os: "community.network.icx"
 linux_clients:
   hosts:
     xps:
