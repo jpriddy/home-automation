@@ -3,6 +3,7 @@
   hosts: all
   gather_facts: no
   tasks:
+  
   - name: Display resource statistics
     community.routeros.command:
       commands: /system resource print
