@@ -1,5 +1,5 @@
 ---
-- name: Test routeros command
+- name: Use routeros command to print out system resources
   hosts: all
   gather_facts: no
   tasks:
@@ -7,15 +7,11 @@
     community.routeros.command:
       commands: /system resource print
     register: routeros_resources
-    when: ansible_network_os == 'community.network.routeros'
-#  - name: Get "ip address print"
-#    community.routeros.api:
-#      path: "ip address"
-#The following options configure TLS/SSL.
-#Depending on your setup, these options need different values:
-#      tls: false
-#      validate_certs: false
-#      validate_cert_hostname: false
-#  - name: Show IP address of first interface
-#    ansible.builtin.debug:
-#      msg: "{{ print_path.msg[0].address }}"
+  - name: Run a command
+    community.routeros.command:
+      commands:
+          - /system resource print
+    register: system_resource_print
+  - name: Print its output
+     ansible.builtin.debug:
+      var: system_resource_print.stdout_lines
