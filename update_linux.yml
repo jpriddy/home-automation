@@ -2,7 +2,7 @@
   hosts: all
   become: true
   tasks:
-  - name: Install system updates for centos systems
+  - name: Install system updates for rhel and centos
     yum:
       name: '*'
       state: latest
@@ -12,7 +12,7 @@
     - ansible_os_family == "RedHat"
     - ansible_distribution == "CentOS"
 
-  - name: Install system updates for ubuntu systems
+  - name: Install system updates for debian and ubuntu
     apt:
       name: '*'
       state: latest
