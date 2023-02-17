@@ -7,11 +7,9 @@
     community.routeros.command:
       commands: /system resource print
     register: routeros_resources
+    
   - name: Run a command
     community.routeros.command:
       commands:
           - /system resource print
     register: system_resource_print
-  - name: Print its output
-     ansible.builtin.debug:
-      var: system_resource_print.stdout_lines
