@@ -1,16 +1,21 @@
 ---
-- name: Test community.routeros.api connection
+- name: Test routeros command
   hosts: all
   gather_facts: no
   tasks:
-  - name: Get "ip address print"
-    community.routeros.api:
-      path: "ip address"
-      # The following options configure TLS/SSL.
-      # Depending on your setup, these options need different values:
-      tls: false
-      validate_certs: false
-      validate_cert_hostname: false
-  - name: Show IP address of first interface
-    ansible.builtin.debug:
-      msg: "{{ print_path.msg[0].address }}"
+  - name: Display resource statistics (routeros)
+    community.network.routeros_command:
+      commands: /system resource print
+    register: routeros_resources
+    when: ansible_network_os == 'community.network.routeros'
+#  - name: Get "ip address print"
+#    community.routeros.api:
+#      path: "ip address"
+#The following options configure TLS/SSL.
+#Depending on your setup, these options need different values:
+#      tls: false
+#      validate_certs: false
+#      validate_cert_hostname: false
+#  - name: Show IP address of first interface
+#    ansible.builtin.debug:
+#      msg: "{{ print_path.msg[0].address }}"
