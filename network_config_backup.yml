@@ -10,7 +10,6 @@
   - name: "Starting ROS Configuration Backup"
       community.routeros.command:
         commands: /export show-sensitive file={{inventory_hostname}}
-
 #  - name: "Grabbing backups and storing on synology"
 #      ansible.netcommon.net_get:
 #        src: "inventory_hostname.backup"
