@@ -3,7 +3,6 @@
   hosts: all
   gather_facts: no
   tasks:
-- set_fact: time="{{lookup('pipe','date \"+%Y-%m-%d-%H-%M\"')}}"
 
 - name: "Starting ROS System Backup"
   community.routeros.command:
