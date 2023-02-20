@@ -17,6 +17,6 @@
   - name: "Grabbing backups and storing on synology"
       ansible.netcommon.net_get:
         src: "inventory_hostname.backup"
-        dest: "./inventory_hostname.backup"
+        dest: "/synology/backup/mikrotik_config_backups/inventory_hostname.backup"
         src: "inventory_hostname.rsc"
-        dest: "./inventory_hostname.rsc"
+        dest: "/synology/backup/mikrotik_config_backups/inventory_hostname.rsc"
