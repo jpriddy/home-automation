@@ -3,20 +3,18 @@
   become: true
   tasks:
   
-  - name: Install system updates for rhel and centos
+  - name: Install system updates for RedHat ansible OS family
     yum:
       name: '*'
       state: latest
       update_cache: yes
-      #cache_valid_time: 3600
     when:
     - ansible_os_family == "RedHat"
 
-  - name: Install system updates for debian and ubuntu
+  - name: Install system updates for Debian ansible OS family
     apt:
       name: '*'
       state: latest
       update_cache: yes
-      #cache_valid_time: 3600
     when:
     - ansible_os_family == "Debian"
