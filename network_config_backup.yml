@@ -4,10 +4,10 @@
   gather_facts: no
   tasks:
 
-- name: "Starting ROS System Backup"
-  community.routeros.command:
-    commands: /system backup save name {{inventory_hostname}}
+   - name: "Starting ROS System Backup"
+     community.routeros.command:
+       commands: /system backup save name {{inventory_hostname}}
 
-- name: "Starting ROS Configuration Backup"
-  community.routeros.command:
-    commands: /export show-sensitive file={{inventory_hostname}}
+   - name: "Starting ROS Configuration Backup"
+     community.routeros.command:
+       commands: /export show-sensitive file={{inventory_hostname}}
