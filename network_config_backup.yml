@@ -4,22 +4,22 @@
   gather_facts: no
   tasks:
 
-  - name: "Starting ROS System Backup"
+  - name: "Starting System Backup"
     community.routeros.command:
         commands: 
           - /system backup save name {{inventory_hostname}}
 
-  - name: "Starting ROS Configuration Backup"
+  - name: "Starting Configuration Backup"
     community.routeros.command:
         commands: 
           - /export show-sensitive file={{inventory_hostname}}
 
-  - name: "Grabbing backup file and storing on synology"
+  - name: "Grabbing backup file and storing in backup folder(s) on synology"
     ansible.netcommon.net_get:
         src: "inventory_hostname.backup"
         dest: "/synology/backup/config_backups/inventory_hostname.backup"
 
-  - name: "Grabbing rsc file and storing on synology"
+  - name: "Grabbing rsc file aand storing in backup folder(s) on synology"
     ansible.netcommon.net_get:
         src: "inventory_hostname.rsc"
         dest: "/synology/backup/config_backups/inventory_hostname.rsc"
