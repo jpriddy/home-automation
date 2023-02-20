@@ -14,9 +14,12 @@
         commands: 
           - /export show-sensitive file={{inventory_hostname}}
 
-  - name: "Grabbing backups and storing on synology"
-      ansible.netcommon.net_get:
+  - name: "Grabbing backup and storing on synology"
+    ansible.netcommon.net_get:
         src: "inventory_hostname.backup"
         dest: "/synology/backup/mikrotik_config_backups/inventory_hostname.backup"
+
+  - name: "Grabbing rsc and storing on synology"
+    ansible.netcommon.net_get:
         src: "inventory_hostname.rsc"
         dest: "/synology/backup/mikrotik_config_backups/inventory_hostname.rsc"
