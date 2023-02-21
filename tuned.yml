@@ -1,4 +1,11 @@
-        - name: Install the tuned package
+---
+- name: reboot
+  hosts: all
+  become: true
+  tasks:
+  
+  
+  - name: Install the tuned package
           yum:
             name: tuned
             state: latest
