@@ -1,0 +1,43 @@
+---
+- name: Update OPNsense router
+  hosts: opnsense_router
+  gather_facts: no
+  become: yes
+
+  vars:
+    opnsense_api_key: "your_opnsense_api_key"
+    opnsense_api_secret: "your_opnsense_api_secret"
+    opnsense_base_url: "https://your_opnsense_router_ip"
+
+  tasks:
+    - name: Install OPNsense module dependencies
+      pip:
+        name: opnsense
+        state: present
+
+    - name: Check for available updates
+      opnsense_config:
+        opnsense_api_key: "{{ opnsense_api_key }}"
+        opnsense_api_secret: "{{ opnsense_api_secret }}"
+        opnsense_base_url: "{{ opnsense_base_url }}"
+        section: system
+        subsection: firmware
+        action: check
+
+#    - name: Download and install updates
+#      opnsense_config:
+#        opnsense_api_key: "{{ opnsense_api_key }}"
+#        opnsense_api_secret: "{{ opnsense_api_secret }}"
+#        opnsense_base_url: "{{ opnsense_base_url }}"
+#        section: system
+#        subsection: firmware
+#        action: upgrade
+
+#    - name: Reboot the router to apply the updates
+#      opnsense_config:
+#        opnsense_api_key: "{{ opnsense_api_key }}"
+#        opnsense_api_secret: "{{ opnsense_api_secret }}"
+#        opnsense_base_url: "{{ opnsense_base_url }}"
+#        section: system
+#        subsection: firmware
+#        action: reboot
