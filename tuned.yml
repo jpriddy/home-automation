@@ -1,26 +1,23 @@
 ---
-- name: reboot
+- name: Install and configure tuned
   hosts: all
   become: true
   tasks:
   
-  
-  - name: Install the tuned package
-          yum:
-            name: tuned
-            state: latest
+   - name: Install the tuned package
+     yum:
+       name: tuned
+       state: latest
 
-        - name: Enable the tuned service
-          service:
-            name: tuned
-            enabled: yes
+   - name: Enable the tuned service
+     service:
+       name: tuned
+       enabled: yes
 
-
-        - name: Start the tuned service
-          service:
-            name: tuned
-            state: started
+   - name: Start the tuned service
+       service:
+       name: tuned
+       state: started
  
-        - name: Set correct tuned profile for virtual server
-          command: tuned-adm profile virtual-guest
-          
+   - name: Set correct tuned profile for virtual server
+       command: tuned-adm profile virtual-guest
