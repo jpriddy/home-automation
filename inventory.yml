@@ -74,6 +74,6 @@ firewalls:
    hosts:
      firewall:
        ansible_host: "192.168.1.1"
-         vars:
+   vars:
     opnsense_base_url: "http://192.168.1.1"
     
