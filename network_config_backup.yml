@@ -16,10 +16,10 @@
 
   - name: "Grabbing backup file and storing in backup folder(s) on synology"
     ansible.netcommon.net_get:
-        src: "inventory_hostname.backup"
+        src: "{{inventory_hostname}}.backup"
         dest: "/synology/backup/config_backups/{{inventory_hostname}}.backup"
 
   - name: "Grabbing rsc file aand storing in backup folder(s) on synology"
     ansible.netcommon.net_get:
-        src: "inventory_hostname.rsc"
+        src: "{{inventory_hostname}}.rsc"
         dest: "/synology/backup/config_backups/{{inventory_hostname}}.rsc"
