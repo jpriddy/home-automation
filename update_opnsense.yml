@@ -1,6 +1,6 @@
 ---
 - name: Update OPNsense router
-  hosts: opnsense_router
+  hosts: all
   gather_facts: no
   become: yes
   become_method: sudo
