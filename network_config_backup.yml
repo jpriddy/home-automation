@@ -1,16 +1,16 @@
 ---
-- name: Backup Network Configs
+- name: Backup all network configurations
   hosts: all
   gather_facts: no
   tasks:
 
-  - name: "Starting System Backup for routeros"
+  - name: "Starting System Backup for RouterOS"
     community.routeros.command:
         commands: 
           - /system backup save name {{inventory_hostname}}
     when: ansible_network_os == 'community.network.routeros'
 
-  - name: "Starting Configuration Backup"
+  - name: "Starting Configuration Backup for RouterOS"
     community.routeros.command:
         commands: 
           - /export show-sensitive file={{inventory_hostname}}
