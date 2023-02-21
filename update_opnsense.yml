@@ -3,18 +3,11 @@
   hosts: opnsense_router
   gather_facts: no
   become: yes
-
+  become_method: sudo
   vars:
-    opnsense_api_key: "your_opnsense_api_key"
-    opnsense_api_secret: "your_opnsense_api_secret"
-    opnsense_base_url: "https://your_opnsense_router_ip"
+    opnsense_base_url: "https://{{ opnsense_router_ip }}"
 
   tasks:
-    - name: Install OPNsense module dependencies
-      pip:
-        name: opnsense
-        state: present
-
     - name: Check for available updates
       opnsense_config:
         opnsense_api_key: "{{ opnsense_api_key }}"
@@ -24,20 +17,27 @@
         subsection: firmware
         action: check
 
-#    - name: Download and install updates
-#      opnsense_config:
-#        opnsense_api_key: "{{ opnsense_api_key }}"
-#        opnsense_api_secret: "{{ opnsense_api_secret }}"
-#        opnsense_base_url: "{{ opnsense_base_url }}"
-#        section: system
-#        subsection: firmware
-#        action: upgrade
+    - name: Download and install updates
+      opnsense_config:
+        opnsense_api_key: "{{ opnsense_api_key }}"
+        opnsense_api_secret: "{{ opnsense_api_secret }}"
+        opnsense_base_url: "{{ opnsense_base_url }}"
+        section: system
+        subsection: firmware
+        action: upgrade
 
-#    - name: Reboot the router to apply the updates
-#      opnsense_config:
-#        opnsense_api_key: "{{ opnsense_api_key }}"
-#        opnsense_api_secret: "{{ opnsense_api_secret }}"
-#        opnsense_base_url: "{{ opnsense_base_url }}"
-#        section: system
-#        subsection: firmware
-#        action: reboot
+    - name: Reboot the router to apply the updates
+      opnsense_config:
+        opnsense_api_key: "{{ opnsense_api_key }}"
+        opnsense_api_secret: "{{ opnsense_api_secret }}"
+        opnsense_base_url: "{{ opnsense_base_url }}"
+        section: system
+        subsection: firmware
+        action: reboot
+
+
+
+
+In this updated version of the playbook, the hosts parameter is set to opnsense_router, which is the name of the inventory group that includes the OPNsense router(s) you want to update. The become parameter is also set to yes, and the become_method parameter is set to sudo, which specifies that you want to use sudo to escalate privileges on the OPNsense router.
+
+In Ansible Automation Platform, you can specify the values for the opnsense_api_key, opnsense_api_secret, and opnsense_router_ip variables as extra variables when you run the playbook. You can also reference the OPNsense API key and secret credential you created earlier in the opnsense_api_key and opnsense_api_secret variables.
