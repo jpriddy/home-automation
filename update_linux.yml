@@ -23,4 +23,4 @@
     update_homebrew: true
     upgrade_all: true
     when:
-    - ansible_os_family == "MacOS"
+    - ansible_os_family == "Darwin"
