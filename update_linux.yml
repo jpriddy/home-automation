@@ -18,3 +18,7 @@
       update_cache: yes
     when:
     - ansible_os_family == "Debian"
+    
+   - community.general.homebrew:
+     update_homebrew: true
+     upgrade_all: true
