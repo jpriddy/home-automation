@@ -19,9 +19,9 @@
     when:
     - ansible_os_family == "Debian"
     
-  - name: Install updates to homebrew
-    homebrew:
-      update_homebrew: true
-      upgrade_all: true
-    when:
-    - ansible_os_family == "Darwin"
+#  - name: Install updates to homebrew
+#    homebrew:
+#      update_homebrew: true
+#      upgrade_all: true
+#    when:
+#    - ansible_os_family == "Darwin"
