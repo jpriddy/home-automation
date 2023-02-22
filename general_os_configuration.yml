@@ -1,5 +1,5 @@
 ---
-- name: Install and configure chrony, disable IPv6, and set up automount
+- name: Install and configure chrony, disable IPv6, set up automount, and install cockpit, netdata, and PCP
   hosts: all
   become: yes
 
@@ -8,6 +8,13 @@
       package:
         name: chrony
         state: latest
+      when: ansible_os_family == "RedHat"
+
+    - name: Install chrony
+      package:
+        name: chrony
+        state: latest
+      when: ansible_os_family == "Debian"
 
     - name: Configure chrony
       lineinfile:
@@ -34,29 +41,42 @@
         - { src: "http://synology.jpriddy.com/kickstart/files/synology.autofs", dest: "/etc/automaster.d/synology.autofs" }
         - { src: "http://synology.jpriddy.com/kickstart/files/auto.synology", dest: "/etc/auto.synology" }
         - { src: "http://synology.jpriddy.com/kickstart/files/.synology", dest: "/root/.synology" }
-        
-    - name: Install cockpit and netdata
+
+    - name: Install cockpit, netdata, and PCP
       package:
         name: "{{ item }}"
         state: latest
       with_items:
         - cockpit
         - netdata
+        - pcp
+        - pcp-export-pcp2json
+        - pcp-manager
+      when: ansible_os_family == "RedHat"
 
-    - name: Start cockpit
-      systemd:
-        name: cockpit.socket
-        state: started
-        enabled: yes
+    - name: Install cockpit, netdata, and PCP
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - cockpit
+        - netdata
+        - pcp
+        - pcp-export-pcp2json
+        - pcp-manager
+      when: ansible_os_family == "Debian"
 
-    - name: Start netdata
-      systemd:
-        name: netdata
-        state: started
-        enabled: yes
+    - name: Configure PMDA network access
+      lineinfile:
+        path: /etc/pcp/pmdas/pmdaInfiniBand/network
+        regexp: '^localhost'
+        line: '192.168.1.0/24'
+        state: present
+      notify:
+        - restart pcp
 
-  handlers:
-    - name: restart chrony
-      systemd:
-        name: chrony
-        state: restarted
+    - name: Enable PMDA for InfiniBand
+      file:
+        path: /etc/pcp/pmns/root.localhost.pmdaInfiniBand
+        state: touch
+        
