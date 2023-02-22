@@ -9,7 +9,7 @@
         url: "https://plex.tv/downloads/latest/1?channel=16&build=linux-x86_64&distro=redhat"
         dest: "/tmp/plex.rpm"
         headers:
-          "X-Plex-Token": {{ plexpass_token }}
+          "X-Plex-Token": "{{ plexpass_token }}"
 
     - name: Install the latest Plex RPM package
       yum:
