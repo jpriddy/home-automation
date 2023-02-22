@@ -51,7 +51,7 @@
         - netdata
         - pcp
 #        - pcp-export-pcp2json
-        - pcp-manager
+#        - pcp-manager
       when: ansible_os_family == "RedHat"
 
     - name: Install cockpit, netdata, and PCP
@@ -63,7 +63,7 @@
         - netdata
         - pcp
 #        - pcp-export-pcp2json
-        - pcp-manager
+#        - pcp-manager
       when: ansible_os_family == "Debian"
 
     - name: Configure PMDA network access
