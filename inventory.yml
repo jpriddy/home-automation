@@ -69,7 +69,6 @@ windows_servers:
       ansible_host: "192.168.1.161"
     dc2:
       ansible_host: "192.168.1.162"
-        hosts:
 firewalls:
    hosts:
      firewall:
