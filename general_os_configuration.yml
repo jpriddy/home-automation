@@ -8,13 +8,6 @@
       package:
         name: chrony
         state: latest
-      when: ansible_os_family == "RedHat"
-
-    - name: Install chrony
-      package:
-        name: chrony
-        state: latest
-      when: ansible_os_family == "Debian"
 
     - name: Configure chrony
       lineinfile:
@@ -50,18 +43,3 @@
         - cockpit
         - netdata
         - pcp
-#        - pcp-export-pcp2json
-#        - pcp-manager
-      when: ansible_os_family == "RedHat"
-
-    - name: Install cockpit, netdata, and PCP
-      apt:
-        name: "{{ item }}"
-        state: latest
-      with_items:
-        - cockpit
-        - netdata
-        - pcp
-#        - pcp-export-pcp2json
-#        - pcp-manager
-      when: ansible_os_family == "Debian"
