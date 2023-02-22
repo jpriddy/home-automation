@@ -1,0 +1,42 @@
+---
+- name: Install and configure chrony, disable IPv6, and set up automount
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install chrony
+      package:
+        name: chrony
+        state: latest
+
+    - name: Configure chrony
+      lineinfile:
+        path: /etc/chrony.conf
+        regexp: '^server'
+        line: 'server 192.168.1.1 iburst'
+        state: present
+        create: yes
+      notify:
+        - restart chrony
+
+    - name: Disable IPv6 via sysctl
+      sysctl:
+        name: net.ipv6.conf.all.disable_ipv6
+        value: 1
+        state: present
+        reload: yes
+
+    - name: Set up automount
+      get_url:
+        url: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      with_items:
+        - { src: "http://synology.jpriddy.com/kickstart/files/synology.autofs", dest: "/etc/automaster.d/synology.autofs" }
+        - { src: "http://synology.jpriddy.com/kickstart/files/auto.synology", dest: "/etc/auto.synology" }
+        - { src: "http://synology.jpriddy.com/kickstart/files/.synology", dest: "/root/.synology" }
+
+  handlers:
+    - name: restart chrony
+      systemd:
+        name: chrony
+        state: restarted
