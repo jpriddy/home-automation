@@ -33,14 +33,14 @@
         state: present
         reload: yes
 
-    - name: Set up automount
-      get_url:
-        url: "{{ item.src }}"
-        dest: "{{ item.dest }}"
-      with_items:
-        - { src: "http://synology.jpriddy.com/kickstart/files/synology.autofs", dest: "/etc/automaster.d/synology.autofs" }
-        - { src: "http://synology.jpriddy.com/kickstart/files/auto.synology", dest: "/etc/auto.synology" }
-        - { src: "http://synology.jpriddy.com/kickstart/files/.synology", dest: "/root/.synology" }
+#    - name: Set up automount
+#      get_url:
+#        url: "{{ item.src }}"
+#        dest: "{{ item.dest }}"
+#      with_items:
+#        - { src: "http://synology.jpriddy.com/kickstart/files/synology.autofs", dest: "/etc/automaster.d/synology.autofs" }
+#        - { src: "http://synology.jpriddy.com/kickstart/files/auto.synology", dest: "/etc/auto.synology" }
+#        - { src: "http://synology.jpriddy.com/kickstart/files/.synology", dest: "/root/.synology" }
 
     - name: Install cockpit, netdata, and PCP
       package:
