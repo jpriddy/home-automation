@@ -1,6 +1,6 @@
 ---
 - name: Install Cockpit and start service
-  hosts: linux_servers
+  hosts: all
   become: yes
 
   tasks:
