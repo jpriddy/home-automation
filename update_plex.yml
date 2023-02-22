@@ -1,6 +1,6 @@
 ---
 - name: Update Plex RPM for Lifetime PlexPass Member
-  hosts: media
+  hosts: all
   become: yes
   tasks:
   
