@@ -43,3 +43,15 @@
         - cockpit
         - netdata
         - pcp
+
+  - name: Add PermitRootLogin to SSH configuration
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#?(PermitRootLogin|PermitRootLogin without-password)'
+      line: 'PermitRootLogin yes'
+      backup: yes
+
+  - name: Restart SSH service
+    service:
+      name: sshd
+      state: restarted
