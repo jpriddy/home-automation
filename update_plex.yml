@@ -7,13 +7,13 @@
     - name: Download the latest Plex RPM package
       get_url:
         url: "https://plex.tv/downloads/latest/1?channel=16&build=linux-x86_64&distro=redhat"
-        dest: "/tmp/plex.rpm"
+        dest: "/tmp/plex-ansible-temp.rpm"
         headers:
           "X-Plex-Token": "{{ plexpass_token }}"
 
     - name: Install the latest Plex RPM package
       yum:
-        name: "/tmp/plex.rpm"
+        name: "/tmp/plex-ansible-temp.rpm"
         state: latest
         disable_gpg_check: yes
 
