@@ -25,3 +25,51 @@
 #      upgrade_all: true
 #    when:
 #    - ansible_os_family == "Darwin"
+#    
+#  - name: Install Windows updates
+#    win_updates:
+#      category_names:
+#        - SecurityUpdates
+#        - CriticalUpdates
+#        - DefinitionUpdates
+#      state: installed
+#    when:
+#    - ansible_os_family == "Windows"
+#
+#    - name: Check for available OPNSense updates
+#      opnsense_config:
+#        opnsense_api_key: "{{ opnsense_api_key }}"
+#        opnsense_api_secret: "{{ opnsense_api_secret }}"
+#        opnsense_base_url: "{{ opnsense_base_url }}"
+#        section: system
+#        subsection: firmware
+#        action: check
+#    when:
+#    - ansible_os_family == "????"
+#
+#    - name: Download and install OPNSense updates
+#      opnsense_config:
+#        opnsense_api_key: "{{ opnsense_api_key }}"
+#        opnsense_api_secret: "{{ opnsense_api_secret }}"
+#        opnsense_base_url: "{{ opnsense_base_url }}"
+#        section: system
+#        subsection: firmware
+#        action: upgrade
+#    when:
+#    - ansible_os_family == "???"
+#
+## Home Assistant ##
+#    - name: Update pip
+#      pip:
+#        name: pip
+#        state: latest
+#
+#    - name: Upgrade Home Assistant
+#      pip:
+#        name: homeassistant
+#        state: latest
+#
+#    - name: Restart Home Assistant
+#      systemd:
+#        name: homeassistant
+#        state: restarted
