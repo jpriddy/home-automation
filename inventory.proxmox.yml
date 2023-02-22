@@ -1,9 +1,0 @@
-plugin: community.general.proxmox
-url: https://nuc1:8006
-user: ansible
-token_id: ansible@pve!aap
-token_secret: 7bae6ab3-b816-477b-bd08-5409b389c53e
-validate_certs: false
-want_proxmox_nodes_ansible_host: false
-compose:
-  ansible_host: proxmox_ipconfig0.ip | default(proxmox_net0.ip) | ipaddr('address')
