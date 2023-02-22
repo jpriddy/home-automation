@@ -79,4 +79,3 @@
       file:
         path: /etc/pcp/pmns/root.localhost.pmdaInfiniBand
         state: touch
-        
