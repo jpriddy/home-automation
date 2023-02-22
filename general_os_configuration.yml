@@ -65,17 +65,3 @@
 #        - pcp-export-pcp2json
 #        - pcp-manager
       when: ansible_os_family == "Debian"
-
-    - name: Configure PMDA network access
-      lineinfile:
-        path: /etc/pcp/pmdas/pmdaInfiniBand/network
-        regexp: '^localhost'
-        line: '192.168.1.0/24'
-        state: present
-      notify:
-        - restart pcp
-
-    - name: Enable PMDA for InfiniBand
-      file:
-        path: /etc/pcp/pmns/root.localhost.pmdaInfiniBand
-        state: touch
