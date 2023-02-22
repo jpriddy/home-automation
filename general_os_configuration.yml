@@ -50,7 +50,7 @@
         - cockpit
         - netdata
         - pcp
-        - pcp-export-pcp2json
+#        - pcp-export-pcp2json
         - pcp-manager
       when: ansible_os_family == "RedHat"
 
@@ -62,7 +62,7 @@
         - cockpit
         - netdata
         - pcp
-        - pcp-export-pcp2json
+#        - pcp-export-pcp2json
         - pcp-manager
       when: ansible_os_family == "Debian"
 
