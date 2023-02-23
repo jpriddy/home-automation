@@ -60,8 +60,8 @@
         - ipa-client
         - nmap
         - iperf3
-#for virtual guests
-#qemu-guest-agent
+        #for virtual guests
+        #qemu-guest-agent
 
     - name: Add PermitRootLogin to SSH configuration
       lineinfile:
