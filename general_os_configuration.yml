@@ -1,5 +1,5 @@
 ---
-- name: Install and configure chrony, disable IPv6, set up automount, and install cockpit, netdata, and PCP
+- name: Configure OS
   hosts: all
   become: yes
   tasks:
@@ -33,7 +33,7 @@
         #for virtual guests
         #qemu-guest-agent
 
-    - name: Add PermitRootLogin to SSH configuration
+    - name: Allow root login via ssh
       lineinfile:
         path: /etc/ssh/sshd_config
         regexp: '^#?(PermitRootLogin|PermitRootLogin without-password)'
@@ -55,13 +55,13 @@
       notify:
         - restart chrony
 
-    - name: Disable IPv6 via sysctl
-      sysctl:
-        name: net.ipv6.conf.all.disable_ipv6
-        value: 1
-        state: present
-        reload: yes
-
+#    - name: Disable IPv6 via sysctl
+#      sysctl:
+#        name: net.ipv6.conf.all.disable_ipv6
+#        value: 1
+#        state: present
+#        reload: yes
+#
 #    - name: Set up automount
 #      get_url:
 #        url: "{{ item.src }}"
