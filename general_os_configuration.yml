@@ -41,18 +41,20 @@
       notify:
         - restart chrony
 
-    - name: Setup config file for ssh
+    - name: Configure ssh to allow root and restart it
       copy:
         content: |
           # Allow root login via SSH, created by ansible
           PermitRootLogin yes
         dest: '/etc/ssh/sshd_config.d/enable-root-ssh.conf'
         mode: '0644'
+      notify:
+        - restart sshd
 
     - name: Reload SSH service
       service:
         name: sshd
-      state: reloaded
+        state: reloaded
 
 
 #    - name: Disable IPv6 via sysctl
