@@ -12,7 +12,6 @@
         - cockpit
         - netdata
         - pcp
-#        - auto
         - autofs
         - bash-completion
         - cifs-utils
@@ -20,16 +19,17 @@
         - mlocate
         - pcp
         - rsync
-#        - sos
         - sysstat
         - tuned
-#        - deltarpm
         - cockpit
-#        - chkconfig
-#        - ipa-client
         - nmap
         - iperf3
         - chrony
+#        - auto
+#        - sos
+#        - deltarpm
+#        - chkconfig
+#        - ipa-client
         
     - name: Configure chrony and restart it
       lineinfile:
@@ -41,20 +41,20 @@
       notify:
         - restart chrony
 
-    - name: Configure ssh to allow root and restart it
-      copy:
-        content: |
-          # Allow root login via SSH, created by ansible
-          PermitRootLogin yes
-        dest: '/etc/ssh/sshd_config.d/enable-root-ssh.conf'
-        mode: '0644'
+#    - name: Configure ssh to allow root with content/copy command
+#      copy:
+#        content: |
+#          # Allow root login via SSH, created by ansible
+#          PermitRootLogin yes
+#        dest: '/etc/ssh/sshd_config.d/enable-root-ssh.conf'
+#        mode: '0644'
 
-    - name: Reload SSH service
-      service:
-        name: sshd
-        state: reloaded
+#    - name: Reload SSH service
+#      service:
+#        name: sshd
+#        state: reloaded
 
-    - name: Configure sshd to prevent root and password login except from particular subnet
+    - name: Use ssh system role to allow root
       include_role:
         name: rhel-system-roles.sshd
       vars:
