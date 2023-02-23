@@ -41,26 +41,26 @@
       notify:
         - restart chrony
 
-#    - name: Configure ssh to allow root with content/copy command
-#      copy:
-#        content: |
-#          # Allow root login via SSH, created by ansible
-#          PermitRootLogin yes
-#        dest: '/etc/ssh/sshd_config.d/enable-root-ssh.conf'
-#        mode: '0644'
+    - name: Configure ssh to allow root with content/copy command
+      copy:
+        content: |
+          # Allow root login via SSH, created by ansible
+          PermitRootLogin yes
+        dest: '/etc/ssh/sshd_config.d/enable-root-ssh.conf'
+        mode: '0644'
 
-#    - name: Reload SSH service
-#      service:
-#        name: sshd
-#        state: reloaded
+    - name: Reload SSH service
+      service:
+        name: sshd
+        state: reloaded
 
-    - name: Use ssh system role to allow root
-      include_role:
-        name: rhel-system-roles.sshd
-      vars:
-        sshd:
-          PermitRootLogin: yes
-          PasswordAuthentication: yes
+#    - name: Use ssh system role to allow root
+#      include_role:
+#        name: rhel-system-roles.sshd
+#      vars:
+#        sshd:
+#          PermitRootLogin: yes
+#          PasswordAuthentication: yes
 
 
 
