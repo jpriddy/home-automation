@@ -30,8 +30,6 @@
         - nmap
         - iperf3
         - chrony
-        #for virtual guests
-        #qemu-guest-agent
 
     - name: Allow root login via ssh
       lineinfile:
