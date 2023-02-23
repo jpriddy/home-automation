@@ -30,6 +30,16 @@
         - nmap
         - iperf3
         - chrony
+        
+    - name: Configure chrony and restart it
+      lineinfile:
+        path: /etc/chrony.conf
+        regexp: '^server'
+        line: 'server 192.168.1.1 iburst'
+        state: present
+        create: yes
+      notify:
+        - restart chrony
 
     - name: Allow root login via ssh
       lineinfile:
@@ -42,16 +52,6 @@
       service:
         name: sshd
         state: restarted
-        
-    - name: Configure chrony and restart it
-      lineinfile:
-        path: /etc/chrony.conf
-        regexp: '^server'
-        line: 'server 192.168.1.1 iburst'
-        state: present
-        create: yes
-      notify:
-        - restart chrony
 
 #    - name: Disable IPv6 via sysctl
 #      sysctl:
