@@ -9,7 +9,7 @@
         name: chrony
         state: latest
 
-    - name: Configure chrony
+    - name: Configure chrony and restart it
       lineinfile:
         path: /etc/chrony.conf
         regexp: '^server'
@@ -35,7 +35,7 @@
 #        - { src: "http://synology.jpriddy.com/kickstart/files/auto.synology", dest: "/etc/auto.synology" }
 #        - { src: "http://synology.jpriddy.com/kickstart/files/.synology", dest: "/root/.synology" }
 
-    - name: Install cockpit, netdata, and PCP
+    - name: Install various packages
       package:
         name: "{{ item }}"
         state: latest
@@ -43,6 +43,25 @@
         - cockpit
         - netdata
         - pcp
+        - auto
+        - autofs
+        - bash-completion
+        - cifs-utils
+        - kexec-tools
+        - mlocate
+        - pcp
+        - rsync
+        - sos
+        - sysstat
+        - tuned
+        - deltarpm
+        - cockpit
+        - chkconfig
+        - ipa-client
+        - nmap
+        - iperf3
+#for virtual guests
+#qemu-guest-agent
 
     - name: Add PermitRootLogin to SSH configuration
       lineinfile:
