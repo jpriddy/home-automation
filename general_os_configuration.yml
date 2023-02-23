@@ -54,6 +54,15 @@
         name: sshd
         state: reloaded
 
+    - name: Configure sshd to prevent root and password login except from particular subnet
+      include_role:
+        name: rhel-system-roles.sshd
+      vars:
+        sshd:
+          PermitRootLogin: yes
+          PasswordAuthentication: yes
+
+
 
 #    - name: Disable IPv6 via sysctl
 #      sysctl:
