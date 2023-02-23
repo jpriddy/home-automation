@@ -12,7 +12,7 @@
         - cockpit
         - netdata
         - pcp
-        - auto
+#        - auto
         - autofs
         - bash-completion
         - cifs-utils
@@ -20,13 +20,13 @@
         - mlocate
         - pcp
         - rsync
-        - sos
+#        - sos
         - sysstat
         - tuned
-        - deltarpm
+#        - deltarpm
         - cockpit
-        - chkconfig
-        - ipa-client
+#        - chkconfig
+#        - ipa-client
         - nmap
         - iperf3
         - chrony
@@ -48,8 +48,6 @@
           PermitRootLogin yes
         dest: '/etc/ssh/sshd_config.d/enable-root-ssh.conf'
         mode: '0644'
-      notify:
-        - restart sshd
 
     - name: Reload SSH service
       service:
