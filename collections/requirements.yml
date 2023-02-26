@@ -3,4 +3,4 @@ collections:
   - name: community.routeros
   - name: ansible.windows
   - name: chocolatey.chocolatey
-  - name: rhel-system-roles.cockpit_rhel
+  - name: redhat.rhel_idm
