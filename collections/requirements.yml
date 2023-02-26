@@ -3,6 +3,5 @@ collections:
   - name: community.routeros
   - name: ansible.windows
   - name: chocolatey.chocolatey
-  - name: redhat.rhel_system_roles
   - name: redhat.satellite
 
