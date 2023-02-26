@@ -3,6 +3,4 @@ collections:
   - name: community.routeros
   - name: ansible.windows
   - name: chocolatey.chocolatey
-  - name: rhel-system-roles.selinux
-
-
+  - name: rhel-system-roles.cockpit
