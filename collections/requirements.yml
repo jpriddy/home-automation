@@ -1,8 +1,8 @@
 ---
 collections:
   - name: community.routeros
-  - name: redhat
+#  - name: redhat
 #  - name: redhat.rhel_system_roles
 #  - name: redhat.satellite
 #  - name: chocolatey.chocolatey
-#  - name: ansible.windows
+  - name: ansible.windows
