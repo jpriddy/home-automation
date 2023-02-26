@@ -6,5 +6,3 @@ collections:
 #  - name: redhat.rhel_system_roles
 #  - name: chocolatey.chocolatey
 #  - name: ansible.windows
-
-
