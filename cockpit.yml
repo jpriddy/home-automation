@@ -4,7 +4,7 @@
   tasks:
   - name: Install RHEL/Fedora Web Console (Cockpit)
     include_role:
-      name: linux-system-roles.cockpit
+      name: redhat-system-roles.cockpit
     vars:
       cockpit_packages: default
       #cockpit_packages: minimal
@@ -12,7 +12,7 @@
 
   - name: Configure Firewall for Web Console
     include_role:
-      name: linux-system-roles.firewall
+      name: redhat-system-roles.firewall
     vars:
       firewall:
         service: cockpit
