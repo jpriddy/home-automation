@@ -61,9 +61,6 @@
 #        sshd:
 #          PermitRootLogin: yes
 #          PasswordAuthentication: yes
-
-
-
 #    - name: Disable IPv6 via sysctl
 #      sysctl:
 #        name: net.ipv6.conf.all.disable_ipv6
