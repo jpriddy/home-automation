@@ -1,5 +1,5 @@
----
-collections:
+#---
+#collections:
 #  - name: community.routeros
 #  - name: redhat.rhel_system_roles
 #  - name: redhat.satellite
