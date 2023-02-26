@@ -4,7 +4,7 @@
   tasks:
   - name: Install RHEL/Fedora Web Console (Cockpit)
     include_role:
-      name: redhat.rhel_system_roles.cockpit
+      name: rhel_system_roles.cockpit
     vars:
       cockpit_packages: default
       #cockpit_packages: minimal
