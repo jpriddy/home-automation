@@ -1,6 +1,7 @@
 ---
 collections:
   - name: community.routeros
+  - name: redhat.rhel_system_roles
 ###any of the below throw an error
 #  - name: redhat.rhel_system_roles
 #  - name: redhat.satellite
