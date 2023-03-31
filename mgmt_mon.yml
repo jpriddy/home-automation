@@ -39,10 +39,11 @@
         service: cockpit
         state: enabled
 
-- name: Disable firewall after configuration
-  ansible.builtin.service:
-    name: firewalld
-    state: disabled
+  - name: Disable firewall
+    service:
+      name: firewalld
+      enabled: no
+      state: stopped
 
 
 
