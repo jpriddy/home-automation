@@ -2,7 +2,7 @@
 - hosts: all
   become: true
   tasks:
-  - name: Install RHEL/Fedora Web Console (Cockpit)
+  - name: Install RHEL/Fedora Cockpit Web Console
     include_role:
       name: redhat.rhel_system_roles.cockpit
     vars:
