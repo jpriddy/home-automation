@@ -38,8 +38,8 @@
         line: 'server 192.168.1.1 iburst'
         state: present
         create: yes
-       notify:
-        - restart chrony
+#       notify:
+#        - restart chrony
 
      - name: Configure ssh to allow root with content/copy command
        copy:
