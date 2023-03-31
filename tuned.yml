@@ -12,12 +12,8 @@
    - name: Enable the tuned service
      service:
        name: tuned
+       state: started
        enabled: yes
 
-   - name: Start the tuned service
-       service:
-       name: tuned
-       state: started
- 
- #  - name: Set correct tuned profile for virtual server
- #      command: tuned-adm profile virtual-guest
+   - name: Set correct tuned profile for virtual server
+       command: tuned-adm profile virtual-guest
