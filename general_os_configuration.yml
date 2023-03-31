@@ -20,3 +20,11 @@
       vars:
         sshd:
           PermitRootLogin: yes
+
+    - name: Configure timesync
+      include_role:
+        name: rhel-system-roles.timesync
+      vars:
+        timesync_ntp_servers:
+          - hostname: firewall.jpriddy.com
+            iburst: true
