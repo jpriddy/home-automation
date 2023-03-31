@@ -22,9 +22,8 @@
          - cockpit-ws
          - cockpit-dashboard
          - cockpit-kdump
-         - cockpit-sosreport           
-        # - cockpit-machines
-        # - cockpit-podman
+         - cockpit-sosreport
+         - cockpit-pcp
   - name: Configure Firewall for Web Console
     include_role:
       name: redhat.rhel_system_roles.firewall
