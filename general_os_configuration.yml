@@ -23,7 +23,7 @@
 
     - name: Configure timesync
       include_role:
-        name: rhel-system-roles.timesync
+        name: redhat.rhel_system_roles.timesync
       vars:
         timesync_ntp_servers:
           - hostname: firewall.jpriddy.com
@@ -31,7 +31,7 @@
             
     - name: Configure journald
       include_role:
-        name: rhel-system-roles.journald
+        name: redhat.rhel_system_roles.journald
       vars:
         journald_persistent: true
         journald_max_disk_size: 256
@@ -41,7 +41,7 @@
         
     - name: Configure tuned
       include_role:
-        name: rhel-system-roles.tuned
+        name: redhat.rhel_system_roles.tuned
       vars:
         use_recommended_profile:  true
         enable_recommend: true
