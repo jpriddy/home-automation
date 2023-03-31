@@ -21,10 +21,7 @@
          - cockpit-system
          - cockpit-ws
          - cockpit-dashboard
-         - cockpit-doc
          - cockpit-kdump
-         - cockpit-pcp
-         - cockpit-session-recording
          - cockpit-sosreport           
         # - cockpit-machines
         # - cockpit-podman
