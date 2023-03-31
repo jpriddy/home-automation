@@ -1,7 +1,7 @@
 ---
 collections:
   - name: community.routeros
-#  - name: ansible.windows
-#  - name: chocolatey.chocolatey
-#  - name: microsoft.ad
-#  - name: redhat.rhel_system_roles
+  - name: ansible.windows
+  - name: chocolatey.chocolatey
+  - name: microsoft.ad
+  - name: redhat.rhel_system_roles
