@@ -22,7 +22,13 @@
          - cockpit-ws
          - cockpit-kdump
          - cockpit-sosreport
-
+  - name: Install Metrics
+    include_role:
+      name: redhat.rhel_system_roles.metrics
+    vars:
+      metrics_retention_days: 7
+      metrics_graph_service: true
+      metrics_query_service: true
 
 ##need to figure out how to create a firewall rule, but not actually start/enable firewalld
 #  - name: Configure Firewall for Cockpit Web Console
