@@ -1,8 +1,8 @@
 ---
-  name: Configure Management and Monitoring
-  hosts: all
-  become: true
-  tasks:
+name: Configure Management and Monitoring
+hosts: all
+become: true
+tasks:
     
   - name: Install RHEL/Fedora Cockpit Web Console
     include_role:
