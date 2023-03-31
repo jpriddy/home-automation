@@ -13,7 +13,7 @@
      service:
        name: tuned
        state: started
-       enabled: yes
+       enabled: true
 
    - name: Set correct tuned profile for virtual server
        command: tuned-adm profile virtual-guest
