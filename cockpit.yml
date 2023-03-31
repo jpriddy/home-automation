@@ -14,7 +14,6 @@
          - cockpit-bridge
          - cockpit-networkmanager
          - cockpit-bridge
-         - cockpit-networkmanager
          - cockpit-packagekit
          - cockpit-selinux
          - cockpit-storaged
@@ -22,6 +21,8 @@
          - cockpit-ws
          - cockpit-kdump
          - cockpit-sosreport
+         - cockpit-pcp
+         - cockpit-session-recorder
   - name: Install Metrics
     include_role:
       name: redhat.rhel_system_roles.metrics
