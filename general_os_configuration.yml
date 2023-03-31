@@ -28,3 +28,20 @@
         timesync_ntp_servers:
           - hostname: firewall.jpriddy.com
             iburst: true
+            
+    - name: Configure journald
+      include_role:
+        name: rhel-system-roles.journald
+      vars:
+        journald_persistent: true
+        journald_max_disk_size: 256
+        journald_per_user: true
+        journald_sync_interval: 1
+        
+        
+    - name: Configure tuned
+      include_role:
+        name: rhel-system-roles.tuned
+      vars:
+        use_recommended_profile:  true
+        enable_recommend: true
