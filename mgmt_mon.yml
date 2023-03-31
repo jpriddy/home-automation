@@ -43,8 +43,8 @@
        name: redhat.rhel_system_roles.metrics
      vars:
        metrics_retention_days: 31
-       metrics_graph_service: true
-       metrics_query_service: true
+       #metrics_graph_service: true
+       #metrics_query_service: true
        metrics_manage_firewall: true
        metrics_manage_firewall: true
 
