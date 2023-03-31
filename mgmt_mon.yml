@@ -22,7 +22,6 @@
          - cockpit-kdump
          - cockpit-sosreport
          - cockpit-pcp
-         - cockpit-session-recorder
   - name: Install Metrics
     include_role:
       name: redhat.rhel_system_roles.metrics
