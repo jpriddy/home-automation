@@ -1,5 +1,5 @@
 ---
-  - name: Configure Management and Monitoring
+  name: Configure Management and Monitoring
   hosts: all
   become: true
   tasks:
