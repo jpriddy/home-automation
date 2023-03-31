@@ -28,4 +28,4 @@
     vars:
       firewall:
         service: cockpit
-        state: disabled
+        state: enabled
