@@ -22,7 +22,7 @@
          - cockpit-ws
          - cockpit-kdump
          - cockpit-sosreport
-  - name: Configure Firewall for Web Console
+  - name: Configure Firewall for Cockpit Web Console
     include_role:
       name: redhat.rhel_system_roles.firewall
     vars:
