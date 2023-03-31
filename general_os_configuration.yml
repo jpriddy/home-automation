@@ -37,11 +37,3 @@
         journald_max_disk_size: 256
         journald_per_user: true
         journald_sync_interval: 1
-        
-        
-    - name: Configure tuned
-      include_role:
-        name: redhat.rhel_system_roles.tuned
-      vars:
-        use_recommended_profile:  true
-        enable_recommend: true
