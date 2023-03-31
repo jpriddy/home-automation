@@ -26,7 +26,7 @@
          - cockpit-kdump
          - cockpit-sosreport
          - cockpit-pcp
-       cockpit_port: 9090
+#throws an error       cockpit_port: 9090
        cockpit_manage_firewall: true   
        cockpit_manage_selinux: true   ##allow modifications of firewall and selinux if needed (not needed if using defaults)
        cockpit_config:                               #Configure /etc/cockpit/cockpit.conf
