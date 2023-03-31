@@ -14,3 +14,5 @@
        name: tuned
        state: started
        enabled: true
+       
+ #next should have some custom profiles set as well...
