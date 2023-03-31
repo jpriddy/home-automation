@@ -16,7 +16,7 @@
 
     - name: Configure sshd to allow root
       include_role:
-        name: rhel-system-roles.sshd
+        name: redhat.rhel_system_roles.sshd
       vars:
         sshd:
           PermitRootLogin: yes
