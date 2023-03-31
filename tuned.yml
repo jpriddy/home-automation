@@ -3,7 +3,7 @@
   hosts: all
   become: true
   tasks:
-  
+ 
    - name: Install the tuned package
      yum:
        name: tuned
@@ -14,6 +14,3 @@
        name: tuned
        state: started
        enabled: true
-
-   - name: Set correct tuned profile for virtual server
-       command: tuned-adm profile virtual-guest
