@@ -1,7 +1,9 @@
 ---
-- hosts: all
+  - name: Configure Management and Monitoring
+  hosts: all
   become: true
   tasks:
+    
   - name: Install RHEL/Fedora Cockpit Web Console
     include_role:
       name: redhat.rhel_system_roles.cockpit
@@ -9,6 +11,8 @@
       #cockpit_packages: default
       #cockpit_packages: minimal
       #cockpit_packages: full
+      cockpit_enabled: true
+      cockpit_started: true
       cockpit_packages:
          - cockpit
          - cockpit-bridge
@@ -22,28 +26,26 @@
          - cockpit-kdump
          - cockpit-sosreport
          - cockpit-pcp
-  - name: Install Metrics
+       cockpit_port: 9090
+       cockpit_manage_firewall: true   
+       cockpit_manage_selinux: true   ##allow modifications of firewall and selinux if needed (not needed if using defaults)
+       cockpit_config:                               #Configure /etc/cockpit/cockpit.conf
+          WebService:                                 #Specify "WebService" config section
+          LoginTitle: "custom login screen title"   #Set "LoginTitle" in "WebService" section
+          MaxStartups: 20                           #Set "MaxStartups" in "WebService" section
+        Session:                                    #Specify "Session" config section
+          IdleTimeout: 15                           #Set "IdleTimeout" in "Session" section
+          Banner: "/etc/motd"                       #Set "Banner" in "Session" section 
+  
+  - name: Install and configure metrics
     include_role:
       name: redhat.rhel_system_roles.metrics
     vars:
-      metrics_retention_days: 7
+      metrics_retention_days: 31
       metrics_graph_service: true
       metrics_query_service: true
+      metrics_manage_firewall: true
+      metrics_manage_firewall: true
 
-  - name: Configure Firewall for Cockpit Web Console
-    include_role:
-      name: redhat.rhel_system_roles.firewall
-    vars:
-      firewall:
-        service: cockpit
-        state: enabled
-
-  - name: Disable firewall
-    service:
-      name: firewalld
-      enabled: no
-      state: stopped
-
-
-
+        
 ##need some way of doing the same on debian below here
