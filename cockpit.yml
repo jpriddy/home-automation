@@ -20,7 +20,6 @@
          - cockpit-storaged
          - cockpit-system
          - cockpit-ws
-         - cockpit-dashboard
          - cockpit-kdump
          - cockpit-sosreport
   - name: Configure Firewall for Web Console
