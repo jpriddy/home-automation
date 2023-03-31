@@ -22,17 +22,16 @@
          - cockpit-ws
          - cockpit-kdump
          - cockpit-sosreport
-#  when: ansible_os_family == 'RedHat'
-  - name: Configure Firewall for Cockpit Web Console
-    include_role:
-      name: redhat.rhel_system_roles.firewall
-    vars:
-      firewall:
-        service: cockpit
-        state: enabled
-#  when: ansible_os_family == 'RedHat'
-#  - name: Install Cockpit on Debian/Ubuntu
-#      apt:
-#        name: cockpit
-#        state: latest
-#    when: ansible_os_family == 'Debian'
+
+
+##need to figure out how to create a firewall rule, but not actually start/enable firewalld
+#  - name: Configure Firewall for Cockpit Web Console
+#    include_role:
+#      name: redhat.rhel_system_roles.firewall
+#    vars:
+#      firewall:
+#        service: cockpit
+#        state: enabled
+
+
+##need some way of doing the same on debian below here
