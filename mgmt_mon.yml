@@ -26,11 +26,12 @@
          - cockpit-kdump
          - cockpit-sosreport
          - cockpit-pcp
-#throws an error       cockpit_port: 9090
-       cockpit_manage_firewall: true   
-       cockpit_manage_selinux: true   ##allow modifications of firewall and selinux if needed (not needed if using defaults)
-       cockpit_config:                               #Configure /etc/cockpit/cockpit.conf
-          WebService:                                 #Specify "WebService" config section
+         
+      cockpit_port: 9090
+      cockpit_manage_firewall: true   
+      cockpit_manage_selinux: true   ##allow modifications of firewall and selinux if needed (not needed if using defaults)
+      cockpit_config:                               #Configure /etc/cockpit/cockpit.conf
+        WebService:                                 #Specify "WebService" config section
           LoginTitle: "custom login screen title"   #Set "LoginTitle" in "WebService" section
           MaxStartups: 20                           #Set "MaxStartups" in "WebService" section
         Session:                                    #Specify "Session" config section
