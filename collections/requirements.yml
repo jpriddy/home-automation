@@ -1,6 +1,6 @@
 ---
 collections:
-#  - name: community.routeros
+  - name: community.routeros
 #  - name: ansible.windows
 #  - name: chocolatey.chocolatey
 #  - name: microsoft.ad
