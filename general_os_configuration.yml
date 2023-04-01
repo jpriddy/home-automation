@@ -48,7 +48,7 @@
       include_role:
         name: linux-system-roles.tuned
       vars:
-        use_recommended_profile:: true
+        use_recommended_profile: true
         dynamic_tuning: true
         enable_recommend: true
 
