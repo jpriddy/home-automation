@@ -36,4 +36,16 @@
         journald_persistent: true
         journald_max_disk_size: 256
         journald_per_user: true
-        journald_sync_interval: 1     
+        journald_sync_interval: 1
+        
+    - name: Setup tlog
+      include_role:
+        name: redhat.rhel_system_roles.tlog
+      vars:
+        tlog_scope_sssd: all
+        
+    - name: Setup kdump
+      include_role:
+        name: redhat.rhel_system_roles.kdump  
+      vars:
+        kdump_path: /var/crash
