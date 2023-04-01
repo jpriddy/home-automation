@@ -19,23 +19,23 @@
     when:
     - ansible_os_family == "Debian"
     
-#  - name: Install updates to homebrew
-#    homebrew:
-#      update_homebrew: true
-#      upgrade_all: true
-#    when:
-#    - ansible_os_family == "Darwin"
-#    
-#  - name: Install Windows updates
-#    win_updates:
-#      category_names:
-#        - SecurityUpdates
-#        - CriticalUpdates
-#        - DefinitionUpdates
-#      state: installed
-#    when:
-#    - ansible_os_family == "Windows"
-#
+  - name: Install updates to homebrew
+    homebrew:
+      update_homebrew: true
+      upgrade_all: true
+    when:
+    - ansible_os_family == "Darwin"
+    
+  - name: Install Windows updates
+    win_updates:
+      category_names:
+        - SecurityUpdates
+        - CriticalUpdates
+        - DefinitionUpdates
+      state: installed
+    when:
+    - ansible_os_family == "Windows"
+
 #    - name: Check for available OPNSense updates
 #      opnsense_config:
 #        opnsense_api_key: "{{ opnsense_api_key }}"
