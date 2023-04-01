@@ -13,6 +13,7 @@
         - mlocate
         - rsync
         - nmap
+        - tuned
 
     - name: Configure sshd to allow root
       include_role:
@@ -43,16 +44,14 @@
         name: redhat.rhel_system_roles.tlog
       vars:
         tlog_scope_sssd: all
-
-    - name: Setup tuned
-      include_role:
-        name: linux-system-roles.tuned
-      vars:
-        use_recommended_profile: true
-        dynamic_tuning: true
-        enable_recommend: true
-
         
+        
+     - name: Enable and start tuned
+       ansible.builtin.service:
+         name: tuned
+         enabled: yes
+         started: yes
+         
         
 #    - name: Setup kdump
 #      include_role:
