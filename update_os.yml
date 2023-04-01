@@ -18,14 +18,7 @@
       update_cache: yes
     when:
     - ansible_os_family == "Debian"
-    
-  - name: Install updates to homebrew
-    homebrew:
-      update_homebrew: true
-      upgrade_all: true
-    when:
-    - ansible_os_family == "Darwin"
-    
+        
   - name: Install Windows updates
     win_updates:
       category_names:
@@ -35,6 +28,13 @@
       state: installed
     when:
     - ansible_os_family == "Windows"
+
+#  - name: Install updates to homebrew
+#    homebrew:
+#      update_homebrew: true
+#      upgrade_all: true
+#    when:
+#    - ansible_os_family == "Darwin"
 
 #    - name: Check for available OPNSense updates
 #      opnsense_config:
