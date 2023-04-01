@@ -44,10 +44,10 @@
       vars:
         tlog_scope_sssd: all
         
-    - name: Setup kdump
-      include_role:
-        name: redhat.rhel_system_roles.kdump  
-      vars:
-        kdump_path: /var/crash
-        kdump_system_action: reboot
+#    - name: Setup kdump
+#      include_role:
+#        name: redhat.rhel_system_roles.kdump  
+#      vars:
+#        kdump_path: /var/crash
+#        kdump_system_action: reboot
         
