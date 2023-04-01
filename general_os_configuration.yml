@@ -50,7 +50,7 @@
       ansible.builtin.service:
         name: tuned
         enabled: yes
-        started: yes
+        state: started
          
         
 #    - name: Setup kdump
