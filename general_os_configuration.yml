@@ -49,3 +49,5 @@
         name: redhat.rhel_system_roles.kdump  
       vars:
         kdump_path: /var/crash
+        kdump_system_action: reboot
+        
