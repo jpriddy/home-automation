@@ -37,23 +37,23 @@
            IdleTimeout: 15                           #Set "IdleTimeout" in "Session" section
            Banner: "/etc/motd"                       #Set "Banner" in "Session" section
  
-    - name: Disable and stop firewalld
-      ansible.builtin.service:
+   - name: Disable and stop firewalld
+     ansible.builtin.service:
         name: firewalld
         enabled: no
         state: stopped
   
    - name: Install and configure metrics
      include_role:
-       name: redhat.rhel_system_roles.metrics
+        name: redhat.rhel_system_roles.metrics
      vars:
-       metrics_retention_days: 31
-       #metrics_graph_service: true
-       #metrics_query_service: true
-       metrics_manage_firewall: true
+        metrics_retention_days: 31
+        #metrics_graph_service: true
+        #metrics_query_service: true
+        metrics_manage_firewall: true
        
-    - name: Setup tlog
-      include_role:
+   - name: Setup tlog
+     include_role:
         name: redhat.rhel_system_roles.tlog
-      vars:
+     vars:
         tlog_scope_sssd: all
