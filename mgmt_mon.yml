@@ -57,3 +57,4 @@
         name: redhat.rhel_system_roles.tlog
      vars:
         tlog_scope_sssd: all
+        tlog_use_sssd: true
