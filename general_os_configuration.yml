@@ -4,19 +4,22 @@
   become: yes
   tasks:
   
-  
-    - name: Import RPM Fusion gpg keys
-      ansible.builtin.rpm_key:
+    - name: Install RPM Fusion free and nonfree repos
+      dnf:
+        name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm,https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm"
         state: present
-        key: https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020
-        
-    - name: Enable the RPM Fusion repository
-      dnf:   
-        name: "{{ item }}"
+
+    - name: Import RPM Fusion GPG Keys
+      rpm_key:
+        key: "{{ item }}"
         state: present
-      with_items:
-        - "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
-        - "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
+      loop:
+        - "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-{{ ansible_facts['distribution_major_version'] }}"
+        - "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-nonfree-fedora-{{ ansible_facts['distribution_major_version'] }}"
+
+    - name: Refresh package cache
+      dnf:
+        update_cache: yes
   
     - name: Install some packages...
       package:
