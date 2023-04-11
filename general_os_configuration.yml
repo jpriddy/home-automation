@@ -53,7 +53,13 @@
       ansible.builtin.service:
         name: tuned
         enabled: yes
-        state: started         
+        state: started
+ 
+    - name: Disable and stop firewalld
+      ansible.builtin.service:
+        name: firewalld
+        enabled: no
+        state: stopped
 
 #CHICKEN AND EGG...
     - name: Configure sshd to allow root
