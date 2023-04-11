@@ -9,8 +9,8 @@
         key: "{{ item }}"
         state: present
       loop:
-        - "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_facts['distribution_major_version'] }}/RPM-GPG-KEY-rpmfusion-free-fedora-{{ ansible_facts['distribution_major_version'] }}"
-        - "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_facts['distribution_major_version'] }}/RPM-GPG-KEY-rpmfusion-nonfree-fedora-{{ ansible_facts['distribution_major_version'] }}"
+        - "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020"
+        - "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020"
 
     - name: Install RPM Fusion free and nonfree repos
       dnf:
