@@ -3,11 +3,6 @@
   hosts: all
   become: yes
   tasks:
-  
-    - name: Install RPM Fusion free and nonfree repos
-      dnf:
-        name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm,https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm"
-        state: present
 
     - name: Import RPM Fusion GPG Keys
       rpm_key:
@@ -16,6 +11,11 @@
       loop:
         - "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-{{ ansible_facts['distribution_major_version'] }}"
         - "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-nonfree-fedora-{{ ansible_facts['distribution_major_version'] }}"
+
+    - name: Install RPM Fusion free and nonfree repos
+      dnf:
+        name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm,https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm"
+        state: present
 
     - name: Refresh package cache
       dnf:
