@@ -5,6 +5,11 @@
   tasks:
   
   
+    - name: Import a key from a url
+      ansible.builtin.rpm_key:
+        state: present
+        key: https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020
+        
     - name: Enable the RPM Fusion repository
       dnf:
         name: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"     
