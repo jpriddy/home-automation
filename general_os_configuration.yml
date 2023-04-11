@@ -47,13 +47,7 @@
         journald_persistent: true
         journald_max_disk_size: 512
         journald_per_user: true
-        journald_sync_interval: 1
-        
-    - name: Setup tlog
-      include_role:
-        name: redhat.rhel_system_roles.tlog
-      vars:
-        tlog_scope_sssd: all        
+        journald_sync_interval: 1       
         
     - name: Enable and start tuned
       ansible.builtin.service:
