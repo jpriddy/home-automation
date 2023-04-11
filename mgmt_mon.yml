@@ -52,9 +52,9 @@
 #        #metrics_query_service: true
 #        metrics_manage_firewall: true
        
-#   - name: Setup tlog
-#     include_role:
-#        name: redhat.rhel_system_roles.tlog
-#     vars:
-#        tlog_scope_sssd: all
-#        tlog_use_sssd: true
+   - name: Setup tlog
+     include_role:
+        name: redhat.rhel_system_roles.tlog
+     vars:
+        tlog_scope_sssd: all
+        tlog_use_sssd: true
