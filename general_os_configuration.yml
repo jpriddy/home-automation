@@ -21,7 +21,7 @@
       dnf:
         update_cache: yes
   
-    - name: Install some packages...
+    - name: Install packages...
       package:
         name: "{{ item }}"
         state: latest
