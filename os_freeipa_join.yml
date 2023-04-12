@@ -2,7 +2,16 @@
 - name: Join IdM domain
   hosts: all
   become: yes
-  
+  vars:
+    ipaclient_domain: ipa.jpriddy.com
+    ipaadmin_principal: admin
+    ipaadmin_password: '{{ ansible_password }}'   #using the machine creds here...
+    ipaclient_mkhomedir: yes
+    ipaclient_no_ntp: yes
+    ipaclient_ssh_trust_dns: yes
+    ipaclient_configure_firefox: yes
+    ipaclient_all_ip_addresses: yes
+    ipasssd_enable_dns_updates: yes
+
   roles:
   - role: freeipa.ansible_freeipa.ipaclient
-    state: present
