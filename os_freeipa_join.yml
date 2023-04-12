@@ -24,3 +24,7 @@
          ipaclient_cleanup_dns_resolver: yes
          ipaclient_configure_dns_resolver: no
          ipaclient_dns_servers: "idm1.ipa.jpriddy.com, idm2.ipa.jpriddy.com"
+    - name: Install realmd for completeness (cockpit)
+      package:
+        name: realmd
+        state: present   
