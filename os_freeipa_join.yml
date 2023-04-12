@@ -18,3 +18,4 @@
 
   roles:
   - role: freeipa.ansible_freeipa.ipaclient
+    state: present
