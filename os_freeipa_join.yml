@@ -1,12 +1,10 @@
 ---
 - name: Join host to IdM domain
-  hosts: all
   gather_facts: yes
+  hosts: all
   become: yes
-
   vars:
-    ipa_cred: "{{ lookup('ansible', 'vault', 'ipa_admin_password') }}"
-
+    ipa_cred: "{{ lookup('ansible', 'vault', 'ipa_admin_password') }}"  
   tasks:
     - name: Install IdM client package
       package:
