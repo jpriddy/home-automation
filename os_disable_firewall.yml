@@ -1,0 +1,10 @@
+---
+- name: Disable and stop firewalld service on Red Hat-based hosts
+  hosts: all
+  become: yes
+  tasks:
+    - name: Stop and disable firewalld service
+      ansible.builtin.systemd:
+        name: firewall
+        state: stopped
+        enabled: no
