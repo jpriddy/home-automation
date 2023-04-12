@@ -9,7 +9,7 @@
   vars:
     ipaclient_domain: ipa.jpriddy.com
     ipaadmin_principal: admin
-    ipaadmin_password: {{ ansible_password }}
+    ipaadmin_password: '{{ ansible_password }}'
     ipaclient_mkhomedir: yes
     ipaclient_no_ntp: yes
     ipaclient_ssh_trust_dns: yes
