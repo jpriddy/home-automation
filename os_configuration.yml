@@ -4,7 +4,7 @@
   hosts: all
   become: yes
   tasks:
-
+  
     - name: Import RPM Fusion GPG keys...
       rpm_key:
         key: "{{ item }}"
@@ -12,14 +12,14 @@
       loop:
         - "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020"
         - "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020"
-      when: "'Fedora' in ansible_distribution"  
-
+      when: "'Fedora' in ansible_distribution"
+      
     - name: ...so that I can install RPM Fusion free and nonfree repos.
       dnf:
         name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm,https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm"
         state: present
       when: "'Fedora' in ansible_distribution"
-
+      
     - name: Refresh package cache
       dnf:
         update_cache: yes
@@ -36,7 +36,7 @@
         - iperf3
         - tuned
        
-    - name: Configure timesync
+    - name: Use system role to configure timesync
       include_role:
         name: redhat.rhel_system_roles.timesync
       vars:
@@ -44,7 +44,7 @@
           - hostname: firewall.jpriddy.com
             iburst: true
             
-    - name: Configure journald
+    - name: Use system role to configure journald
       include_role:
         name: redhat.rhel_system_roles.journald
       vars:
@@ -60,7 +60,7 @@
         state: started
 
 #CHICKEN AND EGG...  should clean up kickstart before running this
-    - name: Configure sshd to allow root
+    - name: Use system role to allow root to log into ssh
       include_role:
         name: redhat.rhel_system_roles.sshd
       vars:
