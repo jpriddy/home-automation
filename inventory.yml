@@ -63,6 +63,8 @@ linux_servers:
       ansible_host: "192.168.1.151"
     ipa2:
       ansible_host: "192.168.1.152"
+    kickstart:
+      ansible_host: "192.168.1.218"
 windows_servers:
   hosts:
     dc1:
