@@ -2,18 +2,6 @@
 - name: Stop/Disable firewalld service
   hosts: all
   become: yes
-    vars:
-    ipaclient_domain: ipa.jpriddy.com
-    ipaadmin_principal: admin
-    ipaadmin_password: '{{ ansible_password }}'
-    ipaclient_mkhomedir: yes
-    ipaclient_no_ntp: yes
-    ipaclient_ssh_trust_dns: yes
-    ipaclient_configure_firefox: yes
-    ipaclient_all_ip_addresses: yes
-    ipasssd_enable_dns_updates: yes
-  
-  
   tasks:
   
     - name: Stop and disable the firewalld service
