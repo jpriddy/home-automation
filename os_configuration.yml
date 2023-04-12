@@ -62,7 +62,27 @@
       vars:
         sshd:
           PermitRootLogin: yes
+          
+    - name: Install guest agent if host is virtualized
+      block:
+        - assert:
+            that:
+              - ansible_virtualization_type is defined
+              - ansible_virtualization_type != 'none'
+      rescue:
+        - name: Skip task if host is not virtualized
+          meta: skip_tags=all
 
+    - name: Install guest agent package
+      package:
+        name: qemu-guest-agent
+        state: present
+
+    - name: Start guest agent service
+      service:
+        name: qemu-guest-agent
+        state: started
+          
 #  throws an error but 'succeeds' -- needs to be combined with a kernel change to reserve ram
 #
 #    - name: Setup kdump
