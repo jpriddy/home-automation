@@ -10,3 +10,10 @@
          name: freeipa.ansible_freeipa.ipaclient
       vars:
          state: absent
+
+# Ensure host is removed
+    - name:  remove host from ipa
+      ipahost:
+         ipaadmin_password: '{{ ansible_password }}'
+         state: absent  
+         
