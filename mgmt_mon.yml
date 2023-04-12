@@ -36,12 +36,6 @@
           Session:                                    #Specify "Session" config section
             IdleTimeout: 15                           #Set "IdleTimeout" in "Session" section
             Banner: "/etc/motd"                       #Set "Banner" in "Session" section
-     
-   - name: Disable and stop firewalld
-     ansible.builtin.service:
-        name: firewalld
-        enabled: no
-        state: stopped
   
    - name: Install and configure metrics
      include_role:
@@ -56,3 +50,9 @@
      vars:
         tlog_scope_sssd: all
         tlog_use_sssd: true
+        
+   - name: Disable and stop firewalld
+     ansible.builtin.service:
+        name: firewalld
+        enabled: no
+        state: stopped
