@@ -65,7 +65,7 @@
         sshd:
           PermitRootLogin: yes
           
-    - name: Install guest agent package on virtualized hosts
+    - name: Install guest agent on virtualized hosts
       package:
         name: qemu-guest-agent
         state: present
