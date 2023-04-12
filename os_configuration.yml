@@ -66,13 +66,13 @@
           
     - name: Install guest agent package on virtualized hosts
       package:
-        name: guest_agent
+        name: qemu-guest-agent
         state: present
       when: ansible_virtualization_type != 'none'
 
     - name: Start guest agent service on virtualized hosts
       service:
-        name: guest_agent
+        name: qemu-guest-agent
         state: started
       when: ansible_virtualization_type != 'none'
 
