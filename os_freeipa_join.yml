@@ -1,5 +1,5 @@
 ---
-- name: Join IDM domain ipa.jpriddy.com
+- name: Join IdM domain
   hosts: all
   become: yes
   vars:
@@ -8,12 +8,17 @@
     ipa_user: admin
     
   tasks:
-    - name: Ensure ipaclient package is installed
+    - name: Ensure ipaclient package is installed...
       package:
         name: ipa-client
         state: present
+        
+    - name: ...and ensure realmd package is installed for completeness.
+      package:
+        name: realmd
+        state: present        
 
-    - name: Join the IPA domain
+    - name: Join the IPA domain using the ipa-client-install command
       ansible.builtin.command: >
         ipa-client-install
         --server {{ ipa_server }}
