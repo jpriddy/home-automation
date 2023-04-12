@@ -1,22 +1,26 @@
 ---
-- name: Join host to IdM domain
-  gather_facts: yes
+- name: Join IDM domain ipa.jpriddy.com
   hosts: all
   become: yes
   vars:
-    ipa_cred: "{{ lookup('ansible', 'vault', 'ipa_admin_password') }}"  
-  tasks:
+    ipa_domain: ipa.jpriddy.com
+    ipa_server: idm1.ipa.jpriddy.com,idm2.ipa.jpriddy.com
+    ipa_user: admin
+    ipa_pass: "{{ lookup('ansible', 'vault', 'ipa_password') }}"
     
-    - name: Install IdM client package
+  tasks:
+    - name: Ensure ipaclient package is installed
       package:
         name: ipa-client
-        state: present   
-        
-  roles:
-    - role: ipaclient
-      state: present
-      domain: ipa.jpriddy.com
-      server: idm1.ipa.jpriddy.com,idm2.ipa.jpriddy.com
-      principal: admin
-      password: "{{ ipa_cred }}"
-      force_ntp: yes
+        state: present
+
+    - name: Join the IPA domain
+      ansible.builtin.command: >
+        ipa-client-install
+        --server {{ ipa_server }}
+        --domain {{ ipa_domain }}
+        --principal {{ ipa_user }}
+        --password {{ ipa_pass }}
+        --unattended
+      register: ipa_client_install_result
+      changed_when: "'Client already enrolled' not in ipa_client_install_result.stdout"
