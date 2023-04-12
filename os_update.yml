@@ -1,5 +1,6 @@
 - name: Update both RH and Debian based distros
   hosts: all
+  gather_facts: yes
   become: true
   tasks:
   
