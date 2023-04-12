@@ -4,7 +4,7 @@
   become: yes
   vars:
     ipa_domain: ipa.jpriddy.com
-    ipa_server: idm1.ipa.jpriddy.com,idm2.ipa.jpriddy.com
+    ipa_server: idm1.ipa.jpriddy.com, idm2.ipa.jpriddy.com
     ipa_user: admin
     
   tasks:
