@@ -1,23 +1,26 @@
 ---
-- name: Join IdM domain
+- name: Join IPA clients
   hosts: all
-  become: yes
-  vars:
-    ipaclient_domain: ipa.jpriddy.com
-    ipaadmin_principal: admin
-    ipaadmin_password: '{{ ansible_password }}'   #using the machine creds here...
-    ipaclient_mkhomedir: yes
-    ipaclient_no_ntp: yes
-    ipaclient_ssh_trust_dns: yes
-    ipaclient_configure_firefox: yes
-    ipaclient_all_ip_addresses: yes
-    ipasssd_enable_dns_updates: yes
-    ipaclient_allow_repair: yes
-    ipaclient_force_join: yes
-    ipaclient_servers: 'idm1.ipa.jpriddy.com, idm2.ipa.jpriddy.com'
-    ipaclient_cleanup_dns_resolver: yes
-    ipaclient_configure_dns_resolver: yes
-
-  roles:
-  - role: freeipa.ansible_freeipa.ipaclient
-    state: present
+  become: true
+  gather_facts: yes
+  tasks:
+  
+    - name: Configure ipaclient
+      include_role:
+         name: freeipa.ansible_freeipa.ipaclient
+      vars:
+         state: present
+         ipaclient_domain: ipa.jpriddy.com
+         ipaadmin_principal: admin
+         ipaadmin_password: '{{ ansible_password }}'   #using the machine creds here...
+         ipaclient_mkhomedir: yes
+         ipaclient_no_ntp: yes
+         ipaclient_ssh_trust_dns: yes
+         ipaclient_configure_firefox: yes
+         ipaclient_all_ip_addresses: yes
+         ipasssd_enable_dns_updates: yes
+         ipaclient_allow_repair: yes
+         ipaclient_force_join: yes
+         ipaclient_servers: 'idm1.ipa.jpriddy.com, idm2.ipa.jpriddy.com'
+         ipaclient_cleanup_dns_resolver: yes
+         ipaclient_configure_dns_resolver: yes
