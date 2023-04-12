@@ -1,7 +1,11 @@
 - name: Playbook to unconfigure IPA clients
   hosts: all
   become: true
-
+  vars:
+    ipaclient_domain: ipa.jpriddy.com
+    ipaadmin_principal: admin
+    ipaadmin_password: {{ ansible_password }}
+    
   roles:
   - role: ipaclient
     state: absent
