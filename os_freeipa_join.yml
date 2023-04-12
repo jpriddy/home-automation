@@ -14,6 +14,7 @@
     ipasssd_enable_dns_updates: yes
     ipaclient_allow_repair: yes
     ipaclient_force_join: yes
+    ipaclient_servers: 'idm1.ipa.jpriddy.com, idm2.ipa.jpriddy.com'
 
   roles:
   - role: freeipa.ansible_freeipa.ipaclient
