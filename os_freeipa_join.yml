@@ -3,9 +3,7 @@
   hosts: all
   become: true
   gather_facts: yes
-  tasks:
-
-  
+  tasks: 
     - name: Configure ipaclient
       include_role:
          name: freeipa.ansible_freeipa.ipaclient
@@ -25,4 +23,3 @@
          ipaclient_servers: 'idm1.ipa.jpriddy.com, idm2.ipa.jpriddy.com'
          ipaclient_cleanup_dns_resolver: yes
          ipaclient_configure_dns_resolver: yes
-
