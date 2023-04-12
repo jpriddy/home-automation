@@ -26,5 +26,9 @@
         --principal {{ ipa_user }}
         --password {{ ansible_password }}
         --unattended
+        --mkhomedir
+        --all-ip-addresses
+        --ssh-trust-dns
+        --no-ntp
       register: ipa_client_install_result
       changed_when: "'Client already enrolled' not in ipa_client_install_result.stdout"
