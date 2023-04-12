@@ -11,10 +11,11 @@
       package:
         name: ipa-client
         state: present   
-#    - name: Configure IdM client
-#      ipa_client:
-#        domain: ipa.jpriddy.com
-#        server: idm1.ipa.jpriddy.com,idm2.ipa.jpriddy.com
-#        principal: admin
-#        password: "{{ ipa_cred }}"
-#        force_ntp: yes
+        
+    - name: Configure IdM client
+      ipa_client:
+        domain: ipa.jpriddy.com
+        server: idm1.ipa.jpriddy.com,idm2.ipa.jpriddy.com
+        principal: admin
+        password: "{{ ipa_cred }}"
+        force_ntp: yes
