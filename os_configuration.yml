@@ -49,7 +49,7 @@
         name: redhat.rhel_system_roles.journald
       vars:
         journald_persistent: true
-        journald_max_disk_size: 512
+        journald_max_disk_size: 256
         journald_per_user: true
         journald_sync_interval: 1       
         
