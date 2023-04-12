@@ -26,8 +26,3 @@
          ipaclient_cleanup_dns_resolver: yes
          ipaclient_configure_dns_resolver: yes
 
-    # Ensure host is removed
-    - name:  remove host from ipa
-      ipahost:
-         ipaadmin_password: '{{ ansible_password }}'
-         state: absent  
