@@ -31,6 +31,8 @@
         --all-ip-addresses
         --ssh-trust-dns
         --no-ntp
-        --force
+        --configure-firefox
+        --force-join
+        --all-ip-addresses
       register: ipa_client_install_result
       changed_when: "'Client already enrolled' not in ipa_client_install_result.stdout"
