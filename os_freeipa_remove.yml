@@ -14,6 +14,10 @@
     ipaclient_cleanup_dns_resolver: yes
     ipaclient_configure_dns_resolver: yes
         
-    roles:
-    - role: freeipa.ansible_freeipa.ipaclient
-      state: absent
+    
+    - name: Unconfigure ipaclient
+     include_role:
+        name: freeipa.ansible_freeipa.ipaclient
+        state: absent
+    
+
