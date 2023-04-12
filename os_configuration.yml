@@ -32,6 +32,7 @@
         - rsync
         - nmap
         - tuned
+        - iperf3
        
     - name: Configure timesync
       include_role:
