@@ -13,7 +13,7 @@
         state: present   
         
     - name: Configure IdM client
-      ipa_client:
+      ipaclient:
         domain: ipa.jpriddy.com
         server: idm1.ipa.jpriddy.com,idm2.ipa.jpriddy.com
         principal: admin
