@@ -2,14 +2,10 @@
 - name: Join IdM domain
   hosts: all
   become: yes
-  #vars:
-  #  ipa_domain: ipa.jpriddy.com
-  #  ipa_server: idm1.ipa.jpriddy.com
-  #  ipa_principal: admin
   vars:
     ipaclient_domain: ipa.jpriddy.com
     ipaadmin_principal: admin
-    ipaadmin_password: '{{ ansible_password }}'
+    ipaadmin_password: '{{ ansible_password }}'   #using the machine creds here...
     ipaclient_mkhomedir: yes
     ipaclient_no_ntp: yes
     ipaclient_ssh_trust_dns: yes
