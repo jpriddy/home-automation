@@ -71,13 +71,13 @@
       package:
         name: qemu-guest-agent
         state: present
-      when: ansible_virtualization_role != "guest"
+      when: ansible_virtualization_role == "guest"
  
     - name: Start guest agent service on virtualized hosts
       service:
         name: qemu-guest-agent
         state: started
-      when: ansible_virtualization_role != "guest"
+      when: ansible_virtualization_role == "guest"
 
 #  throws an error but 'succeeds' -- needs to be combined with a kernel change to reserve ram
 #
