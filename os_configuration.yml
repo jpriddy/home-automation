@@ -5,7 +5,7 @@
   become: yes
   tasks:
 
-    - name: Import RPM Fusion GPG Keys
+    - name: Import RPM Fusion GPG keys...
       rpm_key:
         key: "{{ item }}"
         state: present
@@ -13,7 +13,7 @@
         - "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020"
         - "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020"
 
-    - name: Install RPM Fusion free and nonfree repos
+    - name: ...so that I can install RPM Fusion free and nonfree repos.
       dnf:
         name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm,https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm"
         state: present
@@ -22,7 +22,7 @@
       dnf:
         update_cache: yes
   
-    - name: Install packages...
+    - name: Install some other packages...
       package:
         name: "{{ item }}"
         state: latest
@@ -31,7 +31,6 @@
         - mlocate
         - rsync
         - nmap
-        - tuned
         - iperf3
        
     - name: Configure timesync
