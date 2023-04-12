@@ -1,3 +1,4 @@
+---
 - name: Playbook to unconfigure IPA clients
   hosts: all
   become: true
