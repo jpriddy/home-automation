@@ -34,5 +34,6 @@
         --configure-firefox
         --force-join
         --all-ip-addresses
+        --enable-dns-updates
       register: ipa_client_install_result
       changed_when: "'Client already enrolled' not in ipa_client_install_result.stdout"
