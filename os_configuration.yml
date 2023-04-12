@@ -64,18 +64,20 @@
       vars:
         sshd:
           PermitRootLogin: yes
-          
-    - name: Install guest agent on virtualized hosts
-      package:
-        name: qemu-guest-agent
-        state: present
-      when: ansible_virtualization_type != 'none'
-
-    - name: Start guest agent service on virtualized hosts
-      service:
-        name: qemu-guest-agent
-        state: started
-      when: ansible_virtualization_type != 'none'
+ 
+##  getting false positive on media
+ #
+ #   - name: Install guest agent on virtualized hosts
+ #     package:
+ #       name: qemu-guest-agent
+ #        state: present
+ #     when: ansible_virtualization_type != 'none'
+ #
+ #   - name: Start guest agent service on virtualized hosts
+ #     service:
+ #       name: qemu-guest-agent
+ #       state: started
+ #     when: ansible_virtualization_type != 'none'
 
 #  throws an error but 'succeeds' -- needs to be combined with a kernel change to reserve ram
 #
