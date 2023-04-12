@@ -6,7 +6,7 @@
   tasks:
     - name: Unconfigure ipaclient
       include_role:
-        name: freeipa.ansible_freeipa.ipaclient
+          name: freeipa.ansible_freeipa.ipaclient
         state: absent
         vars:
           ipaclient_domain: ipa.jpriddy.com
