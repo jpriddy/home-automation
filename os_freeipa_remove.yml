@@ -8,4 +8,4 @@
     - name: Unconfigure ipaclient
       include_role:
          name: freeipa.ansible_freeipa.ipaclient
-      state: absent
+         state: absent
