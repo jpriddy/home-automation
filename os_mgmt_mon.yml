@@ -1,6 +1,7 @@
 ---
 - name: Configure Management and Monitoring
   hosts: all
+  gather_facts: yes
   become: true
   tasks:
     
