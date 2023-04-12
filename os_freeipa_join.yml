@@ -2,36 +2,21 @@
 - name: Join IdM domain
   hosts: all
   become: yes
+  #vars:
+  #  ipa_domain: ipa.jpriddy.com
+  #  ipa_server: idm1.ipa.jpriddy.com
+  #  ipa_principal: admin
   vars:
-    ipa_domain: ipa.jpriddy.com
-    ipa_server: idm1.ipa.jpriddy.com
-    ipa_principal: admin
-    
-  tasks:
-    - name: Ensure ipaclient package is installed...
-      package:
-        name: ipa-client
-        state: present
-        
-    - name: ...and ensure realmd package is installed for completeness.
-      package:
-        name: realmd
-        state: present
-        
-    - name: Join the IPA domain using the ipa-client-install command
-      ansible.builtin.command: >
-        ipa-client-install
-        --server {{ ipa_server }}
-        --domain {{ ipa_domain }}
-        --principal {{ ipa_principal }}
-        --password {{ ansible_password }}
-        --unattended
-        --mkhomedir
-        --all-ip-addresses
-        --ssh-trust-dns
-        --no-ntp
-        --configure-firefox
-        --force-join
-        --all-ip-addresses
-        --enable-dns-updates
-      register: ipa_client_install_result
+    ipaclient_domain: ipa.jpriddy.com
+    ipaadmin_principal: admin
+    ipaadmin_password: {{ ansible_password }}
+    ipaclient_mkhomedir: yes
+    ipaclient_no_ntp: yes
+    ipaclient_ssh_trust_dns: yes
+    ipaclient_configure_firefox: yes
+    ipaclient_all_ip_addresses: yes
+    ipasssd_enable_dns_updates: yes
+  
+  roles:
+  - role: ipaclient
+    state: present
