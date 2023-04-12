@@ -4,7 +4,7 @@
   become: true
   tasks:
   
-  - name: Install system updates for RedHat ansible OS family
+  - name: Install system updates for RedHat (yum)
     yum:
       name: '*'
       state: latest
@@ -12,7 +12,7 @@
     when:
     - ansible_os_family == "RedHat"
 
-  - name: Install system updates for Debian ansible OS family
+  - name: Install system updates for Debian (apt)
     apt:
       name: '*'
       state: latest
@@ -20,7 +20,7 @@
     when:
     - ansible_os_family == "Debian"
         
-  - name: Install Windows updates
+  - name: Install Windows updates for Windows
     win_updates:
       category_names:
         - SecurityUpdates
