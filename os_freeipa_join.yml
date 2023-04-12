@@ -5,7 +5,7 @@
   vars:
     ipa_domain: ipa.jpriddy.com
     ipa_server: idm1.ipa.jpriddy.com
-    ipa_user: admin
+    ipa_principal: admin
     
   tasks:
     - name: Ensure ipaclient package is installed...
@@ -16,14 +16,15 @@
     - name: ...and ensure realmd package is installed for completeness.
       package:
         name: realmd
-        state: present        
-
+        state: present
+        
+#ansible_password variable is built in?   its the same as the template credential...
     - name: Join the IPA domain using the ipa-client-install command
       ansible.builtin.command: >
         ipa-client-install
         --server {{ ipa_server }}
         --domain {{ ipa_domain }}
-        --principal {{ ipa_user }}
+        --principal {{ ipa_principal }}
         --password {{ ansible_password }}
         --unattended
         --mkhomedir
