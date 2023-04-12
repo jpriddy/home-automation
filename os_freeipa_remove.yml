@@ -4,7 +4,7 @@
   vars:
     ipaclient_domain: ipa.jpriddy.com
     ipaadmin_principal: admin
-    ipaadmin_password: PASSWORD
+    ipaadmin_password: '{{ lookup("env", "ANSIBLE_PASSWORD") }}'
     ipaclient_mkhomedir: yes
     ipaclient_no_ntp: yes
     ipaclient_ssh_trust_dns: yes
