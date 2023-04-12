@@ -15,8 +15,8 @@
     ipaclient_configure_dns_resolver: yes
     
     tasks:
-      ipahost:
-      state: absent
+      - ipahost:
+        state: absent
       
     roles:
     - role: freeipa.ansible_freeipa.ipaclient
