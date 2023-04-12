@@ -1,17 +1,14 @@
 ---
-- name: Configure Management and Monitoring
+- name: Configure management and monitoring
   hosts: all
   gather_facts: yes
   become: true
   tasks:
     
-   - name: Install cockpit and configure it
+   - name: Use system role to set up cockpit
      include_role:
         name: redhat.rhel_system_roles.cockpit
      vars:
-        #cockpit_packages: default
-        #cockpit_packages: minimal
-        #cockpit_packages: full
         cockpit_enabled: true
         cockpit_started: true
         cockpit_packages:
@@ -29,23 +26,23 @@
           - cockpit-pcp         
         cockpit_port: 9090  #need an option for satellite. 9090 is taken
         cockpit_manage_firewall: true   
-        cockpit_manage_selinux: true   ##allow modifications of firewall and selinux if needed (not needed if using defaults)
-        cockpit_config:                               #Configure /etc/cockpit/cockpit.conf
-          WebService:                                 #Specify "WebService" config section
-            LoginTitle: "Welcome to jpriddy.com"   #Set "LoginTitle" in "WebService" section
-            MaxStartups: 20                           #Set "MaxStartups" in "WebService" section
-          Session:                                    #Specify "Session" config section
-            IdleTimeout: 15                           #Set "IdleTimeout" in "Session" section
-            Banner: "/etc/motd"                       #Set "Banner" in "Session" section
+        cockpit_manage_selinux: true  
+        cockpit_config:                           
+          WebService:                                
+            LoginTitle: "Welcome to jpriddy.com" 
+            MaxStartups: 20                      
+          Session:                              
+            IdleTimeout: 15                      
+            Banner: "/etc/motd"                     
   
-   - name: Install and configure metrics
+   - name: Use system role to set up metrics
      include_role:
         name: redhat.rhel_system_roles.metrics
      vars:
         metrics_retention_days: 31
         metrics_manage_firewall: true
        
-   - name: Setup tlog
+   - name: Use system role to setup tlog
      include_role:
         name: redhat.rhel_system_roles.tlog
      vars:
