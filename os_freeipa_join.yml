@@ -18,12 +18,6 @@
         name: realmd
         state: present
         
-    - name: Remove client from the IPA domain using the ipa-client-install command
-      ansible.builtin.command: >
-        ipa-client-install
-        --uninstall
-      register: ipa_client_uninstall_result
-       
     - name: Join the IPA domain using the ipa-client-install command
       ansible.builtin.command: >
         ipa-client-install
