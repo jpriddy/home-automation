@@ -18,5 +18,5 @@
     ipasssd_enable_dns_updates: yes
   
   roles:
-  - role: ipaclient
+  - role: freeipa.ansible_freeipa.ipaclient
     state: present
