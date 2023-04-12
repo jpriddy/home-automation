@@ -1,5 +1,5 @@
 # home-automation
 
-All the poorly coded automation that supports network and services.
+All the poorly coded and unorganized automation that supports my house.
 
 --jpriddy
