@@ -5,15 +5,14 @@
   become: true
   tasks:
     
+    - name: Register with activationkey and consume subscriptions matching Red Hat Enterprise Server or Red Hat Virtualization
+      redhat_subscription:
+        state: present
+        activationkey: ["rhel", "cleint-repos"]
+        org_id: "JPRIDDY"
+        server_hostname: "sat.ipa.jpriddy.com"
+        server_insecure: enable
 
-- name: Register with activationkey and consume subscriptions matching Red Hat Enterprise Server or Red Hat Virtualization
-  redhat_subscription:
-    state: present
-    activationkey: ["rhel", "cleint-repos"]
-    org_id: "JPRIDDY"
-    server_hostname: "sat.ipa.jpriddy.com"
-    server_insecure: enable
-    
 #   - name: Use system role rhc
 #     include_role:
 #        name: fedora.linux-system-roles.rhc
