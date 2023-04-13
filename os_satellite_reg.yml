@@ -12,6 +12,7 @@
         org_id: "JPRIDDY"
         server_hostname: "sat.ipa.jpriddy.com"
         server_insecure: enable
+        force_register: true
 
 #   - name: Use system role rhc
 #     include_role:
