@@ -1,0 +1,14 @@
+---
+- name: Configure kdump
+  hosts: all
+  gather_facts: yes
+  become: true
+  tasks:
+#  throws an error but 'succeeds' 
+# needs to be combined with a kernel change to reserve ram?
+    - name: Setup kdump
+      include_role:
+        name: redhat.rhel_system_roles.kdump  
+      vars:
+        kdump_path: /var/crash
+        kdump_system_action: reboot
