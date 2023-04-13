@@ -12,8 +12,3 @@
     
     - name: Execute the script
       shell: /root/satellite_reg.sh
-
-    - name: Remove it
-      file: 
-        path: /root/satellite_reg.sh 
-      state: absent
