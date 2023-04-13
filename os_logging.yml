@@ -1,6 +1,6 @@
 ---
 - name: Deploying basics input and forwards output
-  hosts: clients
+  hosts: all
   roles:
     - redhat.rhel_system_roles.logging
   vars:
