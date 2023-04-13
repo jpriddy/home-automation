@@ -13,7 +13,7 @@
     org_id: "JPRIDDY"
     server_hostname: "sat.ipa.jpriddy.com"
     server_insecure: enable
-
+    
 #   - name: Use system role rhc
 #     include_role:
 #        name: fedora.linux-system-roles.rhc
