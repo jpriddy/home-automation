@@ -6,7 +6,6 @@
   tasks:
 
   - name: Deploying basics input and forwards output
-    hosts: all
     roles:
       - redhat.rhel_system_roles.logging
     vars:
@@ -43,7 +42,6 @@
           outputs: [forward_output0, forward_output1,files_output0,files_output1]
 
   - name: Use system role to configure journald
-    include_role:
     roles:
       - redhat.rhel_system_roles.journald
     vars:
