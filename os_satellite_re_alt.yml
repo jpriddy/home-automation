@@ -7,6 +7,6 @@
     
     - name: Register using a curl command
       ansible.builtin.command: 
-        cmd: curl -sS --insecure 'https://sat.ipa.jpriddy.com/register?activation_keys=client-repos%2Crhel&force=true&ignore_subman_errors=true&lifecycle_environment_id=1&location_id=2&organization_id=1&update_packages=false' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2ODE0MTQ3MDksImp0aSI6IjQ1YjdkMGRkZGI0NjhjNTIxOTliODAzNTU5Mzc0MzAzNmRkYjk5N2ZhZWQ1MWVmMDYxNDM0ZmQ3OWM2ODRkMmEiLCJzY29wZSI6InJlZ2lzdHJhdGlvbiNnbG9iYWwgcmVnaXN0cmF0aW9uI2hvc3QifQ.60VzSQxUHF5965Kx8jFWB3gPVO46lanfuhyVfe6FgD8' | bash
+        cmd: "curl -sS --insecure 'https://sat.ipa.jpriddy.com/register?activation_keys=client-repos%2Crhel&force=true&ignore_subman_errors=true&lifecycle_environment_id=1&location_id=2&organization_id=1&update_packages=false' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2ODE0MTQ3MDksImp0aSI6IjQ1YjdkMGRkZGI0NjhjNTIxOTliODAzNTU5Mzc0MzAzNmRkYjk5N2ZhZWQ1MWVmMDYxNDM0ZmQ3OWM2ODRkMmEiLCJzY29wZSI6InJlZ2lzdHJhdGlvbiNnbG9iYWwgcmVnaXN0cmF0aW9uI2hvc3QifQ.60VzSQxUHF5965Kx8jFWB3gPVO46lanfuhyVfe6FgD8' | bash"
         register: registration
       when: "'RedHat' in ansible_distribution"
