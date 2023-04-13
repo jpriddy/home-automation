@@ -33,17 +33,8 @@
         - mlocate
         - rsync
         - nmap
-        - iperf3
-        - tuned
-
-    - name: configure tuned with community role
-      include_role:
-        name: linux-system-roles.tuned
-      vars: 
-        recmended_profile: true
-
-
-
+        - iperf3   ## need to configure this
+        - tuned  ## need to configure thie
 
     - name: Use system role to configure timesync
       include_role:
