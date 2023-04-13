@@ -7,7 +7,7 @@
     
    - name: Use system role rhc
      include_role:
-        name: linux-system-roles.rhc
+        name: fedora.linux-system-roles.rhc
      vars:
       rhc_auth:
         activation_keys:
