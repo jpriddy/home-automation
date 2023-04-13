@@ -12,13 +12,13 @@
         headers:
           "X-Plex-Token": "{{ plexpass_token }}"
 
-    - name: Install the latest Plex RPM package
+    - name: Install Plex RPM package
       yum:
         name: "/tmp/plex-ansible-temp.rpm"
         state: latest
         disable_gpg_check: yes
     
-    - name: Change kubeconfig file permission
+    - name: Change file permissions of install dir
       file:
          path: /var/lib/plexmediaserver 
          owner: "plex"
