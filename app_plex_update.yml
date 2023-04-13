@@ -17,6 +17,12 @@
         name: "/tmp/plex-ansible-temp.rpm"
         state: latest
         disable_gpg_check: yes
+    
+    - name: Change kubeconfig file permission
+      file:
+         path: /var/lib/plexmediaserver 
+         owner: "plex"
+         group: "plex"
 
     - name: Restart the Plex service
       systemd:
