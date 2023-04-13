@@ -35,7 +35,16 @@
         - nmap
         - iperf3
         - tuned
-       
+
+    - name: configure tuned with community role
+      include_role:
+        name: linux-system-roles.tuned
+      vars: 
+        recmended_profile: true
+
+
+
+
     - name: Use system role to configure timesync
       include_role:
         name: redhat.rhel_system_roles.timesync
