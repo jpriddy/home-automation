@@ -4,14 +4,14 @@
   gather_facts: yes
   become: true
   tasks:
-    - name: Download zsh installer
+    - name: Download the script to register
       get_url: 
-        url: https://sat.ipa.jpriddy.com/register?activation_keys=client-repos%2Crhel&force=true&ignore_subman_errors=true&lifecycle_environment_id=1&location_id=2&organization_id=1&update_packages=false%27%20-H%20%27Authorization:%20Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2ODE0MTQ3MDksImp0aSI6IjQ1YjdkMGRkZGI0NjhjNTIxOTliODAzNTU5Mzc0MzAzNmRkYjk5N2ZhZWQ1MWVmMDYxNDM0ZmQ3OWM2ODRkMmEiLCJzY29wZSI6InJlZ2lzdHJhdGlvbiNnbG9iYWwgcmVnaXN0cmF0aW9uI2hvc3QifQ.60VzSQxUHF5965Kx8jFWB3gPVO46lanfuhyVfe6FgD8 dest=/tmp/sat.sh
+        url: https://sat.ipa.jpriddy.com/register?activation_keys=client-repos%2Crhel&force=true&ignore_subman_errors=true&lifecycle_environment_id=1&location_id=2&organization_id=1&update_packages=false%27%20-H%20%27Authorization:%20Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2ODE0MTQ3MDksImp0aSI6IjQ1YjdkMGRkZGI0NjhjNTIxOTliODAzNTU5Mzc0MzAzNmRkYjk5N2ZhZWQ1MWVmMDYxNDM0ZmQ3OWM2ODRkMmEiLCJzY29wZSI6InJlZ2lzdHJhdGlvbiNnbG9iYWwgcmVnaXN0cmF0aW9uI2hvc3QifQ.60VzSQxUHF5965Kx8jFWB3gPVO46lanfuhyVfe6FgD8 dest=/root/satellite_reg.sh
     
-    - name: Execute the sat.sh
-      shell: /tmp/zsh-installer.sh
+    - name: Execute the script
+      shell: /root/satellite_reg.sh
 
-    - name: Remove the sat.sh
+    - name: Remove it
       file: 
-        path: /tmp/sat.sh 
+        path: /root/satellite_reg.sh 
       state: absent
