@@ -10,7 +10,7 @@
         #url: "https://plex.tv/downloads/latest/1?channel=16&build=linux-x86_64&distro=redhat"
         dest: "/tmp/plex-ansible-temp.rpm"
         headers:
-          "X-Plex-Token": "{{ plexpass_token }}"
+          "X-Plex-Token": "{{ plexpass }}"
 
     - name: Install Plex RPM package
       yum:
