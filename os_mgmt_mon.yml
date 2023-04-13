@@ -33,7 +33,9 @@
             MaxStartups: 20                      
           Session:                              
             IdleTimeout: 15                      
-            Banner: "/etc/motd"                     
+            Banner: "/etc/motd"
+            #set up fake files for debian...           
+            #https://cockpit-project.org/faq.html#error-message-about-being-offline
   
    - name: Use system role to set up metrics
      include_role:
