@@ -3,14 +3,11 @@
   vars:
     rhc_auth:
       activation_keys:
-      keys: ["key-1", "key-2"]
-    rhc_organization: "jpriddy.com"
+      keys: ["rhel", "cleint-repos"]
+    rhc_organization: "JPRIDDY"
     rhc_baseurl: "http://sat.ipa.jpriddy.com"
     rhc_server: "sat.ipa.jpriddy.com"
     rhc_state: present
-    rhc_repositories:
-      - {name: "rhel-9-for-x86_64-baseos-rpms", state: enabled}
-      - {name: "rhel-9-for-x86_64-appstream-rpms", state: enabled}
     rhc_insights:
       autoupdate: true
       remediation: present
