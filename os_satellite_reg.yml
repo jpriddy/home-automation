@@ -1,17 +1,22 @@
 ---
-- hosts: all
-  vars:
-    rhc_auth:
-      activation_keys:
-      keys: ["rhel", "cleint-repos"]
-    rhc_organization: "JPRIDDY"
-    rhc_baseurl: "http://sat.ipa.jpriddy.com"
-    rhc_server: "sat.ipa.jpriddy.com"
-    rhc_state: present
-    rhc_insights:
-      autoupdate: true
-      remediation: present
-      state: present
+- name: Register to satellite
+  hosts: all
+  gather_facts: yes
+  become: true
+  tasks:
     
-  roles:
-    - linux-system-roles.rhc
+   - name: Use system role rhc
+     include_role:
+        name: linux-system-roles.rhc
+     vars:
+      rhc_auth:
+        activation_keys:
+          keys: ["rhel", "cleint-repos"]
+      rhc_organization: "JPRIDDY"
+      rhc_baseurl: "http://sat.ipa.jpriddy.com"
+      rhc_server: "sat.ipa.jpriddy.com"
+      rhc_state: present
+      rhc_insights:
+        autoupdate: true
+        remediation: present
+        state: present
