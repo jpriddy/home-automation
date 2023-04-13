@@ -13,6 +13,7 @@
         server_hostname: "sat.ipa.jpriddy.com"
         server_insecure: enable
         force_register: true
+      when: "'RedHat' in ansible_distribution"
 
 #   - name: Use system role rhc
 #     include_role:
