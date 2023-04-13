@@ -8,7 +8,7 @@
     - name: Register with activationkey and consume subscriptions matching Red Hat Enterprise Server or Red Hat Virtualization
       redhat_subscription:
         state: present
-        activationkey: ["rhel", "client-repos"]
+        activationkey: "rhel"
         org_id: "JPRIDDY"
         server_hostname: "sat.ipa.jpriddy.com"
         server_insecure: enable
