@@ -6,8 +6,8 @@
   tasks:
 
   - name: Deploying basics input and forwards output
-    roles:
-      - redhat.rhel_system_roles.logging
+    include_role:
+        name: redhat.rhel_system_roles.logging
     vars:
         logging_inputs:
         - name: basic_input
@@ -42,8 +42,8 @@
           outputs: [forward_output0, forward_output1,files_output0,files_output1]
 
   - name: Use system role to configure journald
-    roles:
-      - redhat.rhel_system_roles.journald
+    include_role:
+        name: redhat.rhel_system_roles.journald
     vars:
       journald_persistent: true
       journald_max_disk_size: 256
