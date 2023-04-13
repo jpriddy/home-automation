@@ -20,11 +20,8 @@
         state: present
       when: "'Fedora' in ansible_distribution"
       
-    - name: Refresh package cache
-      dnf:
-        update_cache: yes
   
-    - name: Install some other packages...
+    - name: Install some packages...
       package:
         name: "{{ item }}"
         state: latest
@@ -52,7 +49,7 @@
         state: started
 
 #CHICKEN AND EGG...  should clean up kickstart before running this
-    - name: Use system role to allow root to log into ssh
+    - name: Use system role to allow root and x11 forwarding 
       include_role:
         name: redhat.rhel_system_roles.sshd
       vars:
