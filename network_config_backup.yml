@@ -1,20 +1,20 @@
 ---
 - name: Backup all network configurations
   hosts: all
-  gather_facts: no
+  gather_facts: yes
   tasks:
 
-  - name: "Starting System Backup for RouterOS"
+  - name: "Backup of routeros hosts"
     community.routeros.command:
         commands: 
-          - /system backup save name {{inventory_hostname}}
-#    when: ansible_network_os == 'community.network.routeros'
+          - /system backup save name {{inventory_hostname}}.backup
+    when: ansible_network_os == 'community.network.routeros'
 
-  - name: "Starting Configuration Backup for RouterOS"
+  - name: "Starting configuration backup of routeros hosts"
     community.routeros.command:
         commands: 
-          - /export show-sensitive file={{inventory_hostname}}
-#    when: ansible_network_os == 'community.network.routeros'
+          - /export show-sensitive file={{inventory_hostname}}.backup
+    when: ansible_network_os == 'community.network.routeros'
           
 #getting timeout errors, perhaps its a permissions issue with the automount?
 #  - name: "Grabbing backup file and storing in backup folder(s) on synology"

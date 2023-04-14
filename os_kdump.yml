@@ -1,5 +1,5 @@
 ---
-- name: Configure kdump
+- name: Configure kdump (and reboot if necessary)
   hosts: all
   gather_facts: yes
   become: true
@@ -12,3 +12,4 @@
       vars:
         kdump_path: /var/crash
         kdump_system_action: reboot
+        kdump_reboot_required: true  ##reboot the node

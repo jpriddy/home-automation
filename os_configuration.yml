@@ -48,15 +48,15 @@
         enabled: yes
         state: started
 
-#CHICKEN AND EGG...  should clean up kickstart before running this
-    - name: Use system role to allow root and x11 forwarding 
+    - name: Use system role to configure ssh
       include_role:
         name: redhat.rhel_system_roles.sshd
       vars:
         sshd:
           PermitRootLogin: yes
           X11Forwarding: yes
-
+          GSSAPIAuthentication: yes
+          ChallengeResponseAuthentication: yes
  
     - name: Install guest agent on virtualized hosts
       package:

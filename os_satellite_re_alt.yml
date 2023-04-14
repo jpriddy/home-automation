@@ -6,7 +6,7 @@
   tasks:
     - name: Download the generic registration script for RHEL and client repos
       get_url: 
-        url: 'https://sat.ipa.jpriddy.com/register?activation_keys=rhel%2Cclient-repos&force=true&ignore_subman_errors=true&location_id=2&organization_id=1&update_packages=false' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2ODE0MTc0ODUsImp0aSI6ImM0YjMyOTE3ZGQzYzRkYjQ4NmViMmMxNzFhNGQ0NjU5ZjNlN2FkNmZhZWFlOGM1OGEzZDNmNmU2YjE5OWFkNjkiLCJleHAiOjE2ODE0MzE4ODUsInNjb3BlIjoicmVnaXN0cmF0aW9uI2dsb2JhbCByZWdpc3RyYXRpb24jaG9zdCJ9.uI5sJNPXzCQRH-rTAD4p_I0mfZCtGdO6Ov6fIgeKqUo'
+        url: "'https://sat.ipa.jpriddy.com/register?activation_keys=rhel%2Cclient-repos&force=true&ignore_subman_errors=true&location_id=2&organization_id=1&update_packages=false' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2ODE0MTc0ODUsImp0aSI6ImM0YjMyOTE3ZGQzYzRkYjQ4NmViMmMxNzFhNGQ0NjU5ZjNlN2FkNmZhZWFlOGM1OGEzZDNmNmU2YjE5OWFkNjkiLCJleHAiOjE2ODE0MzE4ODUsInNjb3BlIjoicmVnaXN0cmF0aW9uI2dsb2JhbCByZWdpc3RyYXRpb24jaG9zdCJ9.uI5sJNPXzCQRH-rTAD4p_I0mfZCtGdO6Ov6fIgeKqUo'"
         dest: /root/satellite_reg.sh
         mode: 0755
     

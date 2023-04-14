@@ -8,22 +8,20 @@
       include_role:
          name: freeipa.ansible_freeipa.ipaclient
       vars:
-         state: present
-         ipaclient_domain: ipa.jpriddy.com
-         ipaadmin_principal: admin
-         ipaadmin_password: '{{ ansible_password }}'   #using the machine creds here...
-         ipaclient_mkhomedir: yes
-         ipaclient_no_ntp: yes
-         ipaclient_ssh_trust_dns: yes
-         ipaclient_configure_firefox: yes
-         ipaclient_all_ip_addresses: yes
-         ipasssd_enable_dns_updates: yes
-         ipaclient_allow_repair: yes
-         ipaclient_force_join: yes
-         ipaclient_servers: "idm1.ipa.jpriddy.com, idm2.ipa.jpriddy.com"
-         ipaclient_cleanup_dns_resolver: yes
-         ipaclient_configure_dns_resolver: no
-         ipaclient_dns_servers: "idm1.ipa.jpriddy.com, idm2.ipa.jpriddy.com"
+          state: present
+          ipaclient_domain: ipa.jpriddy.com
+          ipaclient_dns_servers: "192.168.1.1, 192.168.1.131, 192.168.1.132"
+          ipaclient_use_otp: yes  #trying the otp method...
+          ipaadmin_password: '{{ ansible_password }}'   #using the machine creds here...
+          ipaclient_mkhomedir: yes
+          ipaclient_no_ntp: yes
+          ipaclient_ssh_trust_dns: yes
+          ipasssd_enable_dns_updates: yes
+          ipaclient_allow_repair: yes
+          ipaclient_force_join: yes
+          ipaclient_cleanup_dns_resolver: yes
+          ipaclient_configure_dns_resolver: yes
+          ipaclient_configure_firefox: yes
     - name: Install realmd for completeness (cockpit)
       package:
         name: realmd

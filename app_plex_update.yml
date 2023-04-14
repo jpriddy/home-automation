@@ -18,7 +18,7 @@
         state: latest
         disable_gpg_check: yes
     
-    - name: Change file permissions of install dir
+    - name: Fix permissions of mount point (from media kickstart profile)
       file:
          path: /var/lib/plexmediaserver 
          owner: "plex"

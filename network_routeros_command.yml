@@ -1,10 +1,10 @@
 ---
-- name: Use RouterOS command to print out system resources
+- name: Use a routeros command
   hosts: all
   gather_facts: no
   tasks:
   
-  - name: Run a command
+  - name: Run the command /system reource print
     community.routeros.command:
       commands:
           - /system resource print
