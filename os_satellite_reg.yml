@@ -8,11 +8,12 @@
     - name: Register with activationkey and consume subscriptions matching Red Hat Enterprise Server or Red Hat Virtualization
       redhat_subscription:
         state: present
-        activationkey: "rhel"
+        activationkey: "rhel,client-repos"
         org_id: "JPRIDDY"
         server_hostname: "sat.ipa.jpriddy.com"
         server_insecure: enable
         force_register: true
+        consumer_name: '{{ ansible_hostname }}'  #use the short hostname
       when: "'RedHat' in ansible_distribution"
 
 #   - name: Use system role rhc
