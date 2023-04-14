@@ -10,7 +10,7 @@
       vars:
           state: present
           ipaclient_domain: ipa.jpriddy.com
-          ipaclient_dns_servers: "192.168.1.1, 192.168.1.131, 192.168.1.132"
+          ipaclient_dns_servers: "192.168.1.1,192.168.1.131,192.168.1.132"
           ipaclient_use_otp: yes  #trying the otp method...
           ipaadmin_password: '{{ ansible_password }}'   #using the machine creds here...
           ipaclient_mkhomedir: yes
