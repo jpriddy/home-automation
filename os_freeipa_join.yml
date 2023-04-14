@@ -4,15 +4,16 @@
   become: true
   gather_facts: yes
   tasks: 
-    - name: Configure ipaclient
+    - name: Deploy/configure IPA client
       include_role:
          name: freeipa.ansible_freeipa.ipaclient
       vars:
           state: present
-          ipaclient_domain: ipa.jpriddy.com
-          ipaclient_dns_servers: "192.168.1.1,192.168.1.131,192.168.1.132"
+          ipaservers: "192.168.1.131,192.168.1.132"
           #ipaclient_use_otp: yes  #trying the otp method...
           ipaadmin_password: '{{ ansible_password }}'   #using the machine creds when i should be using a custom cred...
+          ipaclient_domain: ipa.jpriddy.com
+          ipaclient_dns_servers: "192.168.1.1,192.168.1.131,192.168.1.132"
           ipaclient_mkhomedir: yes
           ipaclient_no_ntp: yes
           ipaclient_ssh_trust_dns: yes
@@ -22,13 +23,9 @@
           ipaclient_configure_dns_resolver: yes
           ipaclient_configure_firefox: yes
           ipaclient_all_ip_addresses: yes
-          ipasssd_enable_dns_updates: yes
-          ipaclient_dns_servers: "192.168.1.1,192.168.1.131"
-          ipaservers: "192.168.1.131,192.168.1.132"
+          ipasssd_enable_dns_updates: yes        
 
-          
-
-    - name: Install realmd for completeness (cockpit)
+    - name: Install realmd for completeness
       package:
         name: realmd
         state: present   

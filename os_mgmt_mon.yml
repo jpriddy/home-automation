@@ -5,10 +5,10 @@
   become: true
   tasks:
     
-   - name: Use system role to set up cockpit
-     include_role:
+  - name: Use system role to set up cockpit
+    include_role:
         name: redhat.rhel_system_roles.cockpit
-     vars:
+    vars:
         cockpit_enabled: true
         cockpit_started: true
         cockpit_packages:
@@ -36,17 +36,25 @@
             Banner: "/etc/motd"
             #set up fake files for debian...           
             #https://cockpit-project.org/faq.html#error-message-about-being-offline
-  
-   - name: Use system role to set up metrics
-     include_role:
+
+  - name: Enable and start tuned
+    ansible.builtin.service:
+        name: tuned
+        enabled: yes
+        state: started
+
+  - name: Use system role to set up metrics
+    include_role:
         name: redhat.rhel_system_roles.metrics
-     vars:
+    vars:
         metrics_retention_days: 31
         metrics_manage_firewall: true
        
-   - name: Use system role to setup tlog
-     include_role:
+  - name: Use system role to setup tlog
+    include_role:
         name: redhat.rhel_system_roles.tlog
-     vars:
+    vars:
         tlog_scope_sssd: all
         tlog_use_sssd: true
+
+  
