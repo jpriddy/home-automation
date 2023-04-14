@@ -1,8 +1,0 @@
----
-- name: Gather all RouterOS facts
-  hosts: all
-  gather_facts: no
-  tasks:
-  - name: Gather facts
-    community.routeros.facts:
-      gather_subset: all
