@@ -12,8 +12,8 @@
           ipaservers: "192.168.1.131"
           #ipaclient_use_otp: yes  #doesnt work...
           ipaadmin_password: '{{ ansible_password }}'   #using the machine creds when i should be using a custom cred...
-          ipaclient_domain: ipa.jpriddy.com
-          ipaclient_dns_servers: "192.168.1.1,192.168.1.131"
+          #ipaclient_domain: ipa.jpriddy.com
+          #ipaclient_dns_servers: "192.168.1.1,192.168.1.131"
           ipaclient_mkhomedir: yes
           ipaclient_no_ntp: yes
           ipaclient_ssh_trust_dns: yes
