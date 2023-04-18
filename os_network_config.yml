@@ -10,13 +10,14 @@
         name: redhat.rhel_system_roles.network
         #name: fedora.linux_system_roles.network
     vars:
+        name: ""
         name: "eno1"
         network_state:
           dns-resolver:
             config:
               search:
-              - "jpriddy.com"
-              - "ipa.jpriddy.com"
+              - jpriddy.com
+              - ipa.jpriddy.com
               server:
               - "192.168.1.1"
               - "192.168.1.131"
