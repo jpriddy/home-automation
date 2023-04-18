@@ -19,4 +19,6 @@
               server:
               - 192.168.1.1
               #- 192.168.1.131
-    debugger: on_failed          
+    register: out
+  - debug: var=out.stdout_lines
+
