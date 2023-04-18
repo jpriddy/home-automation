@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: yes
   become: true
-  
+  tasks:
   - name: Setup network
       include_role:
         name: redhat.rhel_system_roles.network
