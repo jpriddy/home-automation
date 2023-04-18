@@ -10,7 +10,7 @@
         name: redhat.rhel_system_roles.network
         #name: fedora.linux_system_roles.network
     vars:
-        name: ""
+        name: "eno1"
         network_state:
           dns-resolver:
             config:
