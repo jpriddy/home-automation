@@ -1,0 +1,14 @@
+- include_role:
+      name: rhel-system-roles.network
+
+    vars:
+      network_state:
+        dns-resolver:
+          config:
+            search:
+              - jpriddy.com
+              - ipa.jpriddy.com
+              - ad.jpriddy.com
+        server:
+          - 192.168.1.1
+          - 192.168.1.131
