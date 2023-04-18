@@ -7,7 +7,8 @@
 
   - name: Network setup
     include_role:
-        name: redhat.rhel_system_roles.network
+        #name: redhat.rhel_system_roles.network
+        fedora.linux_system_roles.network
     vars:
         network_state:
           dns-resolver:
