@@ -6,15 +6,15 @@
   
   - name: Setup network
       include_role:
-         name: redhat.rhel_system_roles.network
-         vars:
-           network_state:
-             dns-resolver:
-               config:
-                  search:
-                    - jpriddy.com
-                    - ipa.jpriddy.com
-                    - ad.jpriddy.com
-                  server:
-                    - 192.168.1.1
-                    - 192.168.1.131
+        name: redhat.rhel_system_roles.network
+      vars:
+        network_state:
+          dns-resolver:
+            config:
+              search:
+              - jpriddy.com
+              - ipa.jpriddy.com
+              - ad.jpriddy.com
+              server:
+              - 192.168.1.1
+              - 192.168.1.131
