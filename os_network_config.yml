@@ -4,10 +4,11 @@
   gather_facts: yes
   become: true
   tasks:
-  - name: Setup network
-      include_role:
+
+  - name: Network setup
+    include_role:
         name: redhat.rhel_system_roles.network
-      vars:
+    vars:
         network_state:
           dns-resolver:
             config:
@@ -18,3 +19,9 @@
               server:
               - 192.168.1.1
               - 192.168.1.131
+              
+  - name: Enable and start tuned
+    ansible.builtin.service:
+        name: tuned
+        enabled: yes
+        state: started
