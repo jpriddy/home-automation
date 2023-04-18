@@ -10,17 +10,17 @@
         name: redhat.rhel_system_roles.network
         #name: fedora.linux_system_roles.network
     vars:
-        #interface_name: ""
-        #interfaces:        
+        
+        interfaces: ""
         network_state:
           dns-resolver:
             config:
               search:
-              - jpriddy.com
-              - ipa.jpriddy.com
+              - "jpriddy.com"
+              - "ipa.jpriddy.com"
               server:
-              - 192.168.1.1
-              - 192.168.1.131
+              - "192.168.1.1"
+              - "192.168.1.131"
         network_allow_restart: true
     register: out
   - debug: var=out.stdout_lines
