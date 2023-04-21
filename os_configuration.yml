@@ -45,11 +45,15 @@
       include_role:
         name: redhat.rhel_system_roles.sshd
       vars:
+        sshd_config_owner: root
+        sshd_config_group: root
+        sshd_config_mode: 0600
         sshd:
           PermitRootLogin: yes
           X11Forwarding: yes
           GSSAPIAuthentication: yes
           ChallengeResponseAuthentication: yes
+          AllowTcpForwarding: yes
  
     - name: Install guest agent on virtualized hosts
       package:
