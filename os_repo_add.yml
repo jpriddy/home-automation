@@ -5,6 +5,12 @@
   become: yes
   tasks:
   
+    - name: Add repository
+      ansible.builtin.yum_repository:
+        name: epel
+        description: EPEL YUM repo
+        baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+    
     
     - name: Add rpmfusion free repo
       yum_repository::
