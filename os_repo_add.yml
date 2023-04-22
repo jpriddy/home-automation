@@ -4,7 +4,7 @@
  
  
   - name: Add rpmfusion free repo
-      yum_repository:
+    ansible.builtin.yum_repository::
         name: rpmfusion-free
         description: “rpmfusion-free”
         file: rpmfusion
@@ -13,7 +13,7 @@
         gpgkey: https://download1.rpmfusion.org/free/fedora/RPM-GPG-KEY-rpmfusion-free-fedora-2020
         
   - name: Add rpmfusion nonfree repo
-      yum_repository:
+    ansible.builtin.yum_repository::
         name: rpmfusion-nonfree
         description: “rpmfusion-nonfree”
         file: rpmfusion
