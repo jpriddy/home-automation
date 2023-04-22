@@ -4,16 +4,9 @@
   hosts: all
   become: yes
   tasks:
-  
-    - name: Add repository
-      ansible.builtin.yum_repository:
-        name: epel
-        description: EPEL YUM repo
-        baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
-    
-    
+
     - name: Add rpmfusion free repo
-      yum_repository::
+      ansible.builtin.yum_repository:
         name: rpmfusion-free
         description: “rpmfusion-free”
         file: rpmfusion
@@ -22,7 +15,7 @@
         gpgkey: https://download1.rpmfusion.org/free/fedora/RPM-GPG-KEY-rpmfusion-free-fedora-2020
         
     - name: Add rpmfusion nonfree repo
-      ansible.builtin.yum_repository::
+      ansible.builtin.yum_repository:
         name: rpmfusion-nonfree
         description: “rpmfusion-nonfree”
         file: rpmfusion
