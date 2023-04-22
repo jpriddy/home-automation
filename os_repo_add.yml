@@ -1,10 +1,13 @@
 ---
-- hosts: all
+- name: Add repos
+  gather_facts: yes
+  hosts: all
+  become: yes
   tasks:
- 
- 
-  - name: Add rpmfusion free repo
-    ansible.builtin.yum_repository::
+  
+    
+    - name: Add rpmfusion free repo
+      ansible.builtin.yum_repository::
         name: rpmfusion-free
         description: “rpmfusion-free”
         file: rpmfusion
@@ -12,8 +15,8 @@
         gpgcheck: yes
         gpgkey: https://download1.rpmfusion.org/free/fedora/RPM-GPG-KEY-rpmfusion-free-fedora-2020
         
-  - name: Add rpmfusion nonfree repo
-    ansible.builtin.yum_repository::
+    - name: Add rpmfusion nonfree repo
+      ansible.builtin.yum_repository::
         name: rpmfusion-nonfree
         description: “rpmfusion-nonfree”
         file: rpmfusion
