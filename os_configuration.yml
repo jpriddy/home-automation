@@ -5,7 +5,7 @@
   become: yes
   tasks:
   
-    - name: Import RPM Fusion GPG keys...
+    - name: Import gpg keys for fedora repos...
       rpm_key:
         key: "{{ item }}"
         state: present
@@ -14,13 +14,23 @@
         - "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020"
       when: "'Fedora' in ansible_distribution"
       
-    - name: ...so that I can install RPM Fusion free and nonfree repos.
+#    - name: Import gpg keys for all repos...
+#      rpm_key:
+#        key: "{{ item }}"
+#        state: present
+#      loop:
+#        - "https://downloads.1password.com/linux/keys/1password.asc"   
+          
+    - name: ...setup repos for Fedora
       dnf:
         name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm,https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm"
         state: present
       when: "'Fedora' in ansible_distribution"
-      
+
+#do same for fedora 
+#https://downloads.1password.com/linux/rpm/stable/\$basearch\
   
+ 
     - name: Install some packages...
       package:
         name: "{{ item }}"
