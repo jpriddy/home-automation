@@ -7,7 +7,7 @@
   
     
     - name: Add rpmfusion free repo
-      ansible.builtin.yum_repository::
+      yum_repository::
         name: rpmfusion-free
         description: “rpmfusion-free”
         file: rpmfusion
