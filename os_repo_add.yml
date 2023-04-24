@@ -52,21 +52,11 @@
           - "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
         state: present
       when: ansible_distribution == 'Fedora'
-
-    - name: Create repository file for 1Password
-      dnf_repo:
-        name: 1Password Stable Channel
-        baseurl: https://downloads.1password.com/linux/rpm/stable/\$basearch
-        enabled: yes
-        gpgcheck: yes
-        repo_gpgcheck: yes
-        gpgkey: https://downloads.1password.com/linux/keys/1password.asc
-        state: present
     
     
-    - name: Create repository file
+    - name: Create repository file for 1password
       dnf_repo:
-        name: 1Password Stable Channel
+        name: 1Password Stable Channel - Created by Ansible
         description: 1password_ansible
         baseurl: https://downloads.1password.com/linux/rpm/stable/\$basearch
         enabled: yes
