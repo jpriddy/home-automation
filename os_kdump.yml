@@ -4,14 +4,15 @@
   gather_facts: yes
   become: true
   tasks:
-    - name: Setup kdump
-      include_role:
-        name: redhat.rhel_system_roles.kdump  
-      vars:
-      kdump_target:
-          type: xfs
-          location: LABEL=/
-      kdump_path: /var/crash
-      kdump_system_action: reboot
-      kdump_reboot_ok: false
-      kdump_reboot_required: false
+  
+  - name: Setup kdump
+    include_role:
+      name: redhat.rhel_system_roles.kdump  
+    vars:
+    kdump_target:
+        type: xfs
+        location: LABEL=/
+        kdump_path: /var/crash
+    kdump_system_action: reboot
+    kdump_reboot_ok: false
+    kdump_reboot_required: false
