@@ -10,7 +10,7 @@
         key: "{{ item }}"
         state: present
       loop:
-        - "https://download1.rpmfusion.org/nfree/fedora/RPM-GPG-KEY-rpmfusion-free-fedora-2020"
+        - "https://download1.rpmfusion.org/free/fedora/RPM-GPG-KEY-rpmfusion-free-fedora-2020"
         - "https://download1.rpmfusion.org/nonfree/fedora/RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020"
       when: "'Fedora' in ansible_distribution"
 
