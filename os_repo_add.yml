@@ -1,58 +1,42 @@
 ---
-- name: Install packages for both RHEL and Fedora
+- name: Configure repos for RHEL and Fedora
   hosts: all
   gather_facts: yes
   become: yes
   tasks:
-  vars:
-    gpgkey_urls:
-      - https://download1.rpmfusion.org/nonfree/el/RPM-GPG-KEY-rpmfusion-nonfree-el-9
-      - https://download1.rpmfusion.org/nonfree/el/RPM-GPG-KEY-rpmfusion-free-el-9
-      - https://download1.rpmfusion.org/nonfree/fedora/RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020
-      - https://download1.rpmfusion.org/nonfree/fedora/RPM-GPG-KEY-rpmfusion-free-fedora-2020
-      - https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9
-#
-#
-#    - name: Import gpg keys for Fedora
-#      rpm_key:
-#        key: "{{ item }}"
-#        state: present
-#      loop:
-#        - https://download1.rpmfusion.org/nonfree/fedora/RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020
-#        - https://download1.rpmfusion.org/nonfree/fedora/RPM-GPG-KEY-rpmfusion-free-fedora-2020
-#      when: "'Fedora' in ansible_distribution"
-#
-#
-#    - name: Import gpg keys for RHEL
-#      rpm_key:
-#        key: "{{ item }}"
-#        state: present
-#      loop:
-#        - "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9"
-#        - "https://download1.rpmfusion.org/nonfree/el/RPM-GPG-KEY-rpmfusion-nonfree-el-9"
-#        - "https://download1.rpmfusion.org/nonfree/el/RPM-GPG-KEY-rpmfusion-free-el-9"
-#      when: "'RedHat' in ansible_distribution"
-#      
-#    - name: Import gpg keys on all hosts
-#      rpm_key:
-#        key: "{{ item }}"
-#        state: present
-#      loop:
-#        - "https://downloads.1password.com/linux/keys/1password.asc"   
-#    
-    - name: Download GPG key files
-      get_url:
-        url: "{{ item }}"
-        dest: "/tmp/{{ item | basename }}"
-      loop: "{{ gpgkey_urls }}"
 
-    - name: Import GPG keys
-      dnf_key:
-        keyfile: "/tmp/{{ item | basename }}"
+    - name: Import gpg keys for Fedora
+      rpm_key:
+        key: "{{ item }}"
         state: present
-      loop: "{{ gpgkey_urls }}"
-     
-    - name: (RHEL)
+      loop:
+        - "https://download1.rpmfusion.org/nonfree/fedora/RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020"
+        - "https://download1.rpmfusion.org/nonfree/fedora/RPM-GPG-KEY-rpmfusion-free-fedora-2020"
+      when: "'Fedora' in ansible_distribution"
+
+
+    - name: Import gpg keys for RHEL
+      rpm_key:
+        key: "{{ item }}"
+        state: present
+      loop:
+        - "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9"
+        - "https://download1.rpmfusion.org/nonfree/el/RPM-GPG-KEY-rpmfusion-nonfree-el-9"
+        - "https://download1.rpmfusion.org/nonfree/el/RPM-GPG-KEY-rpmfusion-free-el-9"
+      when: "'RedHat' in ansible_distribution"
+      
+    - name: Import gpg keys on all hosts
+      rpm_key:
+        key: "{{ item }}"
+        state: present
+      loop:
+        - "https://downloads.1password.com/linux/keys/1password.asc"
+#        - ""
+#        - ""
+#        - ""
+#        - ""
+         
+    - name: Install RHEL repo rpms
       dnf:
         name:
           - "https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-9.noarch.rpm"
@@ -61,7 +45,7 @@
         state: present
       when: ansible_distribution == 'RedHat'
 
-    - name: (Fedora)
+    - name: Install Fedora repo rpms
       dnf:
         name:
           - "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
