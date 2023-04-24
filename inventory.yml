@@ -36,7 +36,13 @@ network_ruckus:
 linux_clients:
   hosts:
     xps:
+      ansible_host: "192.168.1.107"
+    offdock:
+      ansible_host: "192.168.1.214"
+    kitdock:
       ansible_host: "192.168.1.212"
+    kit10g:
+      ansible_host: "192.168.1.211"
 mac_clients:
   hosts:
     mac:
