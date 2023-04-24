@@ -4,7 +4,27 @@
   gather_facts: yes
   become: yes
   tasks:
-    
+  vars:
+    gpgkey_urls:
+      - https://download1.rpmfusion.org/nonfree/el/RPM-GPG-KEY-rpmfusion-nonfree-el-9
+      - https://download1.rpmfusion.org/nonfree/el/RPM-GPG-KEY-rpmfusion-free-el-9
+      - https://download1.rpmfusion.org/nonfree/fedora/RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020
+      - https://download1.rpmfusion.org/nonfree/fedora/RPM-GPG-KEY-rpmfusion-free-fedora-2020
+      - https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9
+      
+#really should split this up into rhel and fedora...      
+    - name: Download GPG key files
+      get_url:
+        url: "{{ item }}"
+        dest: "/tmp/{{ item | basename }}"
+      loop: "{{ gpgkey_urls }}"
+
+    - name: Import GPG keys
+      dnf_key:
+        keyfile: "/tmp/{{ item | basename }}"
+        state: present
+      loop: "{{ gpgkey_urls }}"
+     
     - name: (RHEL)
       dnf:
         name:
