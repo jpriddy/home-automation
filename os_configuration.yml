@@ -27,7 +27,7 @@
 #        state: present
 #      when: "'Fedora' in ansible_distribution"
    
-    - name: Install some packages...
+    - name: Install some packages
       package:
         name: "{{ item }}"
         state: latest
@@ -47,7 +47,7 @@
           - hostname: firewall.jpriddy.com
             iburst: true       
 
-    - name: Use system role to configure ssh
+    - name: Use system role to configure ssh server
       include_role:
         name: redhat.rhel_system_roles.sshd
       vars:
@@ -64,13 +64,13 @@
           ChallengeResponseAuthentication: yes
           AllowTcpForwarding: yes
  
-    - name: Install guest agent on virtualized hosts
+    - name: Install guest agent if virtualized guest
       package:
         name: qemu-guest-agent
         state: present
       when: ansible_virtualization_role == "guest"
  
-    - name: Start guest agent service on virtualized hosts
+    - name: Start guest agent service if virtualized guest
       service:
         name: qemu-guest-agent
         state: started
