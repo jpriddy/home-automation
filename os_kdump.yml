@@ -5,7 +5,7 @@
   become: true
   tasks:
   
-    - name: Setup kdump target and actions using system role
+    - name: Setup kdump using system role
       include_role:
         name: redhat.rhel_system_roles.kdump  
       vars:
