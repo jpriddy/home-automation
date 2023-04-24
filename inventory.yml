@@ -39,6 +39,8 @@ linux_clients:
       ansible_host: "192.168.1.107"
     offdock:
       ansible_host: "192.168.1.214"
+      ansible_user: "root"
+      ansible_ssh_pass: "installer"  #normally using machine creds
     kitdock:
       ansible_host: "192.168.1.212"
     kit10g:
@@ -57,7 +59,7 @@ kickstart_servers:
     kickstart:
       ansible_host: "192.168.1.218"
       ansible_user: "root"
-      ansible_ssh_pass: "installer"
+      ansible_ssh_pass: "installer"  #normally using machine creds
       
 linux_servers:
   hosts:
