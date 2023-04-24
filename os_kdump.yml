@@ -16,3 +16,6 @@
         kdump_system_action: reboot
         kdump_reboot_ok: false
         kdump_reboot_required: false
+        
+        #kdumpctl reset-crashkernel --kernel=ALL
+        #kdumpctl rebuild
