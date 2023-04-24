@@ -17,5 +17,5 @@
         kdump_reboot_ok: false
         kdump_reboot_required: false
       
-    - name: Use reset-crashkernel command to set system to reserve memory
-      ansible.builtin.command: kdumpctl reset-crashkernel --kernel=DEFAULT
+#    - name: Use reset-crashkernel command to set system to reserve memory
+#      ansible.builtin.command: kdumpctl reset-crashkernel --kernel=DEFAULT
