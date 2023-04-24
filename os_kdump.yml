@@ -5,7 +5,7 @@
   become: true
   tasks:
   
-    - name: Setup kdump using role
+    - name: Setup kdump target and actions using system role
       include_role:
         name: redhat.rhel_system_roles.kdump  
       vars:
@@ -17,5 +17,5 @@
         kdump_reboot_ok: false
         kdump_reboot_required: false
       
-    - name: Finish up configuration using kdumpctl
+    - name: Use reset-crashkernel command to set system to reserve memory
       ansible.builtin.command: kdumpctl reset-crashkernel --kernel=DEFAULT
