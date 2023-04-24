@@ -53,6 +53,28 @@
         state: present
       when: ansible_distribution == 'Fedora'
 
+    - name: Create repository file for 1Password
+      dnf_repo:
+        name: 1Password Stable Channel
+        baseurl: https://downloads.1password.com/linux/rpm/stable/\$basearch
+        enabled: yes
+        gpgcheck: yes
+        repo_gpgcheck: yes
+        gpgkey: https://downloads.1password.com/linux/keys/1password.asc
+        state: present
+    
+    
+    - name: Create repository file
+      dnf_repo:
+        name: 1Password Stable Channel
+        description: 1password_ansible
+        baseurl: https://downloads.1password.com/linux/rpm/stable/\$basearch
+        enabled: yes
+        gpgcheck: yes
+        repo_gpgcheck: yes
+        gpgkey: https://downloads.1password.com/linux/keys/1password.asc
+        state: present
+
 
 #install these using some module...
 #name=1Password Stable Channel
