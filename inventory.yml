@@ -41,7 +41,7 @@ docking_stations:
   hosts:
     offdock:
       ansible_host: "192.168.1.214"
-    batdock:
+    dongle1:
       ansible_host: "192.168.1.215"
       ansible_user: "root"           #testing
       ansible_ssh_pass: "installer"  #testing
