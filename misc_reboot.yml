@@ -1,5 +1,5 @@
 ---
-- name: reboot
+- name: Restart node
   hosts: all
   become: true
   tasks:

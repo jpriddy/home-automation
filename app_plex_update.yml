@@ -7,7 +7,6 @@
     - name: Download the latest Plex RPM package
       get_url:
         url: "https://downloads.plex.tv/plex-media-server-new/1.32.0.6918-6f393eda1/redhat/plexmediaserver-1.32.0.6918-6f393eda1.x86_64.rpm"
-        #url: "https://plex.tv/downloads/latest/1?channel=16&build=linux-x86_64&distro=redhat"
         dest: "/tmp/plex-ansible-temp.rpm"
         headers:
           "X-Plex-Token": "{{ plexpass }}"

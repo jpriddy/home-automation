@@ -1,5 +1,5 @@
 # home-automation
 
-All the poorly coded and unorganized automation that supports my lab and home automation needs.
+All the unorganized and poorly writen automation that supports my lab
 
 --jpriddy

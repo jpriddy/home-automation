@@ -52,15 +52,3 @@
           - "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
         state: present
       when: ansible_distribution == 'Fedora'
-    
-   
-   
-
-
-#install these using some module...
-#name=1Password Stable Channel
-#baseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\
-#enabled=1
-#gpgcheck=1
-#repo_gpgcheck=1
-#gpgkey="https://downloads.1password.com/linux/keys/1password.asc"
