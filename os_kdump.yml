@@ -4,7 +4,7 @@
   gather_facts: yes
   become: true
   tasks:
-  
+
     - name: Setup kdump using system role
       include_role:
         name: redhat.rhel_system_roles.kdump  
