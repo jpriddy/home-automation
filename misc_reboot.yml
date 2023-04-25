@@ -6,4 +6,3 @@
     - name: Unconditionally reboot with a 4 minute timeout...
       ansible.builtin.reboot:
         reboot_timeout: 240
-        
