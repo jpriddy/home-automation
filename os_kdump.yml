@@ -10,9 +10,9 @@
         name: redhat.rhel_system_roles.kdump  
       vars:
         kdump_target:
-#          type: xfs
-#          location: LABEL=/
-        kdump_path: /var/crash
+          type: nfs
+          location: "192.168.1.30:/volume2/crash"
+        kdump_path: "/"
         kdump_system_action: reboot
         kdump_reboot_ok: false
         kdump_reboot_required: false
