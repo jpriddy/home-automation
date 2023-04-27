@@ -3,14 +3,14 @@
   gather_facts: yes
   become: true
   tasks:
-  
+
   - name: Install system updates for RedHat (yum)
     yum:
       name: '*'
       state: latest
       update_cache: yes
     when:
-    - ansible_os_family == "RedHat"
+      - ansible_os_family == "RedHat"
 
   - name: Install system updates for Debian (apt)
     apt:
@@ -18,8 +18,8 @@
       state: latest
       update_cache: yes
     when:
-    - ansible_os_family == "Debian"
-        
+      - ansible_os_family == "Debian"
+
   - name: Install Windows updates for Windows
     win_updates:
       category_names:
@@ -28,7 +28,7 @@
         - DefinitionUpdates
       state: installed
     when:
-    - ansible_os_family == "Windows"
+      - ansible_os_family == "Windows"
 
 #  - name: Install updates to homebrew
 #    homebrew:

@@ -7,13 +7,13 @@
   - name: "Backup of routeros hosts"
     community.routeros.command:
         commands: 
-          - /system backup save name {{inventory_hostname}}.backup
+        - /system backup save name {{inventory_hostname}}.backup
     when: ansible_network_os == 'community.network.routeros'
 
   - name: "Starting configuration backup of routeros hosts"
     community.routeros.command:
         commands: 
-          - /export show-sensitive file={{inventory_hostname}}.backup
+        - /export show-sensitive file={{inventory_hostname}}.backup
     when: ansible_network_os == 'community.network.routeros'
           
 #getting timeout errors, perhaps its a permissions issue with the automount?

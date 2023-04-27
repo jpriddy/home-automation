@@ -12,30 +12,30 @@
         cockpit_enabled: true
         cockpit_started: true
         cockpit_packages:
-          - cockpit
-          - cockpit-bridge
-          - cockpit-networkmanager
-          - cockpit-bridge
-          - cockpit-packagekit
-          - cockpit-selinux
-          - cockpit-storaged
-          - cockpit-system
-          - cockpit-ws
-          - cockpit-kdump
-          - cockpit-sosreport
-          - cockpit-pcp
+        - cockpit
+        - cockpit-bridge
+        - cockpit-networkmanager
+        - cockpit-bridge
+        - cockpit-packagekit
+        - cockpit-selinux
+        - cockpit-storaged
+        - cockpit-system
+        - cockpit-ws
+        - cockpit-kdump
+        - cockpit-sosreport
+        - cockpit-pcp
         cockpit_port: 9090  #need an option for satellite. 9090 is taken
         cockpit_manage_firewall: true
         cockpit_manage_selinux: true
         cockpit_config:
           WebService:
-            LoginTitle: "Welcome to jpriddy.com"
-            MaxStartups: 20
+              LoginTitle: "Welcome to jpriddy.com"
+              MaxStartups: 20
           Session:
-            IdleTimeout: 15
-            Banner: "/etc/motd"
-            #set up fake files for debian...
-            #https://cockpit-project.org/faq.html#error-message-about-being-offline
+              IdleTimeout: 15
+              Banner: "/etc/motd"
+              #set up fake files for debian...
+              #https://cockpit-project.org/faq.html#error-message-about-being-offline
 
   - name: Enable and start tuned
     ansible.builtin.service:

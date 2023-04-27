@@ -27,10 +27,10 @@
           type: files
           severity: info
           exclude:
-            - authpriv.none
-            - auth.none
-            - cron.none
-            - mail.none
+          - authpriv.none
+          - auth.none
+          - cron.none
+          - mail.none
           path: /var/log/messages
         - name: files_output1
           type: files

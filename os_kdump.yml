@@ -22,4 +22,5 @@
       command: kdumpctl reset-crashkernel --kernel=ALL
 
     - name: Rebuild kdump
-      command: kdumpctl rebuild   
+      command: kdumpctl rebuild
+   
