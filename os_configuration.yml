@@ -4,7 +4,7 @@
   hosts: all
   become: yes
   tasks:
-   
+
     - name: Install some packages
       package:
         name: "{{ item }}"
@@ -41,13 +41,13 @@
           GSSAPIAuthentication: yes
           ChallengeResponseAuthentication: yes
           AllowTcpForwarding: yes
- 
+
     - name: Install guest agent if virtualized guest
       package:
         name: qemu-guest-agent
         state: present
       when: ansible_virtualization_role == "guest"
- 
+
     - name: Start guest agent service if virtualized guest
       service:
         name: qemu-guest-agent

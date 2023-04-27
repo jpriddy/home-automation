@@ -24,7 +24,7 @@
         - "https://download1.rpmfusion.org/free/el/RPM-GPG-KEY-rpmfusion-free-el-{{ansible_distribution_major_version}}"
         - "https://download1.rpmfusion.org/nonfree/el/RPM-GPG-KEY-rpmfusion-nonfree-el-{{ansible_distribution_major_version}}"
       when: "'RedHat' in ansible_distribution"
-      
+
     - name: Import gpg keys on all hosts
       rpm_key:
         key: "{{ item }}"

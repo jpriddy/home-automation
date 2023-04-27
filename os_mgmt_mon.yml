@@ -4,7 +4,7 @@
   gather_facts: yes
   become: true
   tasks:
-    
+
   - name: Use system role to set up cockpit
     include_role:
         name: redhat.rhel_system_roles.cockpit
@@ -23,18 +23,18 @@
           - cockpit-ws
           - cockpit-kdump
           - cockpit-sosreport
-          - cockpit-pcp         
+          - cockpit-pcp
         cockpit_port: 9090  #need an option for satellite. 9090 is taken
-        cockpit_manage_firewall: true   
-        cockpit_manage_selinux: true  
-        cockpit_config:                           
-          WebService:                                
-            LoginTitle: "Welcome to jpriddy.com" 
-            MaxStartups: 20                      
-          Session:                              
-            IdleTimeout: 15                      
+        cockpit_manage_firewall: true
+        cockpit_manage_selinux: true
+        cockpit_config:
+          WebService:
+            LoginTitle: "Welcome to jpriddy.com"
+            MaxStartups: 20
+          Session:
+            IdleTimeout: 15
             Banner: "/etc/motd"
-            #set up fake files for debian...           
+            #set up fake files for debian...
             #https://cockpit-project.org/faq.html#error-message-about-being-offline
 
   - name: Enable and start tuned
@@ -49,12 +49,10 @@
     vars:
         metrics_retention_days: 31
         metrics_manage_firewall: true
-       
+
   - name: Use system role to setup tlog
     include_role:
         name: redhat.rhel_system_roles.tlog
     vars:
         tlog_scope_sssd: all
         tlog_use_sssd: true
-
-  

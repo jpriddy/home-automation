@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: no
   tasks:
-  
+
   - name: Run the command /system reource print
     community.routeros.command:
       commands:

@@ -7,19 +7,19 @@
 
     - name: Setup kdump using system role
       include_role:
-        name: redhat.rhel_system_roles.kdump  
+        name: redhat.rhel_system_roles.kdump
       vars:
         kdump_target:
-          type: nfs
-          location: "192.168.1.30:/volume2/crash"
-        kdump_path: "/"
+#          type: xfs
+#          location: LABEL=/
+        kdump_path: /var/crash
         kdump_system_action: reboot
         kdump_reboot_ok: false
         kdump_reboot_required: false
         kdump_core_collector: "makedumpfile -l --message-level 7 -d 31"
-         
+
     - name: Reset crash kernel
       command: kdumpctl reset-crashkernel --kernel=ALL
-      
+
     - name: Rebuild kdump
       command: kdumpctl rebuild   

@@ -23,4 +23,3 @@
         network_allow_restart: true
     register: out
   - debug: var=out.stdout_lines
-

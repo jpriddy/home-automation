@@ -28,4 +28,4 @@
     - name: Install realmd for completeness in cockpit
       package:
         name: realmd
-        state: present   
+        state: present
