@@ -1,0 +1,37 @@
+---
+- name: Configure kdump
+  hosts: all
+  gather_facts: yes
+  become: true
+  tasks:
+
+    - name: Install autofs
+      package:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - autofs
+
+    - name: Download synology.autofs
+      get_url:
+        url: "http://synology/kickstart/files/synology.autofs"
+        dest: "/etc/auto.master.d/synology.autofs"
+        mode: '0644'
+
+    - name: Download auto.synology
+      get_url:
+        url: "http://synology/kickstart/files/auto.synology"
+        dest: "/etc/auto.synology"
+        mode: '0644'
+
+    - name: Download credentials
+      get_url:
+        url: "http://synology/kickstart/files/.synology"
+        dest: "/root/.synology"
+        mode: '0600'
+
+    - name: Start and enable autofs
+      systemd:
+        name: autofs
+        state: started
+        enabled: yes
