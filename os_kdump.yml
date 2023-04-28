@@ -13,7 +13,7 @@
         - kexec-tools
         - crash
         - nfs-utils
-      when: "'RedHat' in ansible_distribution"
+      when: "'RedHat' in ansible_distribution_file_variety"
         
 
     - name: Download kdump.conf from synology
