@@ -1,5 +1,5 @@
 ---
-- name: Configure kdump
+- name: Configure autofs
   hosts: all
   gather_facts: yes
   become: true
