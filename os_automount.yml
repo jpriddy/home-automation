@@ -5,12 +5,14 @@
   become: true
   tasks:
 
-    - name: Install autofs
+    - name: Install autofs and other tools
       package:
         name: "{{ item }}"
         state: latest
       with_items:
         - autofs
+        - cifs-utils
+        - nfs-utils
 
     - name: Download synology.autofs
       get_url:
