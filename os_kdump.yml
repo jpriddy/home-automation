@@ -25,6 +25,14 @@
          owner: "root"
          group: "root"
 
+    - name: Mount the nfs volume for crashes
+      ansible.posix.mount:
+        src: 192.168.1.30:/volume3/crash
+        path: /var/crash
+        opts: rw,sync,soft
+      state: mounted
+      fstype: nfs
+       
     - name: Reset crash kernel to defaults for all kernels
       command: "kdumpctl reset-crashkernel --kernel=ALL"
 
