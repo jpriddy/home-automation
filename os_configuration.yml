@@ -14,8 +14,8 @@
         - mlocate
         - rsync
         - nmap
-        - iperf3   ## need to configure this
-        - tuned  ## need to configure thie
+        - iperf3
+        - tuned
 
     - name: Use system role to configure timesync
       include_role:
@@ -45,11 +45,12 @@
     - name: Install guest agent if virtualized guest
       package:
         name: qemu-guest-agent
-        state: present
+        state: latest
       when: ansible_virtualization_role == "guest"
 
     - name: Start guest agent service if virtualized guest
       service:
         name: qemu-guest-agent
         state: started
+        enabled: yes
       when: ansible_virtualization_role == "guest"
