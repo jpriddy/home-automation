@@ -5,13 +5,14 @@
   become: true
   tasks:
 
-    - name: Install kexec-tools and crash
+    - name: Install kexec-tools, crash, and nfs-utils
       package:
         name: "{{ item }}"
         state: latest
       with_items:
         - kexec-tools
         - crash
+        - nfs-utils
 
     - name: Download kdump.conf from synology
       get_url:
