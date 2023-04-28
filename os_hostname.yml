@@ -1,7 +1,0 @@
----
-- name: Set hostname of server based on dns
-  hosts: all
-  become: yes
-  tasks:  
-    - name: Set the hostname
-    hostname
