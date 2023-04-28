@@ -21,9 +21,9 @@
 
     - name: Fix permissions of kdump.conf
       file:
-         path: "/etc/kdump.conf" 
-         owner: "root"
-         group: "root"
+        path: "/etc/kdump.conf" 
+        owner: "root"
+        group: "root"
 
     - name: Mount the nfs volume
       ansible.posix.mount:
