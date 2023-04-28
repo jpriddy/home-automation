@@ -5,4 +5,5 @@
   tasks:  
     - name: Set a hostname
       ansible.builtin.hostname:
-        name: '{{ ansible_hostname }}.ipa.jpriddy.com'  #use internal variable that is set in inventory
+        name: '{{ ansible_hostname }}'
+        #use internal variable that is set in inventory
