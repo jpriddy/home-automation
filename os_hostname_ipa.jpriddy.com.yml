@@ -1,9 +1,9 @@
 ---
-- name: Set hostname of server based on dns
+- name: Set hostname of server based ansible inventory and tack on .ipa.jpriddy.com 
   hosts: all
   become: yes
   tasks:  
     - name: Set a hostname
       ansible.builtin.hostname:
-        name: '{{ inventory_hostname }}'
+        name: '{{ inventory_hostname }}.ipa.jpriddy.com'
         #use internal variable that is set in inventory
