@@ -13,6 +13,7 @@
         - autofs
         - cifs-utils
         - nfs-utils
+      when: "'RedHat' in ansible_distribution"
 
     - name: Download synology.autofs
       get_url:
