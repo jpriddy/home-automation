@@ -9,16 +9,16 @@
       package:
         name: "iperf3"
         state: latest
-    
+
     - name: Download a iperf3 systemd service file to run it as a service
       get_url:
         url: "http://synology/kickstart/files/iperf3.service"
         dest: "/etc/systemd/system/iperf3.service"
         mode: '0644'
 
-    - name: Issue daemon-reload to pick up new service file and start it.
+    - name: Issue daemon-reload to pick up iperf3 and then start it.
       systemd:
         name: iperf3
         state: started
-        daemon_reload: true 
-        enabled: yes   
+        daemon_reload: true
+        enabled: yes
