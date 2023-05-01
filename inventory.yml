@@ -75,8 +75,6 @@ kickstart_servers:
       
 linux_servers:
   hosts:
-    roon:
-      ansible_host: "192.168.1.160"
     media:
       ansible_host: "192.168.1.150"
     nuc1:
