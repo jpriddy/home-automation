@@ -29,7 +29,7 @@
         cockpit_manage_selinux: true
         cockpit_config:
           WebService:
-              LoginTitle: "Welcome to jpriddy.com"
+              LoginTitle: "This management brought to you by Ansible Automation Platform"
               MaxStartups: 20
           Session:
               IdleTimeout: 15
