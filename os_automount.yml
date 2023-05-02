@@ -15,12 +15,6 @@
         - nfs-utils
       when: "'RedHat' in ansible_distribution_file_variety"
 
-    - name: Start and enable autofs
-      systemd:
-        name: autofs
-        state: started
-        enabled: yes
-
     - name: Download synology.autofs
       get_url:
         url: "http://synology/kickstart/files/synology.autofs"
@@ -43,4 +37,11 @@
       systemd:
         name: autofs
         state: reloaded
+        enabled: yes
+
+    - name: Start and enable autofs
+      systemd:
+        name: autofs
+        state: started
+        daemon_reload: true
         enabled: yes
