@@ -1,0 +1,67 @@
+---
+- name: Install Netdata
+  hosts: all
+  vars_files:
+    - "os_netdata_vars.yml"
+  become: true
+
+  tasks:
+  - name: Download the installation script
+    get_url:
+      url: https://my-netdata.io/kickstart.sh
+      dest: ~/netdata_kickstart.sh
+      mode: +x
+
+  - name: Install Netdata
+    command: ~/netdata_kickstart.sh --dont-wait
+
+  - name: Cleanup installation script
+    file:
+      path: ~/netdata_kickstart.sh
+      state: absent
+
+  - template:
+      src: ../templates/netdata.conf.j2
+      dest: /etc/netdata/netdata.conf
+      owner: root
+      group: root
+      mode: u=wrx,g=rx,o=r,+x
+    notify: Restart Netdata
+    become: true
+
+  - name: Claim to Netdata Cloud
+    block: 
+
+    - name: Claim to Netdata Cloud if not already
+      shell:
+        cmd: netdata-claim.sh -token={{ claim_token }} -rooms={{ claim_rooms }} -url={{ claim_url }}
+        creates: /var/lib/netdata/cloud.d/claimed_id
+      become: yes
+      
+    when: reclaim == false
+
+  - name: Re-claim a node to Netdata Cloud
+    block:
+
+    - name: Ensure `uuidgen` is installed
+      stat:
+        path: /usr/bin/uuidgen
+      register: uuidgen_result
+    
+    - name: Fail if `uuidgen` is not installed
+      fail:
+        msg: The system needs `uuidgen` installed to enable re-claiming.
+      when: uuidgen_result.stat.exists == false
+
+    - name: Reclaim the node with `-id=`
+      shell: netdata-claim.sh -token={{ claim_token }} -rooms={{ claim_rooms }} -url={{ claim_url }} -id=$(uuidgen)
+      when: uuidgen_result.stat.exists == true
+      notify: Restart Netdata
+      become: yes
+    when: reclaim == true
+
+  handlers:
+  - name: Restart Netdata
+    service:
+      name: netdata
+      state: restarted
