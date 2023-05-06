@@ -1,0 +1,9 @@
+---
+- name: Set hostname of server 
+  hosts: all
+  become: yes
+  tasks:  
+    - name: Set a hostname
+      ansible.builtin.hostname:
+        name: '{{ survey_hostname }}.{{ survey_domain }}'
+        #internal variable from invntory  {{ inventory_hostname }}
