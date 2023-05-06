@@ -5,6 +5,7 @@ collections:
   - name: chocolatey.chocolatey
   - name: microsoft.ad
   - name: redhat.rhel_system_roles
-  - name: freeipa.ansible_freeipa
+  - name: redhat.rhel_idm
+  #- name: freeipa.ansible_freeipa
   - name: fedora.linux_system_roles
   - name: ansible.tower
