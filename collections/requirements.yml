@@ -6,6 +6,6 @@ collections:
   - name: microsoft.ad
   - name: redhat.rhel_system_roles
   - name: redhat.rhel_idm
-  - name: freeipa.ansible_freeipa
+#  - name: freeipa.ansible_freeipa
   - name: fedora.linux_system_roles
   - name: ansible.tower
