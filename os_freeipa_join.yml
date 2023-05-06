@@ -6,7 +6,8 @@
   tasks: 
     - name: Deploy/configure IPA client
       include_role:
-         name: freeipa.ansible_freeipa.ipaclient
+         #name: freeipa.ansible_freeipa.ipaclient
+         name: redhat.rhel_idm
       vars:
           state: present
           ipaservers: "192.168.1.131"
