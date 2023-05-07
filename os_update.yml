@@ -1,6 +1,5 @@
 - name: Update both RH and Debian based distros
   hosts: all
-  gather_facts: yes
   become: true
   tasks:
 
@@ -8,7 +7,7 @@
     yum:
       name: '*'
       state: latest
-      update_cache: yes
+      update_cache: true
     when:
       - ansible_os_family == "RedHat"
 
@@ -16,7 +15,7 @@
     apt:
       name: '*'
       state: latest
-      update_cache: yes
+      update_cache: true
     when:
       - ansible_os_family == "Debian"
 

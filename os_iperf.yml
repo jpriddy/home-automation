@@ -1,6 +1,5 @@
 ---
-- name: OS Config
-  gather_facts: true
+- name: iperf3 setup
   hosts: all
   become: true
   tasks:

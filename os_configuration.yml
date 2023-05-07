@@ -1,6 +1,5 @@
 ---
 - name: OS Config
-  gather_facts: true
   hosts: all
   become: true
   tasks:

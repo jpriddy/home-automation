@@ -1,8 +1,7 @@
 ---
 - name: Configure repos for RHEL and Fedora
   hosts: all
-  gather_facts: yes
-  become: yes
+  become: true
   tasks:
 
     - name: Import gpg keys for Fedora

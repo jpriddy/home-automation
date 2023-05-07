@@ -2,7 +2,6 @@
 - name: Playbook to unconfigure IPA clients
   hosts: all
   become: true
-  gather_facts: true
   tasks:
     - name: Unconfigure ipaclient
       include_role:

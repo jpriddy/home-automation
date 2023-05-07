@@ -1,7 +1,6 @@
 ---
 - name: Configure autofs
   hosts: all
-  gather_facts: true
   become: true
   tasks:
 

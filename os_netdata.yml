@@ -36,8 +36,8 @@
       shell:
         cmd: netdata-claim.sh -token={{ claim_token }} -rooms={{ claim_rooms }} -url={{ claim_url }}
         creates: /var/lib/netdata/cloud.d/claimed_id
-      become: yes
-      
+      become: true
+
     when: reclaim == false
 
   - name: Re-claim a node to Netdata Cloud
