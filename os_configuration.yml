@@ -17,7 +17,7 @@
       - tuned
 
   - name: Use system role to configure timesync
-    in#clude_role:
+    include_role:
       name: redhat.rhel_system_roles.timesync
     vars:
       timesync_ntp_servers:
