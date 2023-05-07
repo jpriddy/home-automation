@@ -8,13 +8,13 @@
     package:
       name: "{{ item }}"
       state: latest
-      with_items:
-        - bash-completion
-        - mlocate
-        - rsync
-        - nmap
-        - iperf3
-        - tuned
+    with_items:
+      - bash-completion
+      - mlocate
+      - rsync
+      - nmap
+      - iperf
+      - tuned
 
   - name: Use system role to configure timesync
     include_role:
