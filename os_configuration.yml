@@ -34,12 +34,12 @@
       #sshd_hostkey_owner: root
       #sshd_hostkey_group: root
       #sshd_hostkey_mode: 0600
-      sshd:
-        PermitRootLogin: yes
-        X11Forwarding: yes
-        GSSAPIAuthentication: yes
-        ChallengeResponseAuthentication: yes
-        AllowTcpForwarding: yes
+      sshd_verify_hostkeys: []     
+      sshd_PermitRootLogin: yes
+      sshd_X11Forwarding: yes
+      sshd_GSSAPIAuthentication: yes
+      sshd_ChallengeResponseAuthentication: yes
+      sshd_AllowTcpForwarding: yes
 
   - name: Install guest agent if virtualized guest
     package:
