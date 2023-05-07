@@ -2,25 +2,22 @@
 - name: Join IPA clients
   hosts: all
   become: true
-  gather_facts: yes
-  tasks: 
+  tasks:
     - name: Deploy/configure IPA client
       include_role:
-         #name: freeipa.ansible_freeipa.ipaclient
-         name: redhat.rhel_idm.ipaclient
+        name: redhat.rhel_idm.ipaclient
       vars:
-          state: present
-          ipaservers: "192.168.1.131"
-          #ipaadmin_password: '{{ ansible_password }}'   #using the machine creds when i should be using a custom cred...
-          ipaadmin_password:  '{{ survey_ipa_password }}'  #from survey of template
-          ipaclient_mkhomedir: yes
-          ipaclient_no_ntp: yes
-          ipaclient_ssh_trust_dns: yes
-          ipaclient_allow_repair: yes
-          ipaclient_force_join: yes
-          ipaclient_configure_firefox: yes
-          ipaclient_all_ip_addresses: yes
-          ipasssd_enable_dns_updates: yes        
+        state: present
+        ipaservers: "192.168.1.131"
+        ipaadmin_password: '{{ survey_ipa_password }}'
+        ipaclient_mkhomedir: true
+        ipaclient_no_ntp: true
+        ipaclient_ssh_trust_dns: true
+        ipaclient_allow_repair: true
+        ipaclient_force_join: true
+        ipaclient_configure_firefox: true
+        ipaclient_all_ip_addresses: true
+        ipasssd_enable_dns_updates: true        
 
     - name: Install realmd for completeness in cockpit
       package:

@@ -1,7 +1,7 @@
 ---
 - name: Backup all network configurations
   hosts: all
-  gather_facts: yes
+  gather_facts: true
   tasks:
 
   - name: "Backup of routeros hosts"

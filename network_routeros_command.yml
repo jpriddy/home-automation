@@ -1,11 +1,11 @@
 ---
 - name: Use a routeros command
   hosts: all
-  gather_facts: no
+  gather_facts: false
   tasks:
 
-  - name: Run the command /system reource print
-    community.routeros.command:
-      commands:
-      - /system resource print
+- name: Run the command /system reource print
+  community.routeros.command:
+    commands:
+    - /system resource print
     register: system_resource_print

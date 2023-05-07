@@ -1,7 +1,7 @@
 ---
 - name: Configure management and monitoring
   hosts: all
-  gather_facts: yes
+  gather_facts: true
   become: true
   tasks:
 
@@ -9,43 +9,42 @@
     include_role:
         name: redhat.rhel_system_roles.logging
     vars:
-        logging_inputs:
-        - name: basic_input
-          type: basics
-        logging_outputs:
-        - name: forward_output0
-          type: forwards
-          severity: info
-          target: synology
-          udp_port: 514
-        - name: forward_output1
-          type: forwards
-          facility: mail
-          target: synology
-          tcp_port: 514
-        - name: files_output0
-          type: files
-          severity: info
-          exclude:
-          - authpriv.none
-          - auth.none
-          - cron.none
-          - mail.none
-          path: /var/log/messages
-        - name: files_output1
-          type: files
-          facility: authpriv,auth
-          path: /var/log/secure
+    - name: basic_input
+      type: basics
+      logging_outputs:
+      - name: forward_output0
+        type: forwards
+        severity: info
+        target: synology
+        udp_port: 514
+      - name: forward_output1
+        type: forwards
+        facility: mail
+        target: synology
+        tcp_port: 514
+      - name: files_output0
+        type: files
+        severity: info
+        exclude:
+        - authpriv.none
+        - auth.none
+        - cron.none
+        - mail.none
+        path: /var/log/messages
+      - name: files_output1
+        type: files
+        facility: authpriv,auth
+        path: /var/log/secure
         logging_flows:
-        - name: flows0
-          inputs: [basic_input]
-          outputs: [forward_output0, forward_output1,files_output0,files_output1]
+      - name: flows0
+        inputs: [basic_input]
+        outputs: [forward_output0, forward_output1,files_output0,files_output1]
 
   - name: Use system role to configure journald
     include_role:
         name: redhat.rhel_system_roles.journald
     vars:
-      journald_persistent: true
-      journald_max_disk_size: 256
-      journald_per_user: true
-      journald_sync_interval: 1
+    journald_persistent: true
+    journald_max_disk_size: 256
+    journald_per_user: true
+    journald_sync_interval: 1

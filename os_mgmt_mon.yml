@@ -1,7 +1,7 @@
 ---
 - name: Configure management and monitoring
   hosts: all
-  gather_facts: yes
+  gather_facts: true
   become: true
   tasks:
 
@@ -24,23 +24,21 @@
         - cockpit-kdump
         - cockpit-sosreport
         - cockpit-pcp
-        cockpit_port: 9090  #need an option for satellite. 9090 is taken
+        cockpit_port: 9090 #need an offramp for redhat satellites. 9090 is taken for internal
         cockpit_manage_firewall: true
         cockpit_manage_selinux: true
         cockpit_config:
-          WebService:
-              LoginTitle: "This management brought to you by Ansible Automation Platform"
-              MaxStartups: 20
-          Session:
-              IdleTimeout: 15
-              Banner: "/etc/motd"
-              #set up fake files for debian...
-              #https://cockpit-project.org/faq.html#error-message-about-being-offline
-
+        WebService:
+            LoginTitle: "This management brought to you by Ansible Automation Platform"
+            MaxStartups: 20
+        Session:
+          IdleTimeout: 15 #set up fake files for debian...
+          Banner: "/etc/motd" #https://cockpit-project.org/faq.html#error-message-about-being-offline
+          
   - name: Enable and start tuned
     ansible.builtin.service:
         name: tuned
-        enabled: yes
+        enabled: true
         state: started
 
   - name: Use system role to set up metrics

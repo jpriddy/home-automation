@@ -1,14 +1,14 @@
 ---
 - name: OS Config
-  gather_facts: yes
+  gather_facts: true
   hosts: all
-  become: yes
+  become: true
   tasks:
 
-    - name: Install some packages
-      package:
-        name: "{{ item }}"
-        state: latest
+  - name: Install some packages
+    package:
+      name: "{{ item }}"
+      state: latest
       with_items:
         - bash-completion
         - mlocate
@@ -17,24 +17,24 @@
         - iperf3
         - tuned
 
-    - name: Use system role to configure timesync
-      include_role:
-        name: redhat.rhel_system_roles.timesync
+  - name: Use system role to configure timesync
+    include_role:
+      name: redhat.rhel_system_roles.timesync
       vars:
         timesync_ntp_servers:
           - hostname: firewall.jpriddy.com
-            iburst: true       
+            iburst: true
 
-    - name: Use system role to configure ssh server
-      include_role:
-        name: redhat.rhel_system_roles.sshd
+  - name: Use system role to configure ssh server
+    include_role:
+      name: redhat.rhel_system_roles.sshd
       vars:
         sshd_config_owner: root
         sshd_config_group: root
-        sshd_config_mode: 0600
+        sshd_config_mode: 600
         sshd_hostkey_owner: root
         sshd_hostkey_group: root
-        sshd_hostkey_mode: 0600
+        sshd_hostkey_mode: 600
         sshd:
           PermitRootLogin: yes
           X11Forwarding: yes
@@ -42,15 +42,15 @@
           ChallengeResponseAuthentication: yes
           AllowTcpForwarding: yes
 
-    - name: Install guest agent if virtualized guest
-      package:
-        name: qemu-guest-agent
-        state: latest
-      when: ansible_virtualization_role == "guest"
+  - name: Install guest agent if virtualized guest
+    package:
+      name: qemu-guest-agent
+      state: latest
+    when: ansible_virtualization_role == "guest"
 
-    - name: Start guest agent service if virtualized guest
-      service:
-        name: qemu-guest-agent
-        state: started
-        enabled: yes
-      when: ansible_virtualization_role == "guest"
+  - name: Start guest agent service if virtualized guest
+    service:
+      name: qemu-guest-agent
+      state: started
+      enabled: yes
+    when: ansible_virtualization_role == "guest"

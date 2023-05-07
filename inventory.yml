@@ -7,6 +7,10 @@ appliances:
   hosts:
     synology:
       ansible_host: "192.168.1.30"
+    firewall:
+      ansible_host: "192.168.1.1"
+      vars:
+        opnsense_base_url: "http://192.168.1.1"
 network_mikrotik:
   hosts:
     bassw00:
@@ -97,9 +101,3 @@ windows_servers:
       ansible_host: "192.168.1.161"
     dc2:
       ansible_host: "192.168.1.162"
-firewalls:
-   hosts:
-     firewall:
-       ansible_host: "192.168.1.1"
-   vars:
-     opnsense_base_url: "http://192.168.1.1"

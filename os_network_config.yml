@@ -8,7 +8,6 @@
   - name: Network setup
     include_role:
         name: redhat.rhel_system_roles.network
-        #name: fedora.linux_system_roles.network
     vars:
         name: ""
         network_state:

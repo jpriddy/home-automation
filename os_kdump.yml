@@ -1,52 +1,52 @@
 ---
 - name: Configure kdump
   hosts: all
-  gather_facts: yes
+  gather_facts: true
   become: true
   tasks:
 
-    - name: Install kexec-tools, crash, and nfs-utils
-      package:
-        name: "{{ item }}"
-        state: latest
-      with_items:
-        - kexec-tools
-        - crash
-        - nfs-utils
-      when: "'RedHat' in ansible_distribution_file_variety"
-        
+  - name: Install kexec-tools, crash, and nfs-utils
+    package:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - kexec-tools
+      - crash
+      - nfs-utils
+    when: "'RedHat' in ansible_distribution_file_variety"
 
-    - name: Download kdump.conf from synology
-      get_url:
-        url: "http://synology/kickstart/files/kdump.conf"
-        dest: "/etc/kdump.conf"
-        mode: '0644'
 
-    - name: Fix permissions of kdump.conf
-      file:
-        path: "/etc/kdump.conf" 
-        owner: "root"
-        group: "root"
+  - name: Download kdump.conf from synology
+    get_url:
+      url: "http://synology/kickstart/files/kdump.conf"
+      dest: "/etc/kdump.conf"
+      mode: '0644'
 
-    - name: Mount the nfs volume
-      ansible.posix.mount:
-        src: "192.168.1.30:/volume3/crash"
-        path: "/var/crash"
-        opts: "rw,sync,soft"
-        state: mounted
-        fstype: nfs
-       
-    - name: Reset crash kernel to defaults for all kernels
-      command: "kdumpctl reset-crashkernel --kernel=ALL"
+  - name: Fix permissions of kdump.conf
+    file:
+      path: "/etc/kdump.conf" 
+      owner: "root"
+      group: "root"
 
-    - name: Rebuild crash kernel initramfs
-      command: "kdumpctl rebuild"
+  - name: Mount the nfs volume
+    ansible.posix.mount:
+      src: "192.168.1.30:/volume3/crash"
+      path: "/var/crash"
+      opts: "rw,sync,soft"
+      state: mounted
+      fstype: nfs
 
-    - name: Start and enable kdump (may need a reboot to reserve ram)
-      systemd:
-        name: kdump
-        state: started
-        enabled: yes
+  - name: Reset crash kernel to defaults for all kernels
+    command: "kdumpctl reset-crashkernel --kernel=ALL"
+
+  - name: Rebuild crash kernel initramfs
+    command: "kdumpctl rebuild"
+
+  - name: Start and enable kdump (may need a reboot to reserve ram)
+    systemd:
+      name: kdump
+      state: started
+      enabled: yes
 
 
 #    - name: Setup kdump using system role

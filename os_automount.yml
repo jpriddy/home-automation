@@ -1,47 +1,47 @@
 ---
 - name: Configure autofs
   hosts: all
-  gather_facts: yes
+  gather_facts: true
   become: true
   tasks:
 
     - name: Install autofs and other tools
-      package:
-        name: "{{ item }}"
-        state: latest
+    package:
+      name: "{{ item }}"
+      state: latest
       with_items:
-        - autofs
-        - cifs-utils
-        - nfs-utils
-      when: "'RedHat' in ansible_distribution_file_variety"
+      - autofs
+      - cifs-utils
+      - nfs-utils
+    when: "'RedHat' in ansible_distribution_file_variety"
 
     - name: Download synology.autofs
-      get_url:
-        url: "http://synology/kickstart/files/synology.autofs"
-        dest: "/etc/auto.master.d/synology.autofs"
-        mode: '0644'
+    get_url:
+      url: "http://synology/kickstart/files/synology.autofs"
+      dest: "/etc/auto.master.d/synology.autofs"
+      mode: '0644'
 
     - name: Download auto.synology
-      get_url:
+     get_url:
         url: "http://synology/kickstart/files/auto.synology"
         dest: "/etc/auto.synology"
         mode: '0644'
 
-    - name: Download credentials
+      - name: Download credentials
       get_url:
         url: "http://synology/kickstart/files/.synology"
         dest: "/root/.synology"
         mode: '0600'
 
-    - name: Reload autofs config
+      - name: Reload autofs config
       systemd:
         name: autofs
         state: reloaded
-        enabled: yes
+        enabled: true
 
-    - name: Start and enable autofs
+      - name: Start and enable autofs
       systemd:
         name: autofs
         state: started
         daemon_reload: true
-        enabled: yes
+        enabled: true
