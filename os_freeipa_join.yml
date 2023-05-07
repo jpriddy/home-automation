@@ -6,8 +6,8 @@
   tasks: 
     - name: Deploy/configure IPA client
       include_role:
-         #name: freeipa.ansible_freeipa.ipaclient
-         name: redhat.rhel_idm
+         name: freeipa.ansible_freeipa.ipaclient
+         #name: redhat.rhel_idm.ipaclient
       vars:
           state: present
           ipaservers: "192.168.1.131"
@@ -20,11 +20,6 @@
           ipaclient_force_join: yes
           ipaclient_configure_firefox: yes
           ipaclient_all_ip_addresses: yes
-          #ipaclient_use_otp: yes  #doesnt work...
-          #ipaclient_cleanup_dns_resolver: yes  #breaks dns
-          #ipaclient_configure_dns_resolver: yes  #breaks dns
-          #ipaclient_domain: ipa.jpriddy.com
-          #ipaclient_dns_servers: "192.168.1.1,192.168.1.131"
           ipasssd_enable_dns_updates: yes        
 
     - name: Install realmd for completeness in cockpit
