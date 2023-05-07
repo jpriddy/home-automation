@@ -34,7 +34,7 @@
       sshd_hostkey_owner: root
       sshd_hostkey_group: root
       sshd_hostkey_mode: 0600
-      #necessary?  sshd_verify_hostkeys: []     
+      #sshd_verify_hostkeys: []    # failes to find ssh_keys group without this? 
       sshd_PermitRootLogin: yes
       sshd_X11Forwarding: yes
       sshd_GSSAPIAuthentication: yes
