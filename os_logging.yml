@@ -6,7 +6,7 @@
 
   - name: Deploying basics input and forwards output
     include_role:
-        name: redhat.rhel_system_roles.logging
+      name: redhat.rhel_system_roles.logging
     vars:
     - name: basic_input
       type: basics
@@ -41,9 +41,9 @@
 
   - name: Use system role to configure journald
     include_role:
-        name: redhat.rhel_system_roles.journald
+      name: redhat.rhel_system_roles.journald
     vars:
-    journald_persistent: true
-    journald_max_disk_size: 256
-    journald_per_user: true
-    journald_sync_interval: 1
+      journald_persistent: true
+      journald_max_disk_size: 256
+      journald_per_user: true
+      journald_sync_interval: 1
