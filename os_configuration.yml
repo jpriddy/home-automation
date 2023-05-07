@@ -34,7 +34,7 @@
       #sshd_hostkey_owner: root
       #sshd_hostkey_group: root
       #sshd_hostkey_mode: 0600
-      sshd_verify_hostkeys: []     
+      #necessary?  sshd_verify_hostkeys: []     
       sshd_PermitRootLogin: yes
       sshd_X11Forwarding: yes
       sshd_GSSAPIAuthentication: yes
@@ -51,5 +51,5 @@
     service:
       name: qemu-guest-agent
       state: started
-      enabled: yes
+      enabled: true
     when: ansible_virtualization_role == "guest"
