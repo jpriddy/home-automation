@@ -4,7 +4,7 @@
   become: true
   tasks:
 
-  - name: Install some packages
+  - name: Install autofs, cifs-utils and nfs-utils
     package:
       name: "{{ item }}"
       state: latest
@@ -13,19 +13,19 @@
       - cifs-utils
       - nfs-utils
 
-  - name: Download synology.autofs
+  - name: Download synology.autofs and set permissions
     get_url:
       url: "http://synology/kickstart/files/synology.autofs"
       dest: "/etc/auto.master.d/synology.autofs"
       mode: '0644'
 
-  - name: Download auto.synology
+  - name: Download auto.synology and set permissions
     get_url:
       url: "http://synology/kickstart/files/auto.synology"
       dest: "/etc/auto.synology"
       mode: '0644'
 
-  - name: Download credentials
+  - name: Download credentials and set permissions
     get_url:
       url: "http://synology/kickstart/files/.synology"
       dest: "/root/.synology"
@@ -35,5 +35,4 @@
     systemd:
       name: autofs
       state: reloaded
-      daemon_reload: true
       enabled: true

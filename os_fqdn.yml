@@ -6,4 +6,3 @@
     - name: Set fqdn
       ansible.builtin.hostname:
         name: '{{ survey_hostname }}.{{ survey_domain }}'
-        
