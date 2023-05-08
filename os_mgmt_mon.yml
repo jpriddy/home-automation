@@ -8,31 +8,31 @@
     include_role:
         name: redhat.rhel_system_roles.cockpit
     vars:
-        cockpit_enabled: true
-        cockpit_started: true
-        cockpit_packages:
-        - cockpit
-        - cockpit-bridge
-        - cockpit-networkmanager
-        - cockpit-bridge
-        - cockpit-packagekit
-        - cockpit-selinux
-        - cockpit-storaged
-        - cockpit-system
-        - cockpit-ws
-        - cockpit-kdump
-        - cockpit-sosreport
-        - cockpit-pcp
+      cockpit_enabled: true
+      cockpit_started: true
+      cockpit_packages:
+      - cockpit
+      - cockpit-bridge
+      - cockpit-networkmanager
+      - cockpit-bridge
+      - cockpit-packagekit
+      - cockpit-selinux
+      - cockpit-storaged
+      - cockpit-system
+      - cockpit-ws
+      - cockpit-kdump
+      - cockpit-sosreport
+      - cockpit-pcp
         #cockpit_port: 9090 #need an offramp for redhat satellites. 9090 is taken for internal
         #cockpit_manage_firewall: true
         #cockpit_manage_selinux: true
-        cockpit_config:
-          WebService:
-            LoginTitle: "This management brought to you by Ansible Automation Platform"
-            MaxStartups: 20
-          Session:
-            IdleTimeout: 15 #set up fake files for debian...
-            Banner: /etc/motd #https://cockpit-project.org/faq.html#error-message-about-being-offline
+      cockpit_config:
+        WebService:
+          LoginTitle: "This management brought to you by Ansible Automation Platform"
+          MaxStartups: 20
+        Session:
+          IdleTimeout: 15 #set up fake files for debian...
+          Banner: /etc/motd #https://cockpit-project.org/faq.html#error-message-about-being-offline
 
   - name: Enable and start tuned
     ansible.builtin.service:
