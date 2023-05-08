@@ -47,7 +47,7 @@
       stat:
         path: /usr/bin/uuidgen
       register: uuidgen_result
-    
+
     - name: Fail if `uuidgen` is not installed
       fail:
         msg: The system needs `uuidgen` installed to enable re-claiming.

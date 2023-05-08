@@ -15,13 +15,13 @@
     yum:
       name: "/tmp/plex-ansible-temp.rpm"
       state: latest
-      disable_gpg_check: yes
+      disable_gpg_check: true
 
   - name: Fix permissions of mount point (from media kickstart profile)
     file:
-       path: /var/lib/plexmediaserver 
-       owner: "plex"
-       group: "plex"
+      path: /var/lib/plexmediaserver 
+      owner: "plex"
+      group: "plex"
 
   - name: Restart the Plex service
     systemd:

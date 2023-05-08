@@ -17,7 +17,7 @@
         ipaclient_force_join: true
         ipaclient_configure_firefox: true
         ipaclient_all_ip_addresses: true
-        ipasssd_enable_dns_updates: true        
+        ipasssd_enable_dns_updates: true
 
     - name: Install realmd for completeness in cockpit
       package:

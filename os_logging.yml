@@ -47,3 +47,4 @@
       journald_max_disk_size: 256
       journald_per_user: true
       journald_sync_interval: 1
+      

@@ -13,8 +13,6 @@
       - cifs-utils
       - nfs-utils
 
-    
-
   - name: Download synology.autofs
     get_url:
       url: "http://synology/kickstart/files/synology.autofs"
@@ -33,15 +31,9 @@
       dest: "/root/.synology"
       mode: '0600'
 
-  - name: Reload autofs config
-    systemd:
-      name: autofs
-      state: reloaded
-      enabled: true
-
   - name: Start and enable autofs
     systemd:
       name: autofs
-      state: started
+      state: reloaded
       daemon_reload: true
       enabled: true
