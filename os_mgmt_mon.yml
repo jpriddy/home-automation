@@ -28,7 +28,7 @@
         #cockpit_manage_selinux: true
       cockpit_config:
         WebService:
-          LoginTitle: "This management brought to you by Ansible Automation Platform"
+          LoginTitle: "Cockpit Web Management - brought to you by Ansible and system roles"
           MaxStartups: 20
         Session:
           IdleTimeout: 15 #set up fake files for debian...
