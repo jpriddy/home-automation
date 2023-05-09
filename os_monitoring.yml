@@ -19,14 +19,14 @@
 
   - name: Use system role to set up metrics
     include_role:
-        name: redhat.rhel_system_roles.metrics
+      name: redhat.rhel_system_roles.metrics
     vars:
         metrics_retention_days: 31
         metrics_manage_firewall: true
 
   - name: Use system role to setup tlog
     include_role:
-        name: redhat.rhel_system_roles.tlog
+      name: redhat.rhel_system_roles.tlog
     vars:
         tlog_scope_sssd: all
         tlog_use_sssd: true

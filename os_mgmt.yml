@@ -39,3 +39,4 @@
       name: cockpit
       enabled: true
       state: restarted
+      sleep: 5
