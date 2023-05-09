@@ -22,7 +22,6 @@
       name: redhat.rhel_system_roles.metrics
     vars:
         metrics_retention_days: 31
-        metrics_manage_firewall: true
 
   - name: Use system role to setup tlog
     include_role:
