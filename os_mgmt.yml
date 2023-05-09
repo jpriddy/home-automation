@@ -36,6 +36,6 @@
   
   - name: Restart and enable cockpit
     ansible.builtin.service:
-      name: cockpit
+      name: cockpit.socket
       enabled: true
       state: restarted
