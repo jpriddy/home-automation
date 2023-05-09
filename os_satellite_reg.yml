@@ -11,7 +11,7 @@
         org_id: "JPRIDDY"
         server_hostname: "sat.ipa.jpriddy.com"
         #server_insecure: true
-        #force_register: true
+        force_register: true
         consumer_name: '{{ ansible_hostname }}'  #use the short hostname
       when: "'RedHat' in ansible_distribution"
 
