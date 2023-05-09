@@ -8,8 +8,6 @@
     include_role:
         name: redhat.rhel_system_roles.cockpit
     vars:
-      cockpit_enabled: true
-      cockpit_started: true
       cockpit_packages:
       - cockpit
       - cockpit-bridge
@@ -31,12 +29,11 @@
           LoginTitle: "Cockpit Web Management - brought to you by Ansible and system roles"
           MaxStartups: 20
         Session:
-          IdleTimeout: 15 #set up fake files for debian...
+          IdleTimeout: 15
           Banner: /etc/motd #https://cockpit-project.org/faq.html#error-message-about-being-offline
-  
-  - name: Restart and enable cockpit
+
+  - name: Start and enable cockpit
     ansible.builtin.service:
       name: cockpit
       enabled: true
-      state: restarted
-      sleep: 5
+      state: started
