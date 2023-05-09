@@ -24,6 +24,8 @@
         #cockpit_port: 9090 #need an offramp for redhat satellites. 9090 is taken for internal
         #cockpit_manage_firewall: true
         #cockpit_manage_selinux: true
+      cockpit_enabled: true
+      cockpit_started: true  
       cockpit_config:
         WebService:
           LoginTitle: "Cockpit Web Management - brought to you by Ansible and system roles"
@@ -32,8 +34,8 @@
           IdleTimeout: 15
           Banner: /etc/motd #https://cockpit-project.org/faq.html#error-message-about-being-offline
 
-  - name: Start and enable cockpit
-    ansible.builtin.service:
-      name: cockpit
-      enabled: true
-      state: started
+  #- name: Start and enable cockpit
+  #  ansible.builtin.service:
+  #    name: cockpit
+  #    enabled: true
+  #    state: started
