@@ -10,6 +10,8 @@
       state: latest
     with_items:
       - tuned
+      - iftop
+      - perf
 
   - name: Enable and start tuned
     ansible.builtin.service:
