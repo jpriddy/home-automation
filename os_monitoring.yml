@@ -4,32 +4,32 @@
   become: true
   tasks:
 
-  - name: Install monitoring packages
-    package:
-      name: "{{ item }}"
-      state: latest
-    with_items:
-      - tuned
-      - iftop
-      - perf
-      - glances
-      - htop
+    - name: Install monitoring packages
+      package:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - tuned
+        - iftop
+        - perf
+        - glances
+        - htop
 
-  - name: Enable and start tuned
-    ansible.builtin.service:
-      name: tuned
-      enabled: true
-      state: started
+    - name: Enable and start tuned
+      ansible.builtin.service:
+        name: tuned
+        enabled: true
+        state: started
 
-  - name: Use system role to set up metrics
-    include_role:
-      name: redhat.rhel_system_roles.metrics
-    vars:
-        metrics_retention_days: 31
+    - name: Use system role to set up metrics
+      include_role:
+        name: redhat.rhel_system_roles.metrics
+      vars:
+          metrics_retention_days: 31
 
-  - name: Use system role to setup tlog
-    include_role:
-      name: redhat.rhel_system_roles.tlog
-    vars:
-        tlog_scope_sssd: all
-        tlog_use_sssd: true
+    - name: Use system role to setup tlog
+      include_role:
+        name: redhat.rhel_system_roles.tlog
+      vars:
+          tlog_scope_sssd: all
+          tlog_use_sssd: true

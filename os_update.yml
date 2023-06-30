@@ -3,31 +3,31 @@
   become: true
   tasks:
 
-  - name: Install system updates for RedHat (yum)
-    yum:
-      name: '*'
-      state: latest
-      update_cache: true
-    when:
-      - ansible_os_family == "RedHat"
+    - name: Install system updates for RedHat (yum)
+      yum:
+        name: '*'
+        state: latest
+        update_cache: true
+      when:
+        - ansible_os_family == "RedHat"
 
-  - name: Install system updates for Debian (apt)
-    apt:
-      name: '*'
-      state: latest
-      update_cache: true
-    when:
-      - ansible_os_family == "Debian"
+    - name: Install system updates for Debian (apt)
+      apt:
+        name: '*'
+        state: latest
+        update_cache: true
+      when:
+        - ansible_os_family == "Debian"
 
-  - name: Install Windows updates for Windows
-    win_updates:
-      category_names:
-        - SecurityUpdates
-        - CriticalUpdates
-        - DefinitionUpdates
-      state: installed
-    when:
-      - ansible_os_family == "Windows"
+    - name: Install Windows updates for Windows
+      win_updates:
+        category_names:
+          - SecurityUpdates
+          - CriticalUpdates
+          - DefinitionUpdates
+        state: installed
+      when:
+        - ansible_os_family == "Windows"
 
 #  - name: Install updates to homebrew
 #    homebrew:

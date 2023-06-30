@@ -4,35 +4,36 @@
   become: true
   tasks:
 
-  - name: Install autofs, cifs-utils and nfs-utils
-    package:
-      name: "{{ item }}"
-      state: latest
-    with_items:
-      - autofs
-      - cifs-utils
-      - nfs-utils
+   - name: Install autofs, cifs-utils and nfs-utils
+     package:
+       name: "{{ item }}"
+       state: latest
+       update_only: true #update but will not install additional packages
+     with_items:
+       - autofs
+       - cifs-utils
+       - nfs-utils
 
-  - name: Download synology.autofs and set permissions
-    get_url:
-      url: "http://synology/kickstart/files/synology.autofs"
-      dest: "/etc/auto.master.d/synology.autofs"
-      mode: '0644'
+   - name: Download synology.autofs and set permissions
+     get_url:
+       url: "http://synology/kickstart/files/synology.autofs"
+       dest: "/etc/auto.master.d/synology.autofs"
+       mode: '0644'
 
-  - name: Download auto.synology and set permissions
-    get_url:
-      url: "http://synology/kickstart/files/auto.synology"
-      dest: "/etc/auto.synology"
-      mode: '0644'
+   - name: Download auto.synology and set permissions
+     get_url:
+       url: "http://synology/kickstart/files/auto.synology"
+       dest: "/etc/auto.synology"
+       mode: '0644'
 
-  - name: Download credentials and set permissions
-    get_url:
-      url: "http://synology/kickstart/files/.synology"
-      dest: "/root/.synology"
-      mode: '0600'
+   - name: Download credentials and set permissions
+     get_url:
+       url: "http://synology/kickstart/files/.synology"
+       dest: "/root/.synology"
+       mode: '0600'
 
-  - name: Start and enable autofs
-    systemd:
-      name: autofs
-      state: reloaded
-      enabled: true
+   - name: Start and enable autofs
+     systemd:
+       name: autofs
+       state: reloaded
+       enabled: true

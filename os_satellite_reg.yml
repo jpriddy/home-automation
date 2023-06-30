@@ -10,9 +10,9 @@
         activationkey: "rhel,client-repos"
         org_id: "JPRIDDY"
         server_hostname: "sat.ipa.jpriddy.com"
-        #server_insecure: true
+        # server_insecure: true
         force_register: true
-        consumer_name: '{{ ansible_hostname }}'  #use the short hostname
+        consumer_name: '{{ ansible_hostname }}'  # use the short hostname
       when: "'RedHat' in ansible_distribution"
 
 #   - name: Use system role rhc
@@ -31,14 +31,13 @@
 #        remediation: present
 #        state: present
 #
-#    - name: Download the generic registration script  
-#      get_url: 
+#    - name: Download the generic registration script
+#      get_url:
 #        url: https://sat.ipa.jpriddy.com/register?activation_keys=client-repos%2Crhel&location_id=2&organization_id=1&update_packages=false
 #        validate_certs: false
 #        headers: ### this should really be in a custom cred...
 #          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2ODE0OTI5ODgsImp0aSI6IjI1NmZhNjgxZjI1NjhmYzNlZGI2MzZmZTNmMTNjZDQ2NjQ2ODNjMWY3YzNjZmI0ZjcwMzM3MjZmZDE1NjM5ZDciLCJleHAiOjE2ODE1MDczODgsInNjb3BlIjoicmVnaXN0cmF0aW9uI2dsb2JhbCByZWdpc3RyYXRpb24jaG9zdCJ9.uwPTkPpjLZ7PMOY_rl--NGxjBWCaNs7QLuCTDxLIIl8'
 #        dest: /root/satellite_reg.sh
 #        mode: 0755
-#    
 #    - name: Execute the script
 #      shell: /root/satellite_reg.sh

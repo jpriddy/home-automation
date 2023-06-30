@@ -14,12 +14,12 @@
   - name: Install Plex RPM package
     yum:
       name: "/tmp/plex-ansible-temp.rpm"
-      state: latest
+      state: present
       disable_gpg_check: true
 
   - name: Fix permissions of mount point (from media kickstart profile)
     file:
-      path: /var/lib/plexmediaserver 
+      path: /var/lib/plexmediaserver
       owner: "plex"
       group: "plex"
 

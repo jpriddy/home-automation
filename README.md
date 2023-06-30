@@ -1,5 +1,5 @@
 # home-automation
 
-All the unorganized and poorly writen automation that supports my lab
+All my7 unorganized and poorly writen automation
 
 --jpriddy

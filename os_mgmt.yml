@@ -4,36 +4,36 @@
   become: true
   tasks:
 
-  - name: Use system role to set up cockpit
-    include_role:
+    - name: Use system role to set up cockpit
+      include_role:
         name: redhat.rhel_system_roles.cockpit
-    vars:
-      cockpit_packages:
-      - cockpit
-      - cockpit-bridge
-      - cockpit-networkmanager
-      - cockpit-bridge
-      - cockpit-packagekit
-      - cockpit-selinux
-      - cockpit-storaged
-      - cockpit-system
-      - cockpit-ws
-      - cockpit-kdump
-      - cockpit-sosreport
-      - cockpit-pcp
-        #cockpit_port: 9090 #need an offramp for redhat satellites. 9090 is taken for internal
-        #cockpit_manage_firewall: true
-        #cockpit_manage_selinux: true
+      vars:
+        cockpit_packages:
+        - cockpit
+        - cockpit-bridge
+        - cockpit-networkmanager
+        - cockpit-bridge
+        - cockpit-packagekit
+        - cockpit-selinux
+        - cockpit-storaged
+        - cockpit-system
+        - cockpit-ws
+        - cockpit-kdump
+        - cockpit-sosreport
+        - cockpit-pcp
+          #cockpit_port: 9090 #need an offramp for redhat satellites. 9090 is taken for internal
+          #cockpit_manage_firewall: true
+          #cockpit_manage_selinux: true
+        cockpit_config:
+          WebService:
+            LoginTitle: "Cockpit Web Management - brought to you by Ansible and system roles"
+            MaxStartups: 20
+          Session:
+            IdleTimeout: 15
+            Banner: /etc/motd #https://cockpit-project.org/faq.html#error-message-about-being-offline
       cockpit_enabled: true
       cockpit_started: true  
-      cockpit_config:
-        WebService:
-          LoginTitle: "Cockpit Web Management - brought to you by Ansible and system roles"
-          MaxStartups: 20
-        Session:
-          IdleTimeout: 15
-          Banner: /etc/motd #https://cockpit-project.org/faq.html#error-message-about-being-offline
-
+        
   #- name: Start and enable cockpit
   #  ansible.builtin.service:
   #    name: cockpit
