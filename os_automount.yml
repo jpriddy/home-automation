@@ -16,19 +16,19 @@
 
    - name: Download synology.autofs and set permissions
      get_url:
-       url: "http://synology/kickstart/files/synology.autofs"
+       url: "http://synology.jpriddy.com/kickstart/files/synology.autofs"
        dest: "/etc/auto.master.d/synology.autofs"
        mode: '0644'
 
    - name: Download auto.synology and set permissions
      get_url:
-       url: "http://synology/kickstart/files/auto.synology"
+       url: "http://synology.jpriddy.com/kickstart/files/auto.synology"
        dest: "/etc/auto.synology"
        mode: '0644'
 
    - name: Download credentials and set permissions
      get_url:
-       url: "http://synology/kickstart/files/.synology"
+       url: "http://synology.jpriddy.com/kickstart/files/.synology"
        dest: "/root/.synology"
        mode: '0600'
 
