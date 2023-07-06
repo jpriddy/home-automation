@@ -54,5 +54,4 @@
        name: qemu-guest-agent
        state: started
        enabled: true
-       update_only: true #update but will not install additional packages
      when: ansible_virtualization_role == "guest"
