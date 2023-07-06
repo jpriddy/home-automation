@@ -96,7 +96,7 @@ linux_servers:
     aaphub:
       ansible_host: "192.168.1.148"    
     aapph:
-      ansible_host: "192.168.1.151"    
+      ansible_host: "192.168.1.153"    
 
 windows_servers:
   hosts:
