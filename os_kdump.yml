@@ -5,7 +5,7 @@
   tasks:
 
     - name: Install kexec-tools, crash, and nfs-utils
-      package:
+      ansible.builtin.package:
         name: "{{ item }}"
         state: latest
       with_items:
@@ -13,21 +13,21 @@
         - crash
         - nfs-utils
       when: "'RedHat' in ansible_distribution_file_variety"
-      
+
     - name: Download kdump.conf from synology
-      get_url:
+      ansible.builtin.get_url:
         url: "http://synology/kickstart/files/kdump.conf"
         dest: "/etc/kdump.conf"
         mode: '0644'
 
     - name: Fix permissions of kdump.conf
-      file:
+      ansible.builtin.file:
         path: "/etc/kdump.conf"
         owner: "root"
         group: "root"
 
     - name: Mount the nfs volume
-      ansible.posix.mount:
+      ansible.builtin.ansible.posix.mount:
         src: "192.168.1.30:/volume3/crash"
         path: "/var/crash"
         opts: "rw,sync,soft"
@@ -46,7 +46,7 @@
         state: started
         enabled: true
 
-#doesnt seem to work correctly...
+# doesnt seem to work correctly...
 #    - name: Setup kdump using system role
 #      include_role:
 #        name: redhat.rhel_system_roles.kdump

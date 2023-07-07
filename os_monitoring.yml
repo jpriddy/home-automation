@@ -5,9 +5,9 @@
   tasks:
 
     - name: Install monitoring packages
-      package:
+      ansible.builtin.package:
         name: "{{ item }}"
-        state: latest
+        state: present
       with_items:
         - tuned
         - iftop
@@ -22,14 +22,14 @@
         state: started
 
     - name: Use system role to set up metrics
-      include_role:
+      ansible.builtin.include_role:
         name: redhat.rhel_system_roles.metrics
       vars:
-          metrics_retention_days: 31
+        metrics_retention_days: 31
 
     - name: Use system role to setup tlog
-      include_role:
+      ansible.builtin.include_role:
         name: redhat.rhel_system_roles.tlog
       vars:
-          tlog_scope_sssd: all
-          tlog_use_sssd: true
+        tlog_scope_sssd: all
+        tlog_use_sssd: true

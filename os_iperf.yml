@@ -1,22 +1,22 @@
 ---
-- name: iperf3 setup
+- name: Setup iperf3
   hosts: all
   become: true
   tasks:
 
    - name: Install iperf3
-     package:
-       name: "iperf3"
-       state: latest
+     ansible.builtin.package:
+       name: iperf3
+       state: present
 
    - name: Download a iperf3 systemd service file
-     get_url:
+     ansible.builtin.get_url:
        url: "http://synology/kickstart/files/iperf3.service"
        dest: "/etc/systemd/system/iperf3.service"
        mode: '644'
 
-   - name: Issue daemon-reload to pick up new iperf3 service and then enable/start it.
-     systemd:
+   - name: Pick up new iperf3 service and then enable/start
+     ansible.builtin.systemd:
        name: iperf3
        state: started
        daemon_reload: true

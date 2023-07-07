@@ -19,7 +19,7 @@
         ipaclient_all_ip_addresses: true
         ipasssd_enable_dns_updates: true
 
-    - name: Install realmd for completeness in cockpit
-      package:
+    - name: Install realmd for cockpit completeness
+      ansible.builtin.package:
         name: realmd
         state: present

@@ -4,7 +4,7 @@
   tasks:
 
     - name: Install system updates for RedHat (yum)
-      yum:
+      ansible.builtin.yum:
         name: '*'
         state: latest
         update_cache: true
@@ -12,7 +12,7 @@
         - ansible_os_family == "RedHat"
 
     - name: Install system updates for Debian (apt)
-      apt:
+      ansible.builtin.apt:
         name: '*'
         state: latest
         update_cache: true
