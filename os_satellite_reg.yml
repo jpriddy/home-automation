@@ -4,16 +4,21 @@
   become: true
   tasks:
 
-    - name: Register with activationkey and consume subscriptions matching Red Hat Enterprise Server or Red Hat Virtualization
-      community.general.redhat_subscription:
-        state: present
-        activationkey: "rhel"
-        org_id: "JPRIDDY"
-        server_hostname: "sat.ipa.jpriddy.com"
-        server_insecure: "enable"
-        force_register: true
-        consumer_name: '{{ ansible_hostname }}'  # use the short hostname
-      when: "'RedHat' in ansible_distribution"
+  - name: Register host to satellite  
+    ansible.builtin.command: "curl -sS --insecure 'https://sat.ipa.jpriddy.com/register?force=true&hostgroup_id=2&ignore_subman_errors=true&lifecycle_environment_id=1&location_id=2&organization_id=1&update_packages=false' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2ODg3MDEyNzIsImp0aSI6IjgwNzYxMzRlZDQzZjc0MWE5NjMyMzIwMDU4MTQ5NGJkNjg2YWMyODcyNjk3NTVjODMzNGM1NGU2NzM3OThkMzUiLCJzY29wZSI6InJlZ2lzdHJhdGlvbiNnbG9iYWwgcmVnaXN0cmF0aW9uI2hvc3QifQ.4lLenthlfcgpUrj9pAZTQ3h-Rs7q_WK9nKudCLlPLVk' | bash"
+    when: "'RedHat' in ansible_distribution"
+
+# complains about self signed cert (even with insecure option)
+#    - name: Register with activationkey and consume subscriptions matching Red Hat Enterprise Server or Red Hat Virtualization
+#      community.general.redhat_subscription:
+#        state: present
+#        activationkey: "rhel"
+#        org_id: "JPRIDDY"
+#        server_hostname: "sat.ipa.jpriddy.com"
+#        server_insecure: "enable"
+#        force_register: true
+#        consumer_name: '{{ ansible_hostname }}'  # use the short hostname
+#      when: "'RedHat' in ansible_distribution"
 
 #   - name: Use system role rhc
 #     include_role:
