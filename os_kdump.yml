@@ -7,7 +7,7 @@
     - name: Install kexec-tools, crash, and nfs-utils
       ansible.builtin.package:
         name: "{{ item }}"
-        state: latest
+        state: present
       with_items:
         - kexec-tools
         - crash
@@ -27,7 +27,7 @@
         group: "root"
 
     - name: Mount the nfs volume
-      ansible.builtin.ansible.posix.mount:
+      ansible.posix.mount:
         src: "192.168.1.30:/volume3/crash"
         path: "/var/crash"
         opts: "rw,sync,soft"
@@ -35,13 +35,13 @@
         fstype: nfs
 
     - name: Reset crash kernel to defaults for all kernels
-      command: "kdumpctl reset-crashkernel --kernel=ALL"
+      ansible.builtin.command: "kdumpctl reset-crashkernel --kernel=ALL"
 
     - name: Rebuild crash kernel initramfs
-      command: "kdumpctl rebuild"
+      ansible.builtin.command: "kdumpctl rebuild"
 
     - name: Start and enable kdump (may need a reboot to reserve ram)
-      systemd:
+      ansible.builtin.systemd:
         name: kdump
         state: started
         enabled: true
