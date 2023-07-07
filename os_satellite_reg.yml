@@ -4,12 +4,25 @@
   become: true
   tasks:
 
-   - name: Register host to satellite
-     ansible.builtin.command: "curl -sS --insecure 'https://sat.ipa.jpriddy.com/register?force=true&hostgroup_id=2&ignore_subman_errors=true&lifecycle_environment_id=1&location_id=2&organization_id=1&update_packages=false' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2ODg3MDEyNzIsImp0aSI6IjgwNzYxMzRlZDQzZjc0MWE5NjMyMzIwMDU4MTQ5NGJkNjg2YWMyODcyNjk3NTVjODMzNGM1NGU2NzM3OThkMzUiLCJzY29wZSI6InJlZ2lzdHJhdGlvbiNnbG9iYWwgcmVnaXN0cmF0aW9uI2hvc3QifQ.4lLenthlfcgpUrj9pAZTQ3h-Rs7q_WK9nKudCLlPLVk' | bash"
-     when: "'RedHat' in ansible_distribution"
+    - name: Download the generic registration script
+      ansible.builtin.get_url:
+        url: https://sat.ipa.jpriddy.com/register?force=true&hostgroup_id=2&ignore_subman_errors=true&lifecycle_environment_id=1&location_id=2&organization_id=1&update_packages=false
+        validate_certs: false
+        headers: ### this should really be in a custom cred...
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2ODg3MDEyNzIsImp0aSI6IjgwNzYxMzRlZDQzZjc0MWE5NjMyMzIwMDU4MTQ5NGJkNjg2YWMyODcyNjk3NTVjODMzNGM1NGU2NzM3OThkMzUiLCJzY29wZSI6InJlZ2lzdHJhdGlvbiNnbG9iYWwgcmVnaXN0cmF0aW9uI2hvc3QifQ.4lLenthlfcgpUrj9pAZTQ3h-Rs7q_WK9nKudCLlPLVk'
+        dest: /root/satellite_reg.sh
+        mode: 0755
+
+    - name: Execute the script
+      ansible.builtin.shell: /root/satellite_reg.sh
+
+
+#   - name: Register host to satellite
+#     ansible.builtin.command: "curl -sS --insecure '' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2ODg3MDEyNzIsImp0aSI6IjgwNzYxMzRlZDQzZjc0MWE5NjMyMzIwMDU4MTQ5NGJkNjg2YWMyODcyNjk3NTVjODMzNGM1NGU2NzM3OThkMzUiLCJzY29wZSI6InJlZ2lzdHJhdGlvbiNnbG9iYWwgcmVnaXN0cmF0aW9uI2hvc3QifQ.4lLenthlfcgpUrj9pAZTQ3h-Rs7q_WK9nKudCLlPLVk' | bash"
+#     when: "'RedHat' in ansible_distribution"
 
 # complains about self signed cert (even with insecure option)
-#    - name: Register with activationkey and consume subscriptions matching Red Hat Enterprise Server or Red Hat Virtualization
+#    - name: Register with activationkey
 #      community.general.redhat_subscription:
 #        state: present
 #        activationkey: "rhel"
@@ -36,13 +49,4 @@
 #        remediation: present
 #        state: present
 #
-#    - name: Download the generic registration script
-#      get_url:
-#        url: https://sat.ipa.jpriddy.com/register?activation_keys=client-repos%2Crhel&location_id=2&organization_id=1&update_packages=false
-#        validate_certs: false
-#        headers: ### this should really be in a custom cred...
-#          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2ODE0OTI5ODgsImp0aSI6IjI1NmZhNjgxZjI1NjhmYzNlZGI2MzZmZTNmMTNjZDQ2NjQ2ODNjMWY3YzNjZmI0ZjcwMzM3MjZmZDE1NjM5ZDciLCJleHAiOjE2ODE1MDczODgsInNjb3BlIjoicmVnaXN0cmF0aW9uI2dsb2JhbCByZWdpc3RyYXRpb24jaG9zdCJ9.uwPTkPpjLZ7PMOY_rl--NGxjBWCaNs7QLuCTDxLIIl8'
-#        dest: /root/satellite_reg.sh
-#        mode: 0755
-#    - name: Execute the script
-#      shell: /root/satellite_reg.sh
+
