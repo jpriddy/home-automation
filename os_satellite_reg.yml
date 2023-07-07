@@ -5,7 +5,7 @@
   tasks:
 
     - name: Register with activationkey and consume subscriptions matching Red Hat Enterprise Server or Red Hat Virtualization
-      redhat_subscription:
+      community.general.redhat_subscription:
         state: present
         activationkey: "rhel"
         org_id: "JPRIDDY"
