@@ -7,8 +7,7 @@
    - name: Install autofs, cifs-utils and nfs-utils
      ansible.builtin.package:
       name: "{{ item }}"
-      state: latest
-      update_only: true # update but will not install additional packages
+      state: present
      with_items:
       - autofs
       - cifs-utils
