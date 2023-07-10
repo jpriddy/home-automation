@@ -13,13 +13,12 @@
         headers: ### this should really be in a custom cred...
           Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE2ODg3MDEyNzIsImp0aSI6IjgwNzYxMzRlZDQzZjc0MWE5NjMyMzIwMDU4MTQ5NGJkNjg2YWMyODcyNjk3NTVjODMzNGM1NGU2NzM3OThkMzUiLCJzY29wZSI6InJlZ2lzdHJhdGlvbiNnbG9iYWwgcmVnaXN0cmF0aW9uI2hvc3QifQ.4lLenthlfcgpUrj9pAZTQ3h-Rs7q_WK9nKudCLlPLVk'
         dest: /root/satellite_reg.sh
-        mode: 0755
+        mode: "0755"
       when: "'RedHat' in ansible_distribution"
 
-    - name: Download the generic registration script  
+    - name: Download the generic registration script
       ansible.builtin.shell: /root/satellite_reg.sh
       when: "'RedHat' in ansible_distribution"
-      
 
 # complains about self signed cert (even with insecure option enabled?)
 #    - name: Register with activationkey
