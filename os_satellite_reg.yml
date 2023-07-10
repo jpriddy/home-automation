@@ -5,8 +5,6 @@
   tasks:
 
 # requires a unique bios uuid (must clear out old/matching hosts in satellite)
-
-
 # works, but is a poor approah...  also requires authorization (and should be hidden behind a credential)
     - name: Download the generic registration script
       ansible.builtin.get_url:
@@ -19,6 +17,9 @@
 
     - name: Execute the script
       ansible.builtin.shell: /root/satellite_reg.sh
+  
+  #only for RHEL
+  when: "'RedHat' in ansible_distribution"
 
 # complains about self signed cert (even with insecure option enabled?)
 #    - name: Register with activationkey
