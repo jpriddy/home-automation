@@ -4,6 +4,9 @@
   become: true
   tasks:
 
+# need to add in installing katello-host-tools-tracer
+
+
 # requires a unique bios uuid (must clear out old/matching hosts in satellite)
 # works, but is a poor approah...  also requires authorization (and should be hidden behind a credential)
     - name: Download the generic registration script
@@ -40,7 +43,7 @@
 #     vars:
 #      rhc_auth:
 #        activation_keys:
-#          keys: ["rhel", "cleint-repos"]
+#          keys: "rhel"
 #      rhc_organization: "JPRIDDY"
 #      rhc_baseurl: "http://sat.ipa.jpriddy.com"
 #      rhc_server: "sat.ipa.jpriddy.com"
