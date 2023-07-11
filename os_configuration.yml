@@ -7,8 +7,7 @@
    - name: Install some packages
      ansible.builtin.package:
       name: "{{ item }}"
-      state: latest
-      update_only: true # update but will not install additional packages
+      state: present
      with_items:
       - bash-completion
       - mlocate
@@ -16,6 +15,8 @@
       - nmap
       - tuned
       - iftop
+      - cifs-utils
+      - nfs-utils
 
    - name: Use system role to configure timesync
      include_role:
@@ -46,7 +47,6 @@
      package:
        name: qemu-guest-agent
        state: latest
-       update_only: true # update but will not install additional packages
      when: ansible_virtualization_role == "guest"
 
    - name: Start guest agent service if virtualized guest

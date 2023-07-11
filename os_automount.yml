@@ -4,14 +4,10 @@
   become: true
   tasks:
 
-   - name: Install autofs, cifs-utils and nfs-utils
+   - name: Install autofs
      ansible.builtin.package:
-      name: "{{ item }}"
+      name: autofs
       state: present
-     with_items:
-      - autofs
-      - cifs-utils
-      - nfs-utils
 
    - name: Download synology.autofs and set permissions
      ansible.builtin.get_url:
