@@ -17,6 +17,7 @@
       - iftop
       - cifs-utils
       - nfs-utils
+      - python3-libselinux # required on fedora for ansible to work
 
    - name: Use system role to configure timesync
      include_role:
