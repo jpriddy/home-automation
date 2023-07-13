@@ -4,6 +4,13 @@
   become: true
   tasks:
 
+    - name: Install cockpit for fedora compatibilty with system role
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - cockpit # system role not working with fedora...
+
     - name: Use system role to set up cockpit
       ansible.builtin.include_role:
         name: redhat.rhel_system_roles.cockpit
