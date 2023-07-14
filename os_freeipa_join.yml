@@ -28,7 +28,7 @@
         state: present
 #      when: ansible_default_ipv4.dns_domain == "ipa.jpriddy.com"
 
-when: ansible_default_ipv4.dns_domain == "ipa.jpriddy.com"
+  when: ansible_default_ipv4.dns_domain == "ipa.jpriddy.com"
 
 
 # testing lightspeeds solution...
