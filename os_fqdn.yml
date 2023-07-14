@@ -3,7 +3,20 @@
   hosts: all
   become: true
   tasks:
-    - name: Set fqdn
+
+# should really not be doing a survey.. use the inventory name or dns lookup instead...
+
+
+    - name: Set hostname
       ansible.builtin.hostname:
         name: '{{ survey_hostname }}.{{ survey_domain }}'
-    - name: restart firewall
+        use: systemd
+
+    - name: Setup /etc/hostname
+      ansible.builtin.copy:
+        content: '{{ survey_hostname }}.{{ survey_domain }}'
+        dest: /etc/hostname
+        owner: root
+        group: root
+        mode: '0644'
+        
