@@ -10,6 +10,9 @@
         state: present
       when: ansible_distribution == 'Fedora'
 
+
+# ansible_domain is not correct, need to use dns?
+
     - name: Set hostname
       ansible.builtin.hostname:
         name: '{{ inventory_hostname }}.{{ ansible_domain }}'
