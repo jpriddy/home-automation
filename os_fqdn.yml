@@ -6,12 +6,12 @@
 
     - name: Set hostname
       ansible.builtin.hostname:
-        name: '{{ inventory_hostname }}.{{ ansible_default_ipv4.dns_domain }}'
+        name: '{{ inventory_hostname }}.{{ ansible_domain }}'
         use: systemd
 
     - name: Setup /etc/hostname
       ansible.builtin.copy:
-        content: '{{ inventory_hostname }}.{{ ansible_default_ipv4.dns_domain }}'
+        content: '{{ inventory_hostname }}.{{ ansible_domain }}'
         dest: /etc/hostname
         owner: root
         group: root
