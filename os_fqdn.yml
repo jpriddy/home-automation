@@ -4,7 +4,7 @@
   become: true
   tasks:
 
-    - name: Install python bindings so ansible will work
+    - name: Install python bindings so ansible will work on fedora
       ansible.builtin.package:
         name: python3-libselinux # required on fedora for ansible to work
         state: present
