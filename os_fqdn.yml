@@ -9,14 +9,13 @@
 
     - name: Set hostname
       ansible.builtin.hostname:
-        name: '{{ survey_hostname }}.{{ survey_domain }}'
+        name: '{{ inventory_hostname }}.{{ survey_domain }}'
         use: systemd
 
     - name: Setup /etc/hostname
       ansible.builtin.copy:
-        content: '{{ survey_hostname }}.{{ survey_domain }}'
+        content: '{{ inventory_hostname }}.{{ survey_domain }}'
         dest: /etc/hostname
         owner: root
         group: root
         mode: '0644'
-        
