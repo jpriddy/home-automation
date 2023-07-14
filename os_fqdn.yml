@@ -6,8 +6,8 @@
 
     - name: Install python bindings so ansible will work
       ansible.builtin.package:
-      name: python3-libselinux # required on fedora for ansible to work
-      state: present
+        name: python3-libselinux # required on fedora for ansible to work
+        state: present
       when: ansible_distribution == 'Fedora'
 
     - name: Set hostname
