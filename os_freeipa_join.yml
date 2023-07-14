@@ -19,15 +19,11 @@
         ipaclient_configure_firefox: true
         ipaclient_all_ip_addresses: true
         ipasssd_enable_dns_updates: true
-      when: ansible_default_ipv4.dns_domain == "ipa.jpriddy.com"
 
     - name: Install realmd for completeness
       ansible.builtin.package:
         name: realmd
         state: present
-      when: ansible_default_ipv4.dns_domain == "ipa.jpriddy.com"
-
-
 
 # testing lightspeeds solution...
 #    - name: Use realmd to enroll in freeipa domain
