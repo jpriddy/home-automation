@@ -19,7 +19,17 @@
         ipaclient_all_ip_addresses: true
         ipasssd_enable_dns_updates: true
 
-    - name: Install realmd for cockpit completeness
+    - name: Install realmd for completeness
       ansible.builtin.package:
         name: realmd
         state: present
+
+# testing lightspeeds solution...
+#    - name: Use realmd to enroll in freeipa domain
+#      ansible.builtin.expect:
+#        command: "{{ command }}"
+#        responses:
+#          Password for *: "{{ ipaadmin_password }}"
+
+
+
