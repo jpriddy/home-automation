@@ -4,6 +4,15 @@
   become: true
   tasks:
 
+    - name: Install python bindings so ansible will work on fedora
+      ansible.builtin.package:
+        name: python3-libselinux # required on fedora for ansible to work
+        state: present
+      when: ansible_distribution == 'Fedora'
+
+
+# ansible_domain is not correct, need to use dns?
+
     - name: Set hostname
       ansible.builtin.hostname:
         name: '{{ inventory_hostname }}.{{ survey_domain }}'
