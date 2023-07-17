@@ -42,7 +42,7 @@
 # role not starting cockpit... so we do it here
     - name: Start and enable cockpit
       ansible.builtin.service:
-        name: cockpit
+        name: cockpit.socket
         enabled: true
         state: started
         
