@@ -38,11 +38,10 @@
         cockpit_enabled: true
         cockpit_started: true
         # cockpit_port: 9090 #need an offramp for redhat satellites. 9090 is taken for internal
-        # cockpit_manage_firewall: true
-        # cockpit_manage_selinux: true
-
-  # - name: Start and enable cockpit
-  #  ansible.builtin.service:
-  #    name: cockpit
-  #    enabled: true
-  #    state: started
+        
+# role not starting cockpit... so we do it here
+   - name: Start and enable cockpit
+    ansible.builtin.service:
+      name: cockpit
+      enabled: true
+      state: started
