@@ -1,4 +1,4 @@
-- name: Update both RH and Debian based distros
+- name: Update packages
   hosts: all
   become: true
   tasks:
