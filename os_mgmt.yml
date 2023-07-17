@@ -9,7 +9,7 @@
         name: "{{ item }}"
         state: present
       with_items:
-        - cockpit # system role not working with fedora... so we install here instead
+        - cockpit # system role not installing cockpit with fedora (is there a community cockpit role?)... so we install here instead
 
     - name: Use system role to set up cockpit
       ansible.builtin.include_role:
@@ -34,12 +34,12 @@
             MaxStartups: 20
           Session:
             IdleTimeout: 15
-            Banner: /etc/motd # https://cockpit-project.org/faq.html#error-message-about-being-offline
+            Banner: /etc/motd # see here for why we have these: https://cockpit-project.org/faq.html#error-message-about-being-offline
         cockpit_enabled: true
         cockpit_started: true
-        # cockpit_port: 9090 #need an offramp for redhat satellites. 9090 is taken for internal
+        # cockpit_port: 9090 #need an offramp for redhat satellite -- 9090 is taken for internal usage
         
-# role not starting cockpit... so we do it here
+# role is enabling, but not starting cockpit... so we do it here
     - name: Start and enable cockpit
       ansible.builtin.service:
         name: cockpit.socket
