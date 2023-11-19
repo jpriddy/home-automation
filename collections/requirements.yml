@@ -1,8 +1,8 @@
 ---
 collections:
   - name: ansible.windows
-#  - name: redhat.rhel_system_roles
-#  - name: redhat.rhel_idm
+  - name: redhat.rhel_system_roles
+  - name: redhat.rhel_idm
   - name: fedora.linux_system_roles
   - name: chocolatey.chocolatey
   - name: microsoft.ad
