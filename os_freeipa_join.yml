@@ -1,6 +1,6 @@
 ---
-- name: Join IPA clients when dns domain is ipa.jpriddy.com
-  hosts: all
+- name: Join IPA clients
+  hosts: al
   become: true
   tasks:
 
