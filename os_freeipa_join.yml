@@ -25,7 +25,7 @@
         name: realmd
         state: present
 
-    - name: Create short_hostnames.conf file in krb5.conf.d and sshd.conf.d
+    - name: Create short_hostnames.conf file in sshd and krb5 *.d
       copy:
         dest: "/etc/krb5.conf.d/short_hostnames.conf"
         content: |
@@ -34,7 +34,7 @@
           rdns = true
           dns_canonicalize_hostname = fallback
       copy:
-        dest: "/etc/sshd.conf.d/short_hostnames.conf"
+        dest: "/etc/ssh/sshd_config.d/short_hostnames.conf"
         content: |
           #https://web.mit.edu/kerberos/krb5-latest/doc/admin/princ_dns.html
           # so we don't need FQDNs
