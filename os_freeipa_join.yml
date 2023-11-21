@@ -25,6 +25,18 @@
         name: realmd
         state: present
 
+
+#fix up krb5 canonical names here
+
+#https://web.mit.edu/kerberos/krb5-latest/doc/admin/princ_dns.html
+#krb5
+# dns_canonicalize_hostname = fallback
+#ignore_acceptor_hostname = true
+
+#sshd
+#GSSAPIStrictAcceptorCheck = no
+
+
 # testing lightspeeds solution...
 #    - name: Use realmd to enroll in freeipa domain
 #      ansible.builtin.expect:
