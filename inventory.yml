@@ -3,6 +3,7 @@ local:
   hosts:
     localhost:
       ansible_host: "127.0.0.1"
+      
 appliances:
   hosts:
     synology:
@@ -11,6 +12,7 @@ appliances:
       ansible_host: "192.168.1.1"
       vars:
         opnsense_base_url: "http://192.168.1.1"
+
 network_mikrotik:
   hosts:
     bassw00:
@@ -33,6 +35,7 @@ network_mikrotik:
     ansible_connection: "ansible.netcommon.network_cli"
     ansible_network_os: "community.routeros.routeros"
     ansible_user: "admin"
+
 network_ruckus:
   hosts:
     ap01:
@@ -41,10 +44,12 @@ network_ruckus:
       ansible_host: "192.168.1.27"
     ap03:
       ansible_host: "192.168.1.28"
+
 linux_clients:
   hosts:
     xps:
       ansible_host: "192.168.1.107"
+
 docking_stations:
   hosts:
     offdock:
@@ -57,10 +62,12 @@ docking_stations:
       ansible_host: "192.168.1.212"
     kit10g:
       ansible_host: "192.168.1.211"
+
 mac_clients:
   hosts:
     mac:
       ansible_host: "192.168.1.109"
+
 windows_clients:
   hosts:
     desktop:
@@ -91,12 +98,12 @@ linux_servers:
       ansible_host: "192.168.1.163"
     idm1:
       ansible_host: "192.168.1.131"
+    idm1:
+      ansible_host: "192.168.1.132" 
     aap:
-      ansible_host: "192.168.1.149"
-    aaphub:
-      ansible_host: "192.168.1.148"    
+      ansible_host: "192.168.1.149"   
     aapph:
-      ansible_host: "192.168.1.153"    
+      ansible_host: "192.168.1.148"    
 
 windows_servers:
   hosts:
