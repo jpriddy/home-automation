@@ -25,17 +25,17 @@
         name: realmd
         state: present
 
-    - name: Create /etc/krb5.conf.d/short_hostnames.conf file
-      blockinfile:
-        path: /etc/krb5.conf.d/short_hostnames.conf
-        block: |
+    - name: Create short_hostnames.conf file in krb5.conf.d and sshd.conf.d
+      copy:
+        dest: "/etc/krb5.conf.d/short_hostnames.conf"
+        content: |
           # https://web.mit.edu/kerberos/krb5-latest/doc/admin/princ_dns.html
           # so we don't need FQDNs
           rdns = true
           dns_canonicalize_hostname = fallback
-
-    - name: Create /etc/sssd.conf.d/short_hostnames.conf file
-      blockinfile:
-        path: /etc/sshd.conf.d/short_hostnames.conf
-        block: |
+      copy:
+        dest: "/etc/sshd.conf.d/short_hostnames.conf"
+        content: |
+          #https://web.mit.edu/kerberos/krb5-latest/doc/admin/princ_dns.html
+          # so we don't need FQDNs
           GSSAPIStrictAcceptorCheck = no
