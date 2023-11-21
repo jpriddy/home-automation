@@ -25,21 +25,17 @@
         name: realmd
         state: present
 
+    - name: Create /etc/krb5.conf.d/short_hostnames.conf file
+      blockinfile:
+        path: /etc/krb5.conf.d/short_hostnames.conf
+        block: |
+          # https://web.mit.edu/kerberos/krb5-latest/doc/admin/princ_dns.html
+          # so we don't need FQDNs
+          rdns = true
+          dns_canonicalize_hostname = fallback
 
-#fix up krb5 canonical names here
-
-#https://web.mit.edu/kerberos/krb5-latest/doc/admin/princ_dns.html
-#krb5.conf.d -- confirmed working below
-#rdns = true
-#dns_canonicalize_hostname = fallback
-
-
-#sshd.conf.d
-#GSSAPIStrictAcceptorCheck = no
-
-# testing lightspeeds solution...
-#    - name: Use realmd to enroll in freeipa domain
-#      ansible.builtin.expect:
-#        command: "{{ command }}"
-#        responses:
-#          Password for *: "{{ ipaadmin_password }}"
+    - name: Create /etc/sssd.conf.d/short_hostnames.conf file
+      blockinfile:
+        path: /etc/sshd.conf.d/short_hostnames.conf
+        block: |
+          GSSAPIStrictAcceptorCheck = no
