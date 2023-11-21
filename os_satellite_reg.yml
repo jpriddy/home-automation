@@ -4,8 +4,10 @@
   become: true
   tasks:
 
-# need to add in installing katello-host-tools-tracer
-
+    - name: Install katello-host-tools-tracer
+      ansible.builtin.package:
+        name: katello-host-tools-tracer
+        state: present
 
 # requires a unique bios uuid (must clear out old/matching hosts in satellite)
 # works, but is a poor approah...  also requires authorization (and should be hidden behind a credential)
