@@ -12,13 +12,13 @@
         ipaservers: "192.168.1.131"
         ipaadmin_password: '{{ survey_ipa_password }}'
         ipaclient_mkhomedir: true
-        ipaclient_no_ntp: true
+        #ipaclient_no_ntp: true
         ipaclient_ssh_trust_dns: true
         ipaclient_allow_repair: true
         ipaclient_force_join: true
         ipaclient_configure_firefox: true
         ipaclient_all_ip_addresses: true
-        ipasssd_enable_dns_updates: true
+        #ipasssd_enable_dns_updates: true
 
     - name: Install realmd for completeness
       ansible.builtin.package:
