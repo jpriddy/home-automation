@@ -27,6 +27,7 @@
       ansible.builtin.package:
         name: katello-host-tools-tracer
         state: present
+      when: "'RedHat' in ansible_distribution"
 
 # complains about self signed cert (even with insecure option enabled?)
 #    - name: Register with activationkey
