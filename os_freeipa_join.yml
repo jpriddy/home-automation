@@ -34,8 +34,8 @@
 #dns_canonicalize_hostname = fallback
 
 
-#sshd also?
-
+#sshd.conf.d
+#GSSAPIStrictAcceptorCheck = no
 
 # testing lightspeeds solution...
 #    - name: Use realmd to enroll in freeipa domain
