@@ -29,12 +29,12 @@
 #fix up krb5 canonical names here
 
 #https://web.mit.edu/kerberos/krb5-latest/doc/admin/princ_dns.html
-#krb5
-# dns_canonicalize_hostname = fallback
-#ignore_acceptor_hostname = true
+#krb5.conf.d -- confirmed working below
+#rdns = true
+#dns_canonicalize_hostname = fallback
 
-#sshd
-#GSSAPIStrictAcceptorCheck = no
+
+#sshd also?
 
 
 # testing lightspeeds solution...
