@@ -73,7 +73,7 @@ kickstart_servers:
       ansible_user: "root"
       ansible_ssh_pass: "installer"  #non-standard password
     kickstart2:
-      ansible_host: "192.168.1.164"
+      ansible_host: "192.168.1.219"
       ansible_user: "root"
       ansible_ssh_pass: "installer"  #non-standard password
       
