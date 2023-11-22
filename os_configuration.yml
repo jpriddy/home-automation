@@ -4,7 +4,7 @@
   become: true
   tasks:
 
-   - name: Install some packages
+   - name: Install a bunch of packages
      ansible.builtin.package:
       name: "{{ item }}"
       state: present
@@ -17,9 +17,9 @@
       - iftop
       - cifs-utils
       - nfs-utils
-      - python3-libselinux # required on fedora for ansible to work
+      - python3-libselinux # required for ansible to work on fedora 38
 
-   - name: Use system role to configure timesync
+   - name: Configure timesync with system role
      include_role:
       name: redhat.rhel_system_roles.timesync
      vars:
@@ -27,7 +27,7 @@
        - hostname: firewall.jpriddy.com
          iburst: true
 
-   - name: Use system role to configure ssh server
+   - name: Configure ssh server with system role
      include_role:
       name: redhat.rhel_system_roles.sshd
      vars:
@@ -44,13 +44,13 @@
       sshd_ChallengeResponseAuthentication: yes
       sshd_AllowTcpForwarding: yes
 
-   - name: Install guest agent if virtualized guest
+   - name: Install guest agent if virtualized
      package:
        name: qemu-guest-agent
        state: latest
      when: ansible_virtualization_role == "guest"
 
-   - name: Start guest agent service if virtualized guest
+   - name: Start guest agent service if virtualized
      service:
        name: qemu-guest-agent
        state: started

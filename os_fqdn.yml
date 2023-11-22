@@ -12,6 +12,7 @@
 
 
 # ansible_domain is not correct, need to use dns?
+# should also be using a module that includes /etc/hostname  -- or hostnamectl?
 
     - name: Set hostname
       ansible.builtin.hostname:

@@ -1,5 +1,5 @@
 ---
-- name: Configure kdump
+- name: Configure kdump to capture core dumps
   hosts: all
   become: true
   tasks:
@@ -14,6 +14,7 @@
         - nfs-utils
       when: "'RedHat' in ansible_distribution_file_variety"
 
+## should be creating or putting this in source control
     - name: Download kdump.conf from synology
       ansible.builtin.get_url:
         url: "http://synology/kickstart/files/kdump.conf"

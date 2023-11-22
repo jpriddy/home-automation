@@ -1,10 +1,10 @@
 ---
-- name: Join IPA clients
+- name: Join IPA domain
   hosts: all
   become: true
   tasks:
 
-    - name: Deploy/configure IPA client
+    - name: Deploy and configure IPA client
       include_role:
         name: redhat.rhel_idm.ipaclient
       vars:
@@ -23,7 +23,7 @@
         name: realmd
         state: present
 
-    - name: Create short_hostnames.conf file in krb5 *.d
+    - name: Create conf file for krb5 to allow short hostnames
       copy:
         dest: "/etc/krb5.conf.d/short_hostnames.conf"
         content: |
@@ -32,7 +32,7 @@
           rdns = true
           dns_canonicalize_hostname = fallback
 
-    - name: Create short_hostnames.conf file in sshd *.d
+    - name: Create conf file for sshd to allow short hostnames
       copy:
         dest: "/etc/ssh/sshd_config.d/short_hostnames.conf"
         content: |

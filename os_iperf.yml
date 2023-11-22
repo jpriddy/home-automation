@@ -1,5 +1,5 @@
 ---
-- name: Setup iperf3
+- name: Setup custom iperf3 systemd service for bandwith testing
   hosts: all
   become: true
   tasks:
@@ -9,13 +9,14 @@
        name: iperf3
        state: present
 
+#shoudl be creating this in the playbook or putting it in source control
    - name: Download a iperf3 systemd service file
      ansible.builtin.get_url:
        url: "http://synology/kickstart/files/iperf3.service"
        dest: "/etc/systemd/system/iperf3.service"
        mode: '644'
 
-   - name: Pick up new iperf3 service and then enable/start
+   - name: Pick up new iperf3 service with systemd and then enable/start
      ansible.builtin.systemd:
        name: iperf3
        state: started

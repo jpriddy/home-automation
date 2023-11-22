@@ -1,5 +1,5 @@
 ---
-- name: Configure monitoring/metrics
+- name: Configure monitoring and metrics gathering
   hosts: all
   become: true
   tasks:
@@ -26,6 +26,9 @@
         name: redhat.rhel_system_roles.metrics
       vars:
         metrics_retention_days: 31
+
+
+### should split this out into its own playbook 
 
     - name: Use system role to setup tlog
       ansible.builtin.include_role:

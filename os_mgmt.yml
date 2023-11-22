@@ -1,5 +1,5 @@
 ---
-- name: Configure management
+- name: Setup various management tools
   hosts: all
   become: true
   tasks:
