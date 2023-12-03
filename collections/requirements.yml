@@ -2,6 +2,7 @@
 collections:
   - name: ansible.windows
   - name: ansible.utils
+  - name: ansible.builtin
   - name: redhat.rhel_system_roles
   - name: redhat.rhel_idm
   - name: fedora.linux_system_roles
