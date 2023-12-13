@@ -19,7 +19,7 @@
       - nfs-utils
       - python3-libselinux # required for ansible to work on fedora 38
 
-   - name: Configure timesync with system role
+   - name: Configure timesync with system role redhat.rhel_system_roles.timesync
      include_role:
       name: redhat.rhel_system_roles.timesync
      vars:
@@ -27,7 +27,7 @@
        - hostname: firewall.jpriddy.com
          iburst: true
 
-   - name: Configure ssh server with system role
+   - name: Customize ssh server with system role redhat.rhel_system_roles.sshd
      include_role:
       name: redhat.rhel_system_roles.sshd
      vars:
