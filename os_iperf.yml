@@ -10,11 +10,30 @@
        state: present
 
 #shoudl be creating this in the playbook or putting it in source control
-   - name: Download a iperf3 systemd service file
-     ansible.builtin.get_url:
-       url: "http://synology/kickstart/files/iperf3.service"
-       dest: "/etc/systemd/system/iperf3.service"
-       mode: '644'
+#   - name: Download a iperf3 systemd service file
+#     ansible.builtin.get_url:
+#       url: "http://synology/kickstart/files/iperf3.service"
+#       dest: "/etc/systemd/system/iperf3.service"
+#       mode: '644'
+
+
+  - name: Creating iperf3 systemd service file
+    copy:
+      dest: "/etc/systemd/system/iperf3.service.new"
+      owner: root
+      group: root
+      mode: '0644'
+      content: |
+        [Unit]
+        Description=iperf3 server
+        After=syslog.target network.target auditd.service
+        [Service]
+        ExecStart=/usr/bin/iperf3 -s
+        ExecStop=/usr/bin/killall -9 iperf3
+        [Install]
+        WantedBy=multi-user.target
+        
+
 
    - name: Pick up new iperf3 service with systemd and then enable/start
      ansible.builtin.systemd:

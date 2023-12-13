@@ -1,5 +1,5 @@
 ---
-- name: OS Config
+- name: OS Configuration
   hosts: all
   become: true
   tasks:
