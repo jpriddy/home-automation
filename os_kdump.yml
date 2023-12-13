@@ -14,18 +14,28 @@
         - nfs-utils
       when: "'RedHat' in ansible_distribution_file_variety"
 
-## should be creating or putting this in source control
-    - name: Download kdump.conf from synology
+    - name: Create kdump.conf 
       ansible.builtin.get_url:
         url: "http://synology/kickstart/files/kdump.conf"
         dest: "/etc/kdump.conf"
         mode: '0644'
-
-    - name: Fix permissions of kdump.conf
-      ansible.builtin.file:
-        path: "/etc/kdump.conf"
         owner: "root"
         group: "root"
+        content: |
+          auto_reset_crashkernel yes
+          nfs 192.168.1.30:/volume3/crash
+          path /
+          core_collector makedumpfile -l --message-level 7 -d 31
+          failure_action reboot
+          final_action reboot
+          force_rebuild 1
+
+
+#    - name: Fix permissions of kdump.conf
+#      ansible.builtin.file:
+#        path: "/etc/kdump.conf"
+#        owner: "root"
+#        group: "root"
 
     - name: Mount the nfs volume
       ansible.posix.mount:

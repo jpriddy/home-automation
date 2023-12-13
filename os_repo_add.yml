@@ -22,7 +22,7 @@
       when: ansible_distribution == 'Fedora'
 
 
-
+## should set this disabled by default, or set up priorities to prefer rhel...
 
     - name: Import gpg keys for RHEL repos (fusion, epel)
       ansible.builtin.rpm_key:

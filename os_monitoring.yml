@@ -21,16 +21,16 @@
         enabled: true
         state: started
 
-    - name: Use system role to set up metrics
+    - name: Use system role to set up 30 days of metrics
       ansible.builtin.include_role:
         name: redhat.rhel_system_roles.metrics
       vars:
         metrics_retention_days: 31
 
 
-### should split this out into its own playbook 
+### should split this out into its own playbook  (os_tlog)
 
-    - name: Use system role to setup tlog
+    - name: Use system role to setup terminal logging for all users
       ansible.builtin.include_role:
         name: redhat.rhel_system_roles.tlog
       vars:

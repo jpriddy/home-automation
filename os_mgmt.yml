@@ -1,3 +1,5 @@
+#rename_this_to_cockpit
+
 ---
 - name: Setup various management tools
   hosts: all
