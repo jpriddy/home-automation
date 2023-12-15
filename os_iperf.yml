@@ -18,7 +18,7 @@
 
 
   - name: Creating iperf3 systemd service file
-    copy:
+    ansible.builtin.copy:
       dest: "/etc/systemd/system/iperf3.service.new"
       owner: root
       group: root
