@@ -15,7 +15,7 @@
       when: "'RedHat' in ansible_distribution_file_variety"
 
     - name: Create kdump.conf 
-      ansible.builtin.get_url:
+      ansible.builtin.copy:
         url: "http://synology/kickstart/files/kdump.conf"
         dest: "/etc/kdump.conf"
         mode: '0644'
