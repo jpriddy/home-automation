@@ -25,7 +25,7 @@
 
     - name: Create conf file for krb5 to allow short hostnames
       copy:
-        dest: "/etc/krb5.conf.d/short_hostnames.conf"
+        dest: "/etc/krb5.conf.d/short_hostnames"
         content: |
           # https://web.mit.edu/kerberos/krb5-latest/doc/admin/princ_dns.html
           # so we don't need FQDNs
@@ -34,7 +34,7 @@
 
     - name: Create conf file for sshd to allow short hostnames
       copy:
-        dest: "/etc/ssh/sshd_config.d/short_hostnames.conf"
+        dest: "/etc/ssh/sshd_config.d/60-short-hostnames.conf"
         content: |
           #https://web.mit.edu/kerberos/krb5-latest/doc/admin/princ_dns.html
           # so we don't need FQDNs
