@@ -16,7 +16,6 @@
 
     - name: Create kdump.conf 
       ansible.builtin.copy:
-        url: "http://synology/kickstart/files/kdump.conf"
         dest: "/etc/kdump.conf"
         mode: '0644'
         owner: "root"
