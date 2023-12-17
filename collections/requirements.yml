@@ -8,3 +8,4 @@ collections:
   - name: chocolatey.chocolatey
   - name: microsoft.ad
   - name: community.routeros
+  - name: community.general
