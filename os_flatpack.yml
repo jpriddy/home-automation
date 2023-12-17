@@ -1,0 +1,14 @@
+- name: Add Flathub repository and install Flatpak
+  hosts: all
+  tasks:
+    - name: Ensure Flatpak is installed
+      community.general.package:
+        name: flatpak
+        state: present
+
+    - name: Add the Flathub flatpak repository remote
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        method: system
