@@ -15,3 +15,10 @@
         state: present
         flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
         method: system
+
+    - name: Add the Gnome flatpak remote
+      community.general.flatpak_remote:
+        name: gnome
+        state: present
+        flatpakrepo_url: https://sdk.gnome.org/gnome-apps.flatpakrepo
+        method: system
