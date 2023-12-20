@@ -1,8 +1,11 @@
-- name: Add Flathub repository and install Flatpak
+---
+- name: Stop and disable firewall
   hosts: all
+  become: true
   tasks:
+  
     - name: Ensure Flatpak is installed
-      community.general.package:
+      ansible.builtin.package:
         name: flatpak
         state: present
 
