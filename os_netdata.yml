@@ -13,7 +13,7 @@
         mode: +x
 
     - name: Install Netdata
-      command: /tmp/netdata_kickstart.sh --dont-wait  --no-updates --stable-channel --disable-telemetry
+      command: /tmp/netdata_kickstart.sh --native-only --dont-wait  --no-updates --stable-channel --disable-telemetry
 
     - name: Cleanup installation script
       file:
