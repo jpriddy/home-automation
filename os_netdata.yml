@@ -13,7 +13,7 @@
         mode: +x
 
     - name: Install Netdata
-      command: /tmp/netdata_kickstart.sh --dont-wait
+      command: /tmp/netdata_kickstart.sh --dont-wait  --no-updates --stable-channel --disable-telemetry
 
     - name: Cleanup installation script
       file:
@@ -34,7 +34,7 @@
 
       - name: Claim to Netdata Cloud if not already
         shell:
-          cmd: netdata-claim.sh -token={{ claim_token }} -rooms={{ claim_rooms }} -url={{ claim_url }}
+          cmd: netdata-claim.sh  -token={{ claim_token }} -rooms={{ claim_rooms }} -url={{ claim_url }}
           creates: /var/lib/netdata/cloud.d/claimed_id
         become: true
 
