@@ -9,19 +9,19 @@
     - name: Download the installation script
       get_url:
         url: https://my-netdata.io/kickstart.sh
-        dest: ~/netdata_kickstart.sh
+        dest: /tmp/netdata_kickstart.sh
         mode: +x
 
     - name: Install Netdata
-      command: ~/netdata_kickstart.sh --dont-wait
+      command: /tmp/netdata_kickstart.sh --dont-wait
 
     - name: Cleanup installation script
       file:
-        path: ~/netdata_kickstart.sh
+        path: /tmp/netdata_kickstart.sh
         state: absent
 
     - template:
-        src: ../templates/netdata.conf.j2
+        src: templates/netdata.conf.j2
         dest: /etc/netdata/netdata.conf
         owner: root
         group: root
