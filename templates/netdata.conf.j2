@@ -1,7 +1,7 @@
 # Netdata configuration
 
 [global]
-  hostname = {{ inventory_hostname.hostname }}
+  hostname = {{ inventory_hostname }}.hostname
   dbengine multihost disk space = {{ dbengine_multihost_disk_space }}
 
 [web]
