@@ -15,8 +15,6 @@
         - /export show-sensitive file=[identity]-[date]-[time].config_export
     #when: ansible_network_os == 'community.network.routeros'
           
-
-          [
 #getting timeout errors, perhaps its a permissions issue with the automount?
 #  - name: "Grabbing backup file and storing in backup folder(s) on synology"
 #    ansible.netcommon.net_get:
