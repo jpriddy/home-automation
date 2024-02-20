@@ -1,7 +1,7 @@
 #rename_this_to_cockpit
 
 ---
-- name: Setup various management tools
+- name: Setup various management tooling... cockpit for now
   hosts: all
   become: true
   tasks:

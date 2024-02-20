@@ -23,7 +23,7 @@
         name: realmd
         state: present
 
-    - name: Create conf file for krb5 to allow short hostnames
+    - name: Create conf file for krb5 to support short hostnames
       copy:
         dest: "/etc/krb5.conf.d/short_hostnames"
         content: |
@@ -32,7 +32,7 @@
           rdns = true
           dns_canonicalize_hostname = fallback
 
-    - name: Create conf file for sshd to allow short hostnames
+    - name: Create conf file for sshd to support short hostnames
       copy:
         dest: "/etc/ssh/sshd_config.d/60-short-hostnames.conf"
         content: |

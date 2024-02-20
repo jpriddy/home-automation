@@ -1,5 +1,5 @@
 ---
-- name: Setup custom iperf3 systemd service for bandwith testing
+- name: Install and start custom iperf3 systemd service for bandwith testing
   hosts: all
   become: true
   tasks:

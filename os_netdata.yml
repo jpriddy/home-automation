@@ -48,7 +48,7 @@
           path: /usr/bin/uuidgen
         register: uuidgen_result
 
-      - name: Fail if `uuidgen` is not installed
+      - name: Fail if `uuidgen` is not installed (package is util-linux on fedora)
         fail:
           msg: The system needs `uuidgen` installed to enable re-claiming.
         when: uuidgen_result.stat.exists == false

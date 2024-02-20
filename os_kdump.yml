@@ -56,7 +56,7 @@
         state: started
         enabled: true
 
-# doesnt seem to work correctly...
+# kdump role doesnt seem to work correctly...
 #    - name: Setup kdump using system role
 #      include_role:
 #        name: redhat.rhel_system_roles.kdump

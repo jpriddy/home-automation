@@ -38,8 +38,8 @@
 
 #    - name: Check for available OPNSense updates
 #      opnsense_config:
-#        opnsense_api_key: "{{ opnsense_api_key }}"
-#        opnsense_api_secret: "{{ opnsense_api_secret }}"
+#        opnsense_api_key: "{{ opnsense_api_key }}"  #credential in aap
+#        opnsense_api_secret: "{{ opnsense_api_secret }}" #credential in aap
 #        opnsense_base_url: "{{ opnsense_base_url }}"
 #        section: system
 #        subsection: firmware

@@ -1,5 +1,5 @@
 ---
-- name: Stop and disable firewall
+- name: Setup flathub/pack
   hosts: all
   become: true
   tasks:

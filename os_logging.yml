@@ -14,12 +14,12 @@
         - name: forward_output0
           type: forwards
           severity: info
-          target: synology
+          target: 192.168.1.30
           udp_port: 514
         - name: forward_output1
           type: forwards
           facility: mail
-          target: synology
+          target: 192.168.1.30
           tcp_port: 514
         - name: files_output0
           type: files

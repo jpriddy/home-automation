@@ -54,14 +54,8 @@ docking_stations:
   hosts:
     offdock:
       ansible_host: "192.168.1.214"
-    dongle1:
-      ansible_host: "192.168.1.215"
-      ansible_user: "root"           #testing
-      ansible_ssh_pass: "installer"  #testing
     kitdock:
       ansible_host: "192.168.1.212"
-    kit10g:
-      ansible_host: "192.168.1.211"
 
 mac_clients:
   hosts:
@@ -118,3 +112,10 @@ windows_servers:
       ansible_host: "192.168.1.161"
     dc2:
       ansible_host: "192.168.1.162"
+
+
+
+windows_clients:
+  hosts:
+    win11:
+      ansible_host: "192.168.1.0"  ###change me

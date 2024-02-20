@@ -1,5 +1,5 @@
 ---
-- name: Configure repos for RHEL and Fedora
+- name: Configure additional repos for RHEL and Fedora
   hosts: all
   become: true
   tasks:
