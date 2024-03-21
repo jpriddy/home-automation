@@ -28,7 +28,6 @@
       ansible.builtin.package:
         name: 
             - katello-host-tools-tracer
-            - katello-host-tools
         state: latest
     
     - name: Install insights client
