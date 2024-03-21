@@ -8,12 +8,10 @@
   tasks:
 
 
-    - name: Install a bunch of packages
-      ansible.builtin.package:
-        name: "{{ item }}"
-        state: latest
-        with_items:
-        - openssl
+    - name: Install openssl
+      ansible.builtin.package: 
+        name: openssl
+        state: present
 
     - name: Download the installation script
       get_url:
