@@ -4,9 +4,9 @@
   become: true
   tasks:
 
-    - name: Unregister from Subscription Manager, if registered
+    - name: Unregister from Subscription Manager
       redhat_subscription:
-      state: absent
+        state: absent
 
     - name: subscription-manager clean
       command: subscription-manager clean
