@@ -7,9 +7,11 @@
     - name: Unregister
       redhat_subscription:
         state: absent
+      when: "'RedHat' in ansible_distribution"
 
     - name: Clean up subscription-manager
       command: subscription-manager clean
+      when: "'RedHat' in ansible_distribution"
 
     - name: (Re)Register host with Satellite
       redhat_subscription:
@@ -22,25 +24,21 @@
         activationkey: "rhel"
         force_register: true
       register: registration_result
+      when: "'RedHat' in ansible_distribution"
     
     - name: Subscription-manager refresh
       command: subscription-manager refresh
+      when: "'RedHat' in ansible_distribution"
 
     - debug:
         msg: "Registration successful: {{ registration_result.changed }}"
-
-  #belongs in a separate playbook
-    - name: Install insights client
-      ansible.builtin.package: 
-        name: insights-client
+      when: "'RedHat' in ansible_distribution"
+ 
+    - name: Install katello-host-tools-tracer for additional functionality
+      ansible.builtin.package:
+        name: katello-host-tools-tracer
         state: present
-
-    - name: Configure insights client
-      command: insights-client --register
-
-    
-
-
+      when: "'RedHat' in ansible_distribution"
 
 
 
@@ -60,12 +58,6 @@
 #      ansible.builtin.shell: /root/satellite_reg.sh
 #      when: "'RedHat' in ansible_distribution"
 
-
-    - name: Install katello-host-tools-tracer
-      ansible.builtin.package:
-        name: katello-host-tools-tracer
-        state: present
-      when: "'RedHat' in ansible_distribution"
 
 # complains about self signed cert (even with insecure option enabled?)
 #    - name: Register with activationkey
