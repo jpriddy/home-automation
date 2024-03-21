@@ -1,12 +1,21 @@
-# Message of the day (managed by ansible)
-
-****************Ansible Managed MOTD****************
 
 System Information For Hostname: {{ inventory_hostname }}
 
 Distribution: {{ ansible_distribution }}
 Distribution Release: {{ ansible_distribution_release }}
 Distribution Version: {{ ansible_distribution_version }}
+Kernel: {{ ansible_kernel }}
+
+{% if ansible_virtualization_role is defined %}
+Virtualization Role: {{ ansible_virtualization_role }}
+{% endif %}
+{% if ansible_virtualization_type is defined %}
+Virtualization Type: {{ ansible_virtualization_type }}
+{% endif %}
+
+Memory Installed: {{ (ansible_memtotal_mb / 1024) | round(1) }}GB
+CPUs: {{ ansible_processor_vcpus }}
+
 {% if ansible_dns.search is defined %}
 DNS Search: {{ ansible_dns.search|join (" ") }}
 {% endif %}
@@ -29,23 +38,13 @@ Interfaces:
 {%     endif %}
 {%   endfor %}
 {% endif %}
-Kernel: {{ ansible_kernel }}
-Memory Installed: {{ (ansible_memtotal_mb / 1024) | round(1) }}GB
-Memory Swapfile: {{ (ansible_swaptotal_mb / 1024) | round(1) }}GB
+
 Mounts:
 {% for mnt in ansible_mounts %}
 {%   if mnt.size_total != none %}
     Mount: {{ mnt.device }}({{ mnt.mount }})({{ (mnt.size_total / 1024 / 1024 / 1024)| round(1) }}GB)
 {%   endif %}
 {% endfor %}
-Processors: {{ ansible_processor_vcpus }}
-Python Version: {{ ansible_python_version }}
-Timezone: {{ ansible_date_time.tz }}({{ ansible_date_time.tz_offset }})
-{% if ansible_virtualization_role is defined %}
-Virtualization Role: {{ ansible_virtualization_role }}
-{% endif %}
-{% if ansible_virtualization_type is defined %}
-Virtualization Type: {{ ansible_virtualization_type }}
-{% endif %}
 
-************End Of Ansible Managed MOTD*************
+
+

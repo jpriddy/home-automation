@@ -6,6 +6,15 @@
   become: true
 
   tasks:
+
+
+    - name: Install a bunch of packages
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: latest
+        with_items:
+        - openssl
+
     - name: Download the installation script
       get_url:
         url: https://my-netdata.io/kickstart.sh
