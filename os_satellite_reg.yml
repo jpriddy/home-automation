@@ -36,8 +36,6 @@
     - debug:
         msg: "Registration successful: {{ registration_result.changed }}"
 
-when: "'RedHat' in ansible_distribution"
-
 
 
 
