@@ -3,7 +3,14 @@
   hosts: all
   become: true
   tasks:
-  
+
+    - name: Unregister from Subscription Manager, if registered
+      redhat_subscription:
+      state: absent
+
+    - name: subscription-manager clean
+      command: subscription-manager clean
+
     - name: Register host with Satellite
       redhat_subscription:
         state: present
@@ -17,20 +24,22 @@
         force_register: true
       register: registration_result
 
-    - name: Install katello-host-tools-tracer 
+    - name: Install katello packages 
       ansible.builtin.package:
-        name: katello-host-tools-tracer
+        name: 
+            - katello-host-tools-tracer
+            - katello-host-tools
         state: latest
     
-    - name: install insights client
+    - name: Install insights client
       ansible.builtin.package: 
         name: insights-client
         state: present
 
-    - name: configure insights client
+    - name: Configure insights client
       command: insights-client --register
 
-    - name: subscription-manager refresh
+    - name: Subscription-manager refresh
       command: subscription-manager refresh
 
     - debug:
