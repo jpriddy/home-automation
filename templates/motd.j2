@@ -30,9 +30,6 @@ Interfaces:
 {%   endfor %}
 {% endif %}
 Kernel: {{ ansible_kernel }}
-{% if ansible_lsb is defined %}
-LSB: {{ ansible_lsb.description }}
-{% endif %}
 Memory Installed: {{ (ansible_memtotal_mb / 1024) | round(1) }}GB
 Memory Swapfile: {{ (ansible_swaptotal_mb / 1024) | round(1) }}GB
 Mounts:
