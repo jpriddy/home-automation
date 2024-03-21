@@ -1,5 +1,5 @@
 ---
-- name: Backup all network configurations
+- name: Backup network configuration
   hosts: all
   tasks:
 
