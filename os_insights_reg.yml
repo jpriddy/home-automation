@@ -5,11 +5,13 @@
   tasks:
   
   #need logic to ensure system has a registration, is not fedora, etc
-  
+
     - name: Install insights client
       ansible.builtin.package: 
         name: insights-client
         state: present
+      when: "'RedHat' in ansible_distribution"
 
     - name: Configure insights client
       command: insights-client --register
+      when: "'RedHat' in ansible_distribution"
