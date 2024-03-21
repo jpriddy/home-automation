@@ -1,35 +1,35 @@
 ---
-- name: Register to satellite
+- name: Register to RedHat Satellite
   hosts: all
   become: true
   tasks:
 
-    - name: Unregister from Subscription Manager
+    - name: Unregister
       redhat_subscription:
         state: absent
 
-    - name: subscription-manager clean
+    - name: Clean up subscription-manager
       command: subscription-manager clean
 
-    - name: Register host with Satellite
+    - name: (Re)Register host with Satellite
       redhat_subscription:
         state: present
         #username: '{{ ansible_user }}' 
-        #password: '{{ ansible_password }}'
-        server_hostname: sat.ipa.jpriddy.com
+        #password: '{{ ansible_password }}' #mutually exclusive of activation key
+        server_hostname: sat.ipa.jpriddy.com #these should be parameterized
         server_insecure: true
         org_id: "JPRIDDY"
         activationkey: "rhel"
-        #environmet: "Library"
         force_register: true
       register: registration_result
-
-    - name: Install katello packages 
-      ansible.builtin.package:
-        name: 
-            - katello-host-tools-tracer
-        state: latest
     
+    - name: Subscription-manager refresh
+      command: subscription-manager refresh
+
+    - debug:
+        msg: "Registration successful: {{ registration_result.changed }}"
+
+  #belongs in a separate playbook
     - name: Install insights client
       ansible.builtin.package: 
         name: insights-client
@@ -38,12 +38,7 @@
     - name: Configure insights client
       command: insights-client --register
 
-    - name: Subscription-manager refresh
-      command: subscription-manager refresh
-
-    - debug:
-        msg: "Registration successful: {{ registration_result.changed }}"
-
+    
 
 
 
