@@ -3,9 +3,7 @@
   hosts: all
   become: true
   tasks:
-
-
-  tasks:
+  
     - name: Register host with Satellite and install tracer
       redhat_subscription:
         state: present
@@ -13,16 +11,15 @@
         #password: '{{ ansible_password }}'
         server_url: https://sat.ipa.jpriddy.com/register
         org_id: JPRIDDY
-        location: HOME
-        hostgroup: RHEL
         activationkey: rhel
         environmet: Library
         force_register: true
       register: registration_result
-      
-      #ansible.builtin.package:
-      #  name: katello-host-tools-tracer
-      #  state: present
+
+    - name: Install katello-host-tools-tracer 
+      ansible.builtin.package:
+        name: katello-host-tools-tracer
+        state: present
 
     - debug:
         msg: "Registration successful: {{ registration_result.changed }}"
