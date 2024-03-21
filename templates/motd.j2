@@ -1,14 +1,5 @@
 # Message of the day (managed by ansible)
 
-
-My name is {{ ansible_facts['hostname'] }}
-
-
-{% if motd_default_message is defined %}
-{{ motd_default_message }}
-{% endif %}
-
-{% if motd_static %}
 ****************Ansible Managed MOTD****************
 
 System Information For Hostname: {{ inventory_hostname }}
