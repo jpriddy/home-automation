@@ -19,9 +19,9 @@
         lifecycle: library
       register: registration_result
       
-      ansible.builtin.package:
-        name: katello-host-tools-tracer
-        state: present
+      #ansible.builtin.package:
+      #  name: katello-host-tools-tracer
+      #  state: present
 
     - debug:
         msg: "Registration successful: {{ registration_result.changed }}"
