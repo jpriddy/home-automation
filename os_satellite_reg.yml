@@ -9,10 +9,11 @@
         state: present
         #username: '{{ ansible_user }}' 
         #password: '{{ ansible_password }}'
-        server_url: https://sat.ipa.jpriddy.com/register
-        org_id: JPRIDDY
-        activationkey: rhel
-        environmet: Library
+        server_hostname: https://sat.ipa.jpriddy.com/register
+        server_insecure: true
+        org_id: "JPRIDDY"
+        activationkey: "rhel"
+        #environmet: "Library"
         force_register: true
       register: registration_result
 
