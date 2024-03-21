@@ -12,11 +12,12 @@
         username: '{{ ansible_user }}' 
         password: '{{ ansible_password }}'
         server_url: https://sat.ipa.jpriddy.com/register
-        org: JPRIDDY
+        org_id: JPRIDDY
         location: HOME
         hostgroup: RHEL
-        activation_key: rhel
-        lifecycle: library
+        activationkey: rhel
+        environmet: Library
+        force_register: true
       register: registration_result
       
       #ansible.builtin.package:
