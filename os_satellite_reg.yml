@@ -4,7 +4,7 @@
   become: true
   tasks:
   
-    - name: Register host with Satellite and install tracer
+    - name: Register host with Satellite
       redhat_subscription:
         state: present
         #username: '{{ ansible_user }}' 
@@ -20,7 +20,18 @@
     - name: Install katello-host-tools-tracer 
       ansible.builtin.package:
         name: katello-host-tools-tracer
+        state: latest
+    
+    - name: install insights client
+      ansible.builtin.package: 
+        name: insights-client
         state: present
+
+    - name: configure insights client
+      command: insights-client --register
+
+    - name: subscription-manager refresh
+      command: subscription-manager refresh
 
     - debug:
         msg: "Registration successful: {{ registration_result.changed }}"
