@@ -4,6 +4,13 @@
   become: true
   tasks:
 
+    - name: Install required python packages
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - python3-ipalib
+
     - name: Deploy and configure IPA client
       include_role:
         name: redhat.rhel_idm.ipaclient
