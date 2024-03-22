@@ -15,7 +15,8 @@
     
     - name: Install sat CA #really should be doing this differently
       ansible.builtin.command: /usr/bin/rpm -i -f --nosignature http://sat.ipa.jpriddy.com/pub/katello-ca-consumer-latest.noarch.rpm
-
+      when: "'RedHat' in ansible_distribution"
+      
     - name: (Re)Register host with Satellite  #these should be parameterized
       redhat_subscription:
         state: present
