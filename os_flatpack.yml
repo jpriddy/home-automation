@@ -7,7 +7,7 @@
     - name: Ensure Flatpak is installed
       ansible.builtin.package:
         name: flatpak
-        state: present
+        state: latest
 
     - name: Add the Flathub flatpak repository remote
       community.general.flatpak_remote:

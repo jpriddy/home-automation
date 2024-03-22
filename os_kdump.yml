@@ -7,7 +7,7 @@
     - name: Install kexec-tools, crash, and nfs-utils
       ansible.builtin.package:
         name: "{{ item }}"
-        state: present
+        state: latest
       with_items:
         - kexec-tools
         - crash
@@ -22,7 +22,7 @@
         group: "root"
         content: |
           auto_reset_crashkernel yes
-          nfs 192.168.1.30:/volume3/crash
+          nfs 192.168.1.30:/volume2/crash 
           path /
           core_collector makedumpfile -l --message-level 7 -d 31
           failure_action reboot
@@ -38,7 +38,7 @@
 
     - name: Mount the nfs volume
       ansible.posix.mount:
-        src: "192.168.1.30:/volume3/crash"
+        src: "192.168.1.30:/volume2/crash"
         path: "/var/crash"
         opts: "rw,sync,soft"
         state: mounted

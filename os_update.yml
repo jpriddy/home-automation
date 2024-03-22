@@ -3,7 +3,13 @@
   become: true
   tasks:
 
-    - name: Install system updates for RedHat (yum)
+   - name: Universal package update
+     ansible.builtin.package:
+      name: '*'
+      state: latest
+     with_items:
+
+    - name: Install system updates for rpm (yum/dnf)
       ansible.builtin.yum:
         name: '*'
         state: latest
@@ -11,7 +17,7 @@
       when:
         - ansible_os_family == "RedHat"
 
-    - name: Install system updates for Debian (apt)
+    - name: Install system updates for apt
       ansible.builtin.apt:
         name: '*'
         state: latest

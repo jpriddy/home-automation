@@ -7,7 +7,7 @@
    - name: Install a bunch of packages
      ansible.builtin.package:
       name: "{{ item }}"
-      state: present
+      state: latest
      with_items:
       - bash-completion
       - mlocate
