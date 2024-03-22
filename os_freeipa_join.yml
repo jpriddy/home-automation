@@ -5,10 +5,10 @@
   tasks:
 
 
-    - name: Uninstall ipa client if present
-      ansible.builtin.command: /usr/sbin/ipa-client-install -q -f -U --uninstall  
-      when: freeipa_installed.rc == 0
-     
+    - name: Uninstall freeipa python packages
+      ansible.builtin.package:
+        name: freeipa-client
+        state: absent
 
     - name: Install required python packages
       ansible.builtin.package:
