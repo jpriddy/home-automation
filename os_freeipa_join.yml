@@ -7,7 +7,7 @@
 
     - name: Uninstall ipa client if present
       ansible.builtin.command: /usr/sbin/ipa-client-install -q -f -U --uninstall  
-      when: "'freeipa-client' in ansible_facts.packages"
+      when: freeipa_installed.rc == 0
      
 
     - name: Install required python packages
