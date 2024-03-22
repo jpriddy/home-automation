@@ -13,18 +13,19 @@
       command: subscription-manager clean
       when: "'RedHat' in ansible_distribution"
     
-    - name: Install sat CA #really should be doing this differently
+    - name: Install sat CA #should be doing this differently... 
       ansible.builtin.command: /usr/bin/rpm -i -f --nosignature http://sat.ipa.jpriddy.com/pub/katello-ca-consumer-latest.noarch.rpm
       when: "'RedHat' in ansible_distribution"
-      
+
     - name: (Re)Register host with Satellite  #these should be parameterized
       redhat_subscription:
         state: present
-        server_hostname: sat.ipa.jpriddy.com 
+        server_hostname: "sat.ipa.jpriddy.com"
         server_insecure: true
         org_id: "JPRIDDY"
         activationkey: "rhel"
         force_register: true
+        consumer_name: '{{ ansible_hostname }}'  # use the short hostname
       register: registration_result
       when: "'RedHat' in ansible_distribution"
     
