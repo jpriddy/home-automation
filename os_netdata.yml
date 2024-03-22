@@ -11,7 +11,7 @@
     - name: Install openssl
       ansible.builtin.package: 
         name: openssl
-        state: present
+        state: latest
 
     - name: Download the installation script
       get_url:
