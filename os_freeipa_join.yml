@@ -4,6 +4,12 @@
   become: true
   tasks:
 
+
+    - name: Uninstall ipa client if present
+      ansible.builtin.command: /usr/sbin/ipa-client-install -q -f -U --uninstall  
+      when: "'freeipa-client' in ansible_facts.packages"
+     
+
     - name: Install required python packages
       ansible.builtin.package:
         name: "{{ item }}"
@@ -24,6 +30,7 @@
         ipaclient_force_join: true
         ipaclient_configure_firefox: true
         ipaclient_all_ip_addresses: true
+        ipaclient_subid: true
 
     - name: Install realmd for completeness
       ansible.builtin.package:
