@@ -25,7 +25,7 @@
         org_id: "JPRIDDY"
         activationkey: "rhel"
         force_register: true
-        consumer_name: '{{ ansible_hostname }}'  # use the short hostname
+        consumer_name: '{{ inventory_hostname }}'  # use the short hostname
       register: registration_result
       when: "'RedHat' in ansible_distribution"
     
