@@ -14,7 +14,7 @@
         state: absent
 
     - name: Clean up subscription-manager
-      nsible.builtin.command: "subscription-manager clean"
+      ansible.builtin.command: "subscription-manager clean"
       when: "'RedHat' in ansible_distribution"
     
     - name: Install sat CA 
