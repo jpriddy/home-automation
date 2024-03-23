@@ -6,9 +6,9 @@
 
     - name: Unregister
       redhat_subscription:
-        state: absent
+        command: subscription-manager remove --all
       when: "'RedHat' in ansible_distribution"
-
+  
     - name: Remove old CA
       ansible.builtin.package:
         name: "katello-ca-consumer*"
