@@ -5,7 +5,7 @@
   tasks:
 
     - name: Unregister
-      redhat_subscription:
+      ansible.builtin.command:
         command: subscription-manager remove --all
       when: "'RedHat' in ansible_distribution"
   
@@ -29,7 +29,7 @@
         server_insecure: true
         org_id: "JPRIDDY"
         activationkey: "rhel"
-        force_register: true
+        force_register: yes
         consumer_name: '{{ inventory_hostname }}'  # use the short hostname
       register: registration_result
       when: "'RedHat' in ansible_distribution"
