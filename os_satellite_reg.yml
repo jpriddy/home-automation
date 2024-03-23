@@ -34,7 +34,7 @@
       when: "'RedHat' in ansible_distribution"
     
     - name: Subscription-manager refresh
-      nsible.builtin.command: subscription-manager refresh
+      ansible.builtin.command: subscription-manager refresh
       when: "'RedHat' in ansible_distribution"
 
     - debug:
