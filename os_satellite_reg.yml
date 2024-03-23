@@ -25,10 +25,10 @@
       redhat_subscription:
         state: present
         server_hostname: "sat.ipa.jpriddy.com"
-        server_insecure: true
+        server_insecure: yes
         org_id: "JPRIDDY"
         activationkey: "rhel"
-        force_register: true
+        force_register: yes
         consumer_name: '{{ inventory_hostname }}'  # use the short hostname
       register: registration_result
       when: "'RedHat' in ansible_distribution"
