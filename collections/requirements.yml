@@ -2,10 +2,11 @@
 collections:
   - name: ansible.windows
   - name: ansible.utils
+  - name: community.routeros
+  - name: community.general
   - name: redhat.rhel_system_roles
   - name: redhat.rhel_idm
   - name: fedora.linux_system_roles
   - name: chocolatey.chocolatey
   - name: microsoft.ad
-  - name: community.routeros
-  - name: community.general
+

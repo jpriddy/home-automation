@@ -5,7 +5,7 @@
   tasks:
 
     - name: Unregister
-      ansible.builtin.command: subscription-manager remove --all
+      ansible.builtin.command: "subscription-manager remove --all"
       when: "'RedHat' in ansible_distribution"
   
     - name: Remove old CA
@@ -14,14 +14,14 @@
         state: absent
 
     - name: Clean up subscription-manager
-      command: "subscription-manager clean"
+      nsible.builtin.command: "subscription-manager clean"
       when: "'RedHat' in ansible_distribution"
     
-    - name: Install sat CA #should be doing this differently... 
+    - name: Install sat CA 
       ansible.builtin.command: /usr/bin/rpm -i -f --nosignature http://sat.ipa.jpriddy.com/pub/katello-ca-consumer-latest.noarch.rpm
       when: "'RedHat' in ansible_distribution"
 
-    - name: (Re)Register host with Satellite  #these should be parameterized
+    - name: (Re)Register host with Satellite  
       redhat_subscription:
         state: present
         server_hostname: "sat.ipa.jpriddy.com"
@@ -34,7 +34,7 @@
       when: "'RedHat' in ansible_distribution"
     
     - name: Subscription-manager refresh
-      command: subscription-manager refresh
+      nsible.builtin.command: subscription-manager refresh
       when: "'RedHat' in ansible_distribution"
 
     - debug:

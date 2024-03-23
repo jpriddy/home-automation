@@ -5,7 +5,7 @@
   tasks:
 
     - name: Uninstall IPA client (not the packages)
-      include_role:
+      ansible.builtin.include_role:
         name: redhat.rhel_idm.ipaclient
       vars:
         state: absent
@@ -19,7 +19,7 @@
         - python3-ipalib
 
     - name: Deploy and configure IPA client
-      include_role:
+      ansible.builtin.include_role:
         name: redhat.rhel_idm.ipaclient
       vars:
         state: present
@@ -40,7 +40,7 @@
         state: present
 
     - name: Create conf file for krb5 to support short hostnames
-      copy:
+      ansible.builtin.copy:
         dest: "/etc/krb5.conf.d/short_hostnames"
         content: |
           # https://web.mit.edu/kerberos/krb5-latest/doc/admin/princ_dns.html
@@ -49,7 +49,7 @@
           dns_canonicalize_hostname = fallback
 
     - name: Create conf file for sshd to support short hostnames
-      copy:
+      ansible.builtin.copy:
         dest: "/etc/ssh/sshd_config.d/60-short-hostnames.conf"
         content: |
           #https://web.mit.edu/kerberos/krb5-latest/doc/admin/princ_dns.html

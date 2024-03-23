@@ -3,13 +3,12 @@
   become: true
   tasks:
 
-   - name: Universal package update
-     ansible.builtin.package:
-      name: '*'
-      state: latest
-     with_items:
+    - name: Universal package update
+      ansible.builtin.package:
+        name: '*'
+        state: latest
 
-    - name: Install system updates for rpm (yum/dnf)
+    - name: Install system updates for redhat based hosts (yum/dnf)
       ansible.builtin.yum:
         name: '*'
         state: latest
@@ -17,7 +16,7 @@
       when:
         - ansible_os_family == "RedHat"
 
-    - name: Install system updates for apt
+    - name: Install system updates for debian based hosts (apt)
       ansible.builtin.apt:
         name: '*'
         state: latest
@@ -25,7 +24,7 @@
       when:
         - ansible_os_family == "Debian"
 
-    - name: Install Windows updates for Windows
+    - name: Install Windows updates
       win_updates:
         category_names:
           - SecurityUpdates

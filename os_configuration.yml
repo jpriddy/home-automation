@@ -22,7 +22,7 @@
 
 
    - name: Configure timesync with system role redhat.rhel_system_roles.timesync
-     include_role:
+     ansible.builtin.include_role:
       name: redhat.rhel_system_roles.timesync
      vars:
       timesync_ntp_servers:
@@ -30,7 +30,7 @@
          iburst: true
 
    - name: Customize ssh server with system role redhat.rhel_system_roles.sshd
-     include_role:
+     ansible.builtin.include_role:
       name: redhat.rhel_system_roles.sshd
      vars:
       sshd_config_owner: root
@@ -47,13 +47,13 @@
       sshd_AllowTcpForwarding: yes
 
    - name: Install guest agent if virtualized
-     package:
+     ansible.builtin.package:
        name: qemu-guest-agent
        state: latest
      when: ansible_virtualization_role == "guest"
 
    - name: Start guest agent service if virtualized
-     service:
+     ansible.builtin.service:
        name: qemu-guest-agent
        state: started
        enabled: true

@@ -5,7 +5,7 @@
   tasks:
 
     - name: Deploying basics input and forwards output
-      include_role:
+      ansible.builtin.include_role:
         name: redhat.rhel_system_roles.logging
       vars:
       - name: basic_input
@@ -40,7 +40,7 @@
           outputs: [forward_output0, forward_output1,files_output0,files_output1]
 
     - name: Use system role to configure journald
-      include_role:
+      ansible.builtin.include_role:
         name: redhat.rhel_system_roles.journald
       vars:
         journald_persistent: true
