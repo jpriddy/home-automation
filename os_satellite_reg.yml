@@ -5,8 +5,7 @@
   tasks:
 
     - name: Unregister
-      ansible.builtin.command:
-        command: 'subscription-manager remove --all'
+      ansible.builtin.command: subscription-manager remove --all
       when: "'RedHat' in ansible_distribution"
   
     - name: Remove old CA
