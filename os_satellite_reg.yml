@@ -9,6 +9,11 @@
         state: absent
       when: "'RedHat' in ansible_distribution"
 
+    - name: Remove old CA
+      ansible.builtin.package:
+        name: "katello-ca-consumer*"
+        state: absent
+
     - name: Clean up subscription-manager
       command: subscription-manager clean
       when: "'RedHat' in ansible_distribution"
