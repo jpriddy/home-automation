@@ -18,7 +18,7 @@
       when: "'RedHat' in ansible_distribution"
     
     - name: Install sat CA 
-      ansible.builtin.command: /usr/bin/rpm -i -f --nosignature http://sat.ipa.jpriddy.com/pub/katello-ca-consumer-latest.noarch.rpm
+      ansible.builtin.command: "/usr/bin/rpm -i -f --nosignature http://sat.ipa.jpriddy.com/pub/katello-ca-consumer-latest.noarch.rpm"
       when: "'RedHat' in ansible_distribution"
 
     - name: (Re)Register host with Satellite  
@@ -34,7 +34,7 @@
       when: "'RedHat' in ansible_distribution"
     
     - name: Subscription-manager refresh
-      ansible.builtin.command: subscription-manager refresh
+      ansible.builtin.command: "subscription-manager refresh"
       when: "'RedHat' in ansible_distribution"
 
     - debug:
