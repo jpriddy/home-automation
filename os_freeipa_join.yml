@@ -5,6 +5,11 @@
   gather_facts: true
   tasks:
 
+    - name: TEST Print Credential TEST
+      debug:
+        var: "{{ ds_admin_password }}"
+
+
     - name: Uninstall IPA client (not the packages)
       ansible.builtin.include_role:
         name: redhat.rhel_idm.ipaclient
@@ -34,11 +39,6 @@
         ipaclient_all_ip_addresses: true
         ipaclient_subid: true
     
-    - name: Print Credential
-      debug:
-        var: ds_admin_password
-
-
     - name: Install realmd for completeness
       ansible.builtin.package:
         name: realmd
