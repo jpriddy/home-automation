@@ -4,7 +4,7 @@
   become: true
   tasks:
 
-    - name: Install monitoring packages
+    - name: Install monitoring and metrics packages
       ansible.builtin.package:
         name: "{{ item }}"
         state: present
@@ -14,14 +14,29 @@
         - perf
         - glances
         - htop
+        - glances
 
     - name: Enable and start tuned
       ansible.builtin.service:
         name: tuned
         enabled: true
         state: started
+    
+    - name: Setup tuned auto_profile
+      ansible.builtin.command: /usr/sbin/tuned-adm auto_profile
+        
+    - name: Replace glances systemd unit file with one that enables server mode
+      ansible.builtin.copy::
+        src: configs/glances.service
+        dest: /etc/systemd/system/multi-user.target.wants/glances.service
 
-    - name: Use system role to set up 30 days of metrics
+    - name: Enable and start glances
+      ansible.builtin.service:
+        name: glances
+        enabled: true
+        state: started
+
+    - name: Use redhat system role to set up a month of metrics
       ansible.builtin.include_role:
         name: redhat.rhel_system_roles.metrics
       vars:
