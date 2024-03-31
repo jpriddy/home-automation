@@ -5,24 +5,18 @@
   gather_facts: true
   tasks:
 
-    - name: TEST Print Credential TEST
-      debug:
-        var: ds_admin_password
-
-
-    - name: Uninstall IPA client (not the packages)
-      ansible.builtin.include_role:
-        name: redhat.rhel_idm.ipaclient
-      vars:
-        state: absent
-
-  
     - name: Install required python packages
       ansible.builtin.package:
         name: "{{ item }}"
         state: present
       with_items:
         - python3-ipalib
+
+    - name: Uninstall IPA client (not the packages)
+      ansible.builtin.include_role:
+        name: redhat.rhel_idm.ipaclient
+      vars:
+        state: absent
 
     - name: Deploy and configure IPA client
       ansible.builtin.include_role:
