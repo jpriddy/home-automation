@@ -7,7 +7,7 @@
 
     - name: TEST Print Credential TEST
       debug:
-        var: "{{ ds_admin_password }}"
+        var: ds_admin_password
 
 
     - name: Uninstall IPA client (not the packages)
