@@ -2,6 +2,7 @@
 - name: Join IPA domain
   hosts: all
   become: true
+  gather_facts: true
   tasks:
 
     - name: Uninstall IPA client (not the packages)
