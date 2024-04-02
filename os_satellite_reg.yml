@@ -4,6 +4,17 @@
   become: true
   tasks:
 
+    - name: Delete system from Satellite
+      redhat.satellite.satellite_host:
+        name: "{{ inventory_hostname }}"
+        #organization: JPRIDDY
+        state: absent
+        server_url: https://sat.ipa.jpriddy.com
+        username: admin 
+        password: "{{ sat_admin_password }}"
+      when: "'RedHat' in ansible_distribution"
+    
+    
     - name: Unregister
       ansible.builtin.command: "subscription-manager remove --all"
       when: "'RedHat' in ansible_distribution"
