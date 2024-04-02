@@ -6,7 +6,7 @@
 
     - name: Delete system from Satellite
       redhat.satellite.host:
-        name: "{{ inventory_hostname }}"
+        name: "{{ inventory_hostname }}.{{ survey_domain }}"
         #organization: JPRIDDY
         state: absent
         server_url: https://sat.ipa.jpriddy.com
