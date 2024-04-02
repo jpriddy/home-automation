@@ -5,7 +5,7 @@
   tasks:
 
     - name: Delete system from Satellite
-      redhat.satellite.satellite_host:
+      redhat.satellite.host:
         name: "{{ inventory_hostname }}"
         #organization: JPRIDDY
         state: absent
