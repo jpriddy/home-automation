@@ -6,8 +6,7 @@
 
     - name: Delete system from Satellite
       redhat.satellite.host:
-        name: '{{ inventory_hostname }}' # use the short hostname
-        #.{{ survey_domain }}"
+        name: '{{ inventory_hostname }}.{{ survey_domain }}' # fqdn required...
         #organization: JPRIDDY
         state: absent
         server_url: https://sat.ipa.jpriddy.com
@@ -42,7 +41,7 @@
         org_id: "JPRIDDY"
         activationkey: "rhel"
         force_register: yes
-        consumer_name: '{{ inventory_hostname }}'  # use the short hostname
+        #consumer_name: '{{ inventory_hostname }}'  # use the short hostname
       register: registration_result
       when: "'RedHat' in ansible_distribution"
     
