@@ -20,7 +20,7 @@
       ansible.builtin.service:
         name: tuned
         enabled: true
-        state: started
+        state: restarted
     
     - name: Setup tuned auto_profile
       ansible.builtin.command: /usr/sbin/tuned-adm auto_profile
@@ -34,7 +34,7 @@
       ansible.builtin.service:
         name: glances
         enabled: true
-        state: started
+        state: restarted
 
     - name: Use redhat system role to set up a month of metrics
       ansible.builtin.include_role:
