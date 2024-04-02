@@ -3,23 +3,21 @@
   hosts: all
   become: true
   tasks:
-
-    - name: Delete system from Satellite
-      redhat.satellite.host:
-        name: '{{ inventory_hostname }}.{{ survey_domain }}' # fqdn required...
-        #organization: JPRIDDY
-        state: absent
-        server_url: https://sat.ipa.jpriddy.com
-        username: admin 
-        password: "{{ sat_admin_password }}"
-      when: "'RedHat' in ansible_distribution"
-    
     
     - name: Unregister
       ansible.builtin.command: "subscription-manager remove --all"
       when: "'RedHat' in ansible_distribution"
   
-    - name: Remove old CA
+    - name: Delete system from Satellite
+      redhat.satellite.host:
+        name: '{{ inventory_hostname }}.{{ survey_domain }}' # fqdn required...
+        state: absent
+        server_url: https://sat.ipa.jpriddy.com
+        username: admin 
+        password: "{{ sat_admin_password }}"
+      when: "'RedHat' in ansible_distribution"    
+
+    - name: Remove any old katello-ca-consumer* CAs
       ansible.builtin.package:
         name: "katello-ca-consumer*"
         state: absent
@@ -41,7 +39,7 @@
         org_id: "JPRIDDY"
         activationkey: "rhel"
         force_register: yes
-        #consumer_name: '{{ inventory_hostname }}'  # use the short hostname
+        consumer_name: '{{ inventory_hostname }}.{{ survey_domain }}'  # use the short hostname
       register: registration_result
       when: "'RedHat' in ansible_distribution"
     
