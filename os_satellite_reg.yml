@@ -6,7 +6,8 @@
 
     - name: Delete system from Satellite
       redhat.satellite.host:
-        name: "{{ inventory_hostname }}.{{ survey_domain }}"
+        name: '{{ inventory_hostname }}' # use the short hostname
+        #.{{ survey_domain }}"
         #organization: JPRIDDY
         state: absent
         server_url: https://sat.ipa.jpriddy.com
@@ -23,6 +24,7 @@
       ansible.builtin.package:
         name: "katello-ca-consumer*"
         state: absent
+      when: "'RedHat' in ansible_distribution"
 
     - name: Clean up subscription-manager
       ansible.builtin.command: "subscription-manager clean"
