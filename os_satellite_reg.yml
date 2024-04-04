@@ -5,7 +5,8 @@
   tasks:
     
     - name: Unregister
-      ansible.builtin.command: "subscription-manager remove --all"
+      ansible.builtin.command:
+        cmd: "subscription-manager remove --all"
       when: "'RedHat' in ansible_distribution"
   
     - name: Delete system from Satellite
@@ -15,6 +16,7 @@
         server_url: https://sat.ipa.jpriddy.com
         username: admin 
         password: "{{ sat_admin_password }}"
+        server_insecure: yes
       when: "'RedHat' in ansible_distribution"    
 
     - name: Remove any old katello-ca-consumer* CAs
