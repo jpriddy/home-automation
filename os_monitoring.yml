@@ -31,19 +31,3 @@
         name: redhat.rhel_system_roles.metrics
       vars:
         metrics_retention_days: 31
-
-    - name: Replace glances systemd unit file with one that enables server mode
-      ansible.builtin.copy:
-        src: configs/glances.service
-        dest: /etc/systemd/system/multi-user.target.wants/glances.service
-    #if below daemon_reload doesnt help
-    #- name: Force systemd to reread configs
-    #  ansible.builtin.systemd_service:
-    #    daemon_reload: true
-
-    - name: Enable and start glances
-      ansible.builtin.systemd:
-        name: glances
-        daemon_reload: true
-        enabled: true
-        state: restarted
