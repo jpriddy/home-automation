@@ -13,5 +13,6 @@
       when: "'RedHat' in ansible_distribution"
 
     - name: Configure insights client
-      ansible.builtin.command: insights-client --register
+      ansible.builtin.command:
+        cmd: insights-client --register
       when: "'RedHat' in ansible_distribution"

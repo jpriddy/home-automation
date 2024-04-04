@@ -17,27 +17,33 @@
         - glances
 
     - name: Enable and start tuned
-      ansible.builtin.service:
+      ansible.builtin.systemd:
         name: tuned
         enabled: true
         state: restarted
 
     - name: Setup tuned auto_profile
-      ansible.builtin.command: /usr/sbin/tuned-adm auto_profile
-
-    - name: Replace glances systemd unit file with one that enables server mode
-      ansible.builtin.copy:
-        src: configs/glances.service
-        dest: /etc/systemd/system/multi-user.target.wants/glances.service
-
-    - name: Enable and start glances
-      ansible.builtin.service:
-        name: glances
-        enabled: true
-        state: restarted
+      ansible.builtin.command:
+        cmd: "/usr/sbin/tuned-adm auto_profile"
 
     - name: Use redhat system role to set up a month of metrics
       ansible.builtin.include_role:
         name: redhat.rhel_system_roles.metrics
       vars:
         metrics_retention_days: 31
+
+    - name: Replace glances systemd unit file with one that enables server mode
+      ansible.builtin.copy:
+        src: configs/glances.service
+        dest: /etc/systemd/system/multi-user.target.wants/glances.service
+    #if below daemon_reload doesnt help
+    #- name: Force systemd to reread configs
+    #  ansible.builtin.systemd_service:
+    #    daemon_reload: true
+
+    - name: Enable and start glances
+      ansible.builtin.systemd:
+        name: glances
+        daemon_reload: true
+        enabled: true
+        state: restarted
