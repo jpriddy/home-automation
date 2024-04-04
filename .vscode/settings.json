@@ -1,8 +1,0 @@
-{
-    "ansible.python.interpreterPath": "/opt/homebrew/bin/",
-    "ansible.validation.lint.path": "/opt/homebrew/bin/",
-    "ansible.ansibleNavigator.path": "/opt/homebrew/bin/",
-    "ansible.ansible.reuseTerminal": true,
-    "ansible.ansible.path": "/opt/homebrew/bin/",
-    "ansible.executionEnvironment.volumeMounts": []
-}
