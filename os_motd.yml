@@ -1,7 +1,7 @@
 ---
 - name: Configure motd
   hosts: all
-  gather_facts: yes
+  gather_facts: true
   become: true
   tasks:
 
@@ -9,4 +9,3 @@
     template:
       src: templates/motd.j2
       dest: /etc/motd
-        

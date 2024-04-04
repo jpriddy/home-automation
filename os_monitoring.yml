@@ -21,10 +21,10 @@
         name: tuned
         enabled: true
         state: restarted
-    
+
     - name: Setup tuned auto_profile
       ansible.builtin.command: /usr/sbin/tuned-adm auto_profile
-        
+
     - name: Replace glances systemd unit file with one that enables server mode
       ansible.builtin.copy:
         src: configs/glances.service

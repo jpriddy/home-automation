@@ -10,22 +10,21 @@
     - name: Install openssl
       ansible.builtin.package: 
         name: openssl
-        state: latest
+        state: present
 
     - name: Download the installation script
-      get_url:
+      ansible.builtin.get_url:
         url: https://my-netdata.io/kickstart.sh
         dest: /tmp/netdata_kickstart.sh
         mode: +x
 
     - name: Install Netdata
-      command: /tmp/netdata_kickstart.sh --native-only --dont-wait  --no-updates --stable-channel --disable-telemetry
+      ansible.builtin.command: /tmp/netdata_kickstart.sh --native-only --dont-wait  --no-updates --stable-channel --disable-telemetry
 
     - name: Cleanup installation script
-      file:
+      ansible.builtin.file:
         path: /tmp/netdata_kickstart.sh
         state: absent
-
     - template:
         src: templates/netdata.conf.j2
         dest: /etc/netdata/netdata.conf
@@ -37,6 +36,6 @@
 
   handlers:
   - name: Restart Netdata
-    service:
+    ansible.builtin.service:
       name: netdata
       state: restarted

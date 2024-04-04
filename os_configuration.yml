@@ -7,7 +7,7 @@
    - name: Install a bunch of packages
      ansible.builtin.package:
       name: "{{ item }}"
-      state: latest
+      state: present
      with_items:
       - bash-completion
       - mlocate
@@ -49,7 +49,7 @@
    - name: Install guest agent if virtualized
      ansible.builtin.package:
        name: qemu-guest-agent
-       state: latest
+       state: present
      when: ansible_virtualization_role == "guest"
 
    - name: Start guest agent service if virtualized

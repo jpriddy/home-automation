@@ -15,7 +15,6 @@
         become: true
       when: reclaim == false
 
-
     - name: Re-claim a node to Netdata Cloud
       block:
       - name: Ensure `uuidgen` is installed

@@ -16,13 +16,13 @@
       ansible.builtin.include_role:
         name: redhat.rhel_idm.ipaclient
       vars:
-        state: absent
+        ipa_client_state: absent
 
     - name: Deploy and configure IPA client
       ansible.builtin.include_role:
         name: redhat.rhel_idm.ipaclient
       vars:
-        state: present
+        ipa_client_state: present
         ipaadmin_password: "{{ ds_admin_password }}"
         ipaclient_mkhomedir: true
         ipaclient_ntp_servers: "192.168.1.1"
@@ -32,7 +32,7 @@
         ipaclient_configure_firefox: true
         ipaclient_all_ip_addresses: true
         ipaclient_subid: true
-    
+
     - name: Install realmd for completeness
       ansible.builtin.package:
         name: realmd
