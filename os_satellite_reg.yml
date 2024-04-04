@@ -16,7 +16,6 @@
         server_url: https://sat.ipa.jpriddy.com
         username: admin 
         password: "{{ sat_admin_password }}"
-        server_insecure: yes
       when: "'RedHat' in ansible_distribution"    
 
     - name: Remove any old katello-ca-consumer* CAs
