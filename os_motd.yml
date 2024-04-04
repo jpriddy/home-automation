@@ -8,4 +8,5 @@
   - name: Replacing /etc/motd with MOTD template
     template:
       src: templates/motd.j2
+      mode: '0644'
       dest: /etc/motd

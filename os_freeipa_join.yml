@@ -41,6 +41,7 @@
     - name: Create conf file for krb5 to support short hostnames
       ansible.builtin.copy:
         dest: "/etc/krb5.conf.d/short_hostnames"
+        mode: '0644'
         content: |
           # https://web.mit.edu/kerberos/krb5-latest/doc/admin/princ_dns.html
           # so we don't need FQDNs
@@ -50,6 +51,7 @@
     - name: Create conf file for sshd to support short hostnames
       ansible.builtin.copy:
         dest: "/etc/ssh/sshd_config.d/60-short-hostnames.conf"
+        mode: '0644'
         content: |
           #https://web.mit.edu/kerberos/krb5-latest/doc/admin/princ_dns.html
           # so we don't need FQDNs
