@@ -3,7 +3,7 @@
   hosts: all
   tasks:
 
-  - name: "Add user using routeros command:  /tool user set name=homepage password=$homepage_password"
+  - name: "Add user using routeros command:  /user set name=homepage password=$homepage_password"
     community.routeros.command:
         commands: 
         - /user set name=homepage password="{{ homepage_password }}"
