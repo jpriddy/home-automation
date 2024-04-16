@@ -3,7 +3,7 @@
   hosts: all
   tasks:
 
-  - name: "Add user using routeros command '/system backup save' 'name=hostname-date.backup' "
+  - name: "Add user using routeros command:  /tool user set name=homepage password=$VAULTPW"
     community.routeros.command:
         commands: 
         - /tool user set name=homepage password="{{ homepage_mikrotik_password }}"  ###need to add this password to vault...
