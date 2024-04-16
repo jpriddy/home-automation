@@ -1,0 +1,10 @@
+---
+- name: Add homepage user to routeros
+  hosts: all
+  tasks:
+
+  - name: "Add user using routeros command '/system backup save' 'name=hostname-date.backup' "
+    community.routeros.command:
+        commands: 
+        - /tool user set name=homepage password={{PASSWORD}}
+    when: ansible_network_os == "community.routeros.routeros"
