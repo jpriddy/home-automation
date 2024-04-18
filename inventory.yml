@@ -101,10 +101,10 @@ windows_servers:
     dc2:
       ansible_host: "192.168.1.162"
 
-#windows_clients:
-#  hosts:
-#    win11:
-#      ansible_host: "192.168.1.0"  ###change me
-#    desktop:
-#      ansible_host: "192.168.1.102"
+windows_clients:
+  hosts:
+    win11:
+      ansible_host: "192.168.1.153"  ###change me
+    desktop:
+      ansible_host: "192.168.1.102"
 
