@@ -6,5 +6,5 @@
   - name: "Add user using routeros command"
     community.routeros.command:
         commands: 
-        - /user set name=homepage password="{{ homepage_password }}"
+        - /user add name=homepage group=read password="{{ homepage_password }}"
     when: ansible_network_os == "community.routeros.routeros"
