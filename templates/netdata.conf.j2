@@ -1,7 +1,8 @@
 # managed by ansible
 [global]
-  hostname = {{ inventory_hostname }}
-  dbengine multihost disk space = {{ dbengine_multihost_disk_space }}
+  #hostname = {{ inventory_hostname }} #should be auto detected
+  dbengine multihost disk space: 1024
 
 [web]
-	mode = {{ web_mode }}
+  mode: static-threaded
+ 
