@@ -1,8 +1,6 @@
 ---
 - name: Install Netdata
   hosts: all
-  vars_files:
-    - "os_netdata_vars.yml"
   become: true
 
   tasks:
