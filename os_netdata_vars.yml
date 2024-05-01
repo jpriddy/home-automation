@@ -10,13 +10,13 @@
 
 
 #should be in creds
-claim_token: SGl1vKwLSSEisf6GThqxE1E4cLbdzbLZSm6IaC8cVQ9fW5Eq8kaP9wJf_AgPzOcdriH5F0TR0ZBDarDKAQefT89tpBT99ypVdeWnwEOWMcbjLrBsuPziRK_s9OPu8zwMkviohWk --claim-rooms 69c4e0ad-5787-435a-95be-40395ab74a9c
-claim_rooms: 69c4e0ad-5787-435a-95be-40395ab74a9c  #should be in creds
-claim_url: https://app.netdata.cloud
+#claim_token: SGl1vKwLSSEisf6GThqxE1E4cLbdzbLZSm6IaC8cVQ9fW5Eq8kaP9wJf_AgPzOcdriH5F0TR0ZBDarDKAQefT89tpBT99ypVdeWnwEOWMcbjLrBsuPziRK_s9OPu8zwMkviohWk --claim-rooms 69c4e0ad-5787-435a-95be-40395ab74a9c
+#claim_rooms: 69c4e0ad-5787-435a-95be-40395ab74a9c  #should be in creds
+#claim_url: https://app.netdata.cloud
 
 # Force re-claiming of nodes to Netdata Cloud. Read more:
 # https://learn.netdata.cloud/docs/agent/claim#remove-and-reclaim-a-node
-reclaim: true
+#reclaim: true
 
 # Set Netdata's metrics retention policy via the disk size for the database
 # engine. Value is in MiB. Read more:
