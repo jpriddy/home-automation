@@ -3,7 +3,7 @@
   hosts: all
   become: true
   tasks:
-  
+
     - name: Ensure Flatpak is installed
       ansible.builtin.package:
         name: flatpak
