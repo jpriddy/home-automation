@@ -9,11 +9,11 @@
         name: glances
         state: present
 
-#    - name: Replace glances systemd unit file with one that enables server mode
-#      ansible.builtin.copy:
-#        src: configs/glances.service
-#        dest: /etc/systemd/system/multi-user.target.wants/glances.service
-#        mode: '0644'
+    - name: Replace glances systemd unit file with one that enables server mode
+      ansible.builtin.copy:
+        src: configs/glances.service
+        dest: /etc/systemd/system/multi-user.target.wants/glances.service
+        mode: '0644'
 
 
     - name: Enable and start glances
