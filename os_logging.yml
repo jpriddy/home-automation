@@ -8,14 +8,14 @@
       ansible.builtin.include_role:
         name: redhat.rhel_system_roles.logging
       vars:
-      - name: basic_input
-        type: basics
-        logging_outputs:
-        - name: forward_output0
-          type: forwards
-          severity: info
-          target: 192.168.1.30
-          udp_port: 514
+        - name: basic_input
+          type: basics
+          logging_outputs:
+          - name: forward_output0
+            type: forwards
+            severity: info
+            target: 192.168.1.30
+            udp_port: 514
         - name: forward_output1
           type: forwards
           facility: mail
@@ -25,10 +25,10 @@
           type: files
           severity: info
           exclude:
-          - authpriv.none
-          - auth.none
-          - cron.none
-          - mail.none
+            - authpriv.none
+            - auth.none
+            - cron.none
+            - mail.none
           path: /var/log/messages
         - name: files_output1
           type: files
@@ -37,7 +37,7 @@
           logging_flows:
         - name: flows0
           inputs: [basic_input]
-          outputs: [forward_output0, forward_output1,files_output0,files_output1]
+          outputs: [forward_output0, forward_output1, files_output0,files_output1]
 
     - name: Use system role to configure journald
       ansible.builtin.include_role:

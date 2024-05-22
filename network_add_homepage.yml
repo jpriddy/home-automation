@@ -3,8 +3,8 @@
   hosts: all
   tasks:
 
-  - name: "Add user using routeros command"
-    community.routeros.command:
-        commands: 
-        - /user add name=homepage group=read password="{{ homepage_password }}"
-    when: ansible_network_os == "community.routeros.routeros"
+   - name: "Add user using routeros command"
+     community.routeros.command:
+         commands: 
+         - /user add name=homepage group=read password="{{ homepage_password }}"
+     when: ansible_network_os == "community.routeros.routeros"

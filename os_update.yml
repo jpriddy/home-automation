@@ -6,12 +6,12 @@
     - name: Universal package update
       ansible.builtin.package:
         name: '*'
-        state: latest
+        state: present
 
     - name: Install system updates for redhat based hosts (yum/dnf)
       ansible.builtin.yum:
         name: '*'
-        state: latest
+        state: present
         update_cache: true
       when:
         - ansible_os_family == "RedHat"
@@ -19,13 +19,13 @@
     - name: Install system updates for debian based hosts (apt)
       ansible.builtin.apt:
         name: '*'
-        state: latest
+        state: present
         update_cache: true
       when:
         - ansible_os_family == "Debian"
 
     - name: Install Windows updates
-      win_updates:
+      ansible.windows.win_updates:
         category_names:
           - SecurityUpdates
           - CriticalUpdates

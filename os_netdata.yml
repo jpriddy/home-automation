@@ -6,7 +6,7 @@
   tasks:
 
     - name: Install openssl
-      ansible.builtin.package: 
+      ansible.builtin.package:
         name: openssl
         state: present
 
@@ -23,7 +23,7 @@
       ansible.builtin.file:
         path: /tmp/netdata_kickstart.sh
         state: absent
-    - template:
+    - template.ansible.builtin.:
         src: templates/netdata.conf.j2
         dest: /etc/netdata/netdata.conf
         owner: root
@@ -33,7 +33,7 @@
       become: true
 
   handlers:
-  - name: Restart Netdata
-    ansible.builtin.service:
-      name: netdata
-      state: restarted
+    - name: Restart Netdata
+      ansible.builtin.service:
+        name: netdata
+        state: restarted

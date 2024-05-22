@@ -3,12 +3,12 @@
   hosts: all
   become: true
   tasks:
-    
+
     - name: Unregister
       ansible.builtin.command:
         cmd: "subscription-manager remove --all"
       when: "'RedHat' in ansible_distribution"
-  
+
 #    - name: Delete system from Satellite
 #      redhat.satellite.host:
 #        name: '{{ inventory_hostname }}.{{ survey_domain }}' # fqdn required...
@@ -27,10 +27,9 @@
     - name: Clean up subscription-manager
       ansible.builtin.command: "subscription-manager clean"
       when: "'RedHat' in ansible_distribution"
-    
+
     - name: Install sat CA 
-      ansible.builtin.command: "/usr/bin/rpm -i -f --nosignature http://sat.ipa.jpriddy.com/pub/katello-ca-consumer-latest.noarch.rpm"
-      when: "'RedHat' in ansible_distribution"
+      ansible.builtin.command: "/usr/bin/rpm -i -f --nosignature http://sat.ipa.jpriddy.com/pub/katello-ca-consumer-latest.noarch.rpm"      when: "'RedHat' in ansible_distribution"
 
     - name: (Re)Register host with Satellite  
       redhat_subscription:
@@ -43,7 +42,7 @@
         consumer_name: '{{ inventory_hostname }}.{{ survey_domain }}'  # use the short hostname
       register: registration_result
       when: "'RedHat' in ansible_distribution"
-    
+
     - name: Subscription-manager refresh
       ansible.builtin.command: "subscription-manager refresh"
       when: "'RedHat' in ansible_distribution"
@@ -51,7 +50,7 @@
     - debug:
         msg: "Registration successful: {{ registration_result.changed }}"
       when: "'RedHat' in ansible_distribution"
- 
+
     - name: Install katello-host-tools-tracer for additional functionality
       ansible.builtin.package:
         name: katello-host-tools-tracer

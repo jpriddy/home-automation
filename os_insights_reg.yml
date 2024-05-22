@@ -12,7 +12,7 @@
         state: present
       when: "'RedHat' in ansible_distribution"
 
-    - name: Configure insights client
+    - name: Register the insights client
       ansible.builtin.command:
         cmd: insights-client --register
       when: "'RedHat' in ansible_distribution"
