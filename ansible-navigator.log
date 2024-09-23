@@ -349,3 +349,11 @@ Error: ghcr.io/ansible/creator-ee:v24.2.0: image not known
 2024-07-19T17:41:05.824233+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' stderr: Error: ghcr.io/ansible/creator-ee:v24.2.0: image not known
 
 2024-07-19T17:41:11.858764+00:00 ERROR 'ansible_navigator.image_manager.puller._log_message' Execution environment pull failed
+2024-09-13T05:17:58.472591+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' Image inspection failed, image assumed to be corrupted or missing
+2024-09-13T05:17:58.473377+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' stdout: []
+
+2024-09-13T05:17:58.473548+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' stderr: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+
+2024-09-13T05:17:58.536582+00:00 ERROR 'ansible_navigator.image_manager.puller._log_message' Execution environment pull failed
+2024-09-13T05:17:58.536883+00:00 ERROR 'ansible_navigator.image_manager.puller._log_message' Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+2024-09-13T05:18:06.663870+00:00 WARNING 'ansible_navigator.run' Dirty exit, killing the pid
