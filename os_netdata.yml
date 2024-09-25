@@ -16,23 +16,15 @@
         dest: /tmp/netdata_kickstart.sh
         mode: +x
 
-    - name: Run shell command to install Netdata
+    - name: Run shell command to install Netdata, then replace config file
       ansible.builtin.command: /tmp/netdata_kickstart.sh  --reinstall-even-if-unsafe --dont-wait --native-only  --stable-channel --no-updates --disable-telemetry 
-
-    - name: Cleanup installation script and replace config file
-      ansible.builtin.file:
-        path: /tmp/netdata_kickstart.sh
-        state: absent
-    - template.ansible.builtin.:
+      ansible.builtin.template:
         src: templates/netdata.conf.j2
         dest: /etc/netdata/netdata.conf
         owner: root
         group: root
         mode: u=wrx,g=rx,o=r,+x
-      notify: Restart Netdata
-      become: true
 
-  handlers:
     - name: Restart Netdata
       ansible.builtin.service:
         name: netdata
