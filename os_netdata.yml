@@ -10,16 +10,16 @@
         name: openssl
         state: present
 
-    - name: Download the installation script
+    - name: Download the installation script from internet
       ansible.builtin.get_url:
         url: https://my-netdata.io/kickstart.sh
         dest: /tmp/netdata_kickstart.sh
         mode: +x
 
-    - name: Install Netdata
+    - name: Run shell command to install Netdata
       ansible.builtin.command: /tmp/netdata_kickstart.sh  --reinstall-even-if-unsafe --dont-wait --native-only  --stable-channel --no-updates --disable-telemetry 
 
-    - name: Cleanup installation script
+    - name: Cleanup installation script and replace config file
       ansible.builtin.file:
         path: /tmp/netdata_kickstart.sh
         state: absent
