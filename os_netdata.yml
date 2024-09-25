@@ -17,7 +17,7 @@
         mode: +x
 
     - name: Install Netdata
-      ansible.builtin.command: /tmp/netdata_kickstart.sh --native-only --dont-wait  --no-updates --disable-telemetry --reinstall-even-if-unsafe
+      ansible.builtin.command: /tmp/netdata_kickstart.sh  --reinstall-even-if-unsafe --dont-wait --native-only  --stable-channel --no-updates --disable-telemetry 
 
     - name: Cleanup installation script
       ansible.builtin.file:
