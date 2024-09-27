@@ -3,13 +3,13 @@
   become: true
   tasks:
 
-    - name: Universal package update
-      ansible.builtin.package:
-        name: '*'
-        state: present
+    #- name: Universal package update
+    #  ansible.builtin.package:
+    #    name: '*'
+    #    state: present
 
     - name: Install system updates for redhat based hosts (yum/dnf)
-      ansible.builtin.yum:
+      ansible.builtin.dnf:
         name: '*'
         state: present
         update_cache: true
