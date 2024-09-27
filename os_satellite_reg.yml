@@ -29,12 +29,12 @@
       when: "'RedHat' in ansible_distribution"
 
     - name: Install sat CA 
-      ansible.builtin.command: "/usr/bin/rpm -i -f --nosignature http://sat.ipa.jpriddy.com/pub/katello-ca-consumer-latest.noarch.rpm"      when: "'RedHat' in ansible_distribution"
+      ansible.builtin.command: "/usr/bin/rpm -i -f --nosignature http://sat.jpriddy.lan/pub/katello-ca-consumer-latest.noarch.rpm"      when: "'RedHat' in ansible_distribution"
 
     - name: (Re)Register host with Satellite  
       redhat_subscription:
         state: present
-        server_hostname: "sat.ipa.jpriddy.com"
+        server_hostname: "sat.jpriddy.lan"
         server_insecure: yes
         org_id: "JPRIDDY"
         activationkey: "rhel"
