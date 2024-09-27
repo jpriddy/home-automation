@@ -12,9 +12,7 @@
         - tuned
         - iftop
       ## doesnt exist on debian  - perf
-        - glances
         - htop
-        - glances
 
     - name: Enable and start tuned
       ansible.builtin.systemd:
