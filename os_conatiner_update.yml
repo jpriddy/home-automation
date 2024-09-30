@@ -3,12 +3,6 @@
   become: yes
 
   tasks:
-    - name: Gather Docker Container Information
-      become: yes
-      register: container_info
-      docker_container:
-        state: running
-
     - name: Update Docker Containers
       become: yes
       loop: "{{ container_info.results }}"
@@ -17,9 +11,3 @@
         name: "{{ item.Name }}"
         image: "{{ item.Image }}"
         state: restarted
-
-    - name: Purge Old Docker Images
-      become: yes
-      docker_image:
-        state: absent
-        force: yes
