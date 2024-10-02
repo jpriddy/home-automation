@@ -13,7 +13,7 @@
 #      redhat.satellite.host:
 #        name: '{{ inventory_hostname }}.{{ survey_domain }}' # fqdn required...
 #        state: absent
-#        server_url: https://sat.ipa.jpriddy.com
+#        server_url: https://sat.jpriddy.lan
 #        username: admin 
 #        password: "{{ sat_admin_password }}"
 #      when: "'RedHat' in ansible_distribution"    
