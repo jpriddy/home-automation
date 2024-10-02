@@ -11,7 +11,7 @@
       with_items:
         - tuned
         - iftop
-      ## doesnt exist on debian  - perf
+        - perf  ## doesn't exist on debian
         - htop
 
     - name: Enable and start tuned
@@ -20,7 +20,7 @@
         enabled: true
         state: restarted
 
-    - name: Setup tuned auto_profile
+    - name: Setup tuned for auto_profile
       ansible.builtin.command:
         cmd: "/usr/sbin/tuned-adm auto_profile"
 

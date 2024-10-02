@@ -6,20 +6,19 @@
   become: true
   tasks:
 
-    - name: Preemptively install cockpit for fedora compatibilty with rhel system role
-      ansible.builtin.package:
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - cockpit # system role not installing cockpit with fedora (is there a community cockpit role?)... so we install here instead
+#    - name: Preemptively install cockpit for fedora compatibilty with rhel system role
+#      ansible.builtin.package:
+#        name: "{{ item }}"
+#        state: present
+#      with_items:
+#        - cockpit # system role not installing cockpit with fedora (is there a community cockpit role?)... so we install here instead
 
     - name: Use system role to set up cockpit
       ansible.builtin.include_role:
         name: redhat.rhel_system_roles.cockpit
       vars:
         cockpit_packages:
-#          - cockpit
-          - cockpit-bridge
+          - cockpit
           - cockpit-networkmanager
           - cockpit-bridge
           - cockpit-packagekit
@@ -36,10 +35,12 @@
             MaxStartups: 20
           Session:
             IdleTimeout: 15
-            Banner: /etc/motd # see here for why we have these: https://cockpit-project.org/faq.html#error-message-about-being-offline
+            Banner: /etc/motd # see here: https://cockpit-project.org/faq.html#error-message-about-being-offline
         cockpit_enabled: true
         cockpit_started: true
-        # cockpit_port: 9090 #need an offramp for redhat satellite -- 9090 is taken for internal usage
+        # cockpit_port: 9090 
+        # ^^ need an offramp for redhat satellite and 
+        # other services that may use 9090
 
 # role is enabling, but not starting cockpit... so we do it here
     - name: Start and enable cockpit

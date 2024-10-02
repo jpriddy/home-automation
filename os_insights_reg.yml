@@ -6,13 +6,10 @@
 
   # need logic to ensure system has a registration, is not fedora, etc
 
-    - name: Install insights client
+    - name: Install and register insights client
       ansible.builtin.package:
         name: insights-client
         state: present
-      when: "'RedHat' in ansible_distribution"
-
-    - name: Register the insights client
       ansible.builtin.command:
         cmd: insights-client --register
       when: "'RedHat' in ansible_distribution"

@@ -18,7 +18,7 @@
       - cifs-utils
       - nfs-utils
       - python3-libselinux # required for ansible to work on fedora?
-      - util-linux # for netdata to reclaim nodes
+      #- util-linux # for netdata to reclaim nodes
 
 
    - name: Configure timesync with system role redhat.rhel_system_roles.timesync
@@ -26,7 +26,7 @@
       name: redhat.rhel_system_roles.timesync
      vars:
       timesync_ntp_servers:
-       - hostname: firewall.jpriddy.com
+       - hostname: 192.168.1.1
          iburst: true
 
    - name: Customize ssh server with system role redhat.rhel_system_roles.sshd
@@ -46,13 +46,10 @@
       sshd_ChallengeResponseAuthentication: yes
       sshd_AllowTcpForwarding: yes
 
-   - name: Install guest agent if virtualized
+   - name: Install and start guest agent if virtualized
      ansible.builtin.package:
        name: qemu-guest-agent
        state: present
-     when: ansible_virtualization_role == "guest"
-
-   - name: Start guest agent service if virtualized
      ansible.builtin.service:
        name: qemu-guest-agent
        state: started
