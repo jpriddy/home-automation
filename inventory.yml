@@ -95,6 +95,21 @@ linux_servers:
     aapctl:
       ansible_host: "192.168.1.158"
 
+aap_servers:
+  hosts:
+    aap-gw:
+      ansible_host: "192.168.1.134"
+    aap-ctl:
+      ansible_host: "192.168.1.135"
+    aap-ph:
+      ansible_host: "192.168.1.136"
+    aap-db:
+      ansible_host: "192.168.1.137"
+    aap-eda:
+      ansible_host: "192.168.1.138"
+
+
+
 windows_servers:
   hosts:
     dc1:
