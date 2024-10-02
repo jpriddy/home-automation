@@ -49,8 +49,6 @@ linux_clients:
   hosts:
     xps:
       ansible_host: "192.168.1.107"
-    gar:
-      ansible_host: "192.168.1.29"
 
 mac_clients:
   hosts:
@@ -74,12 +72,6 @@ linux_servers:
       ansible_host: "192.168.1.29"
     media:
       ansible_host: "192.168.1.150"
-    nuc1:
-      ansible_host: "192.168.1.141"
-    nuc2:
-      ansible_host: "192.168.1.142"
-    nuc3:
-      ansible_host: "192.168.1.143"
     virt1:
       ansible_host: "192.168.1.235"
     containers:
@@ -88,17 +80,20 @@ linux_servers:
       ansible_host: "192.168.1.131"
     idm2:
       ansible_host: "192.168.1.132" 
-    aap:
-      ansible_host: "192.168.1.149"   
-    aapph:
-      ansible_host: "192.168.1.148"    
+    aap-gw:
+      ansible_host: "192.168.1.134"
+    aap-ctl:
+      ansible_host: "192.168.1.135"
+    aap-ph:
+      ansible_host: "192.168.1.136"
+    aap-db:
+      ansible_host: "192.168.1.137"
+    aap-eda:
+      ansible_host: "192.168.1.138"    
     db1:
       ansible_host: "192.168.1.157" 
     aapctl:
       ansible_host: "192.168.1.158"
-    aaphub:
-      ansible_host: "192.168.1.148"
-
 
 windows_servers:
   hosts:
