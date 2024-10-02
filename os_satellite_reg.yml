@@ -52,11 +52,13 @@
         msg: "Registration successful: {{ registration_result.changed }}"
       when: "'RedHat' in ansible_distribution"
 
-    - name: Install katello-host-tools-tracer for additional functionality
-      ansible.builtin.package:
-        name: katello-host-tools-tracer
-        state: present
-      when: "'RedHat' in ansible_distribution"
+
+# package not found?
+#    - name: Install katello-host-tools-tracer for additional functionality
+#      ansible.builtin.package:
+#        name: katello-host-tools-tracer
+#        state: present
+#      when: "'RedHat' in ansible_distribution"
 
 
 

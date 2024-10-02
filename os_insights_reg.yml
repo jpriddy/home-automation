@@ -10,6 +10,9 @@
       ansible.builtin.package:
         name: insights-client
         state: present
+      when: "'RedHat' in ansible_distribution"
+    
+    - name: Install and register insights client      
       ansible.builtin.command:
         cmd: insights-client --register
       when: "'RedHat' in ansible_distribution"
