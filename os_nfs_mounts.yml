@@ -4,22 +4,22 @@
 
   vars:
     nfs_mounts:
-      - { name: iso, local_path: /synology/iso, server_path: /volume2/iso }
-      - { name: download, local_path: /synology/download, server_path: /volume1/download }
-      - { name: crash, local_path: /var/crash, server_path: /volume2/crash }
-      - { name: scratch, local_path: /synology/scratch, server_path: /volume2/scratch }
-      - { name: backup, local_path: /synology/backup, server_path: /volume2/backup }
-      - { name: web, local_path: /synology/web, server_path: /volume2/web }
-      - { name: music, local_path: /synology/music, server_path: /volume2/music }
-      - { name: document, local_path: /synology/document, server_path: /volume2/document }
-      - { name: video, local_path: /synology/video, server_path: /volume2/video }
+      - { name: iso, server_path: /volume2/iso }
+      - { name: download, server_path: /volume1/download }
+      - { name: crash, server_path: /volume2/crash }
+      - { name: scratch, server_path: /volume2/scratch }
+      - { name: backup, server_path: /volume2/backup }
+      - { name: web, server_path: /volume2/web }
+      - { name: music, server_path: /volume2/music }
+      - { name: document, server_path: /volume2/document }
+      - { name: video, server_path: /volume2/video }
 
   tasks:
     - name: Mount NFS shares
       ansible.posix.mount:
         name: "{{ item.name }}"
         src: "192.168.1.30:{{ item.server_path }}"
-        path: "{{ item.local_path }}"
+        path: "/synology/{{ item.name }}"
         fstype: nfs
         opts: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev"
         state: mounted
