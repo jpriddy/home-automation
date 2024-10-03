@@ -18,7 +18,7 @@
     - name: Mount NFS shares
       ansible.posix.mount:
         name: "{{ item.name }}"
-        device: "192.168.1.30:/volume2/{{ item.server_path }}"
+        device: "192.168.1.30:{{ item.server_path }}"
         dir: "{{ item.local_path }}"
         fstype: nfs
         opts: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev"
