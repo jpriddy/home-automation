@@ -3,7 +3,6 @@
   become: yes
 
   vars:
-    nfs_mounts:
       - { name: iso, local_path: /synology/iso, server_path: /volume2/iso, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
       - { name: download, local_path: /synology/download, server_path: /volume1/download, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
       - { name: crash, local_path: /var/crash, server_path: /volume2/crash, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
@@ -16,7 +15,7 @@
 
   tasks:
     - name: Create NFS mounts
-      nfs_mount:
+      ansible.posix.mount:
         name: "{{ item.name }}"
         path: "{{ item.local_path }}"
         server: 192.168.1.30
