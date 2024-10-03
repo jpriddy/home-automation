@@ -1,0 +1,26 @@
+- name: Create multiple NFS mounts
+  hosts: all
+  become: yes
+
+  vars:
+    nfs_mounts:
+      - { name: iso, local_path: /synology/iso, server_path: /volume2/iso, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
+      - { name: download, local_path: /synology/download, server_path: /volume1/download, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
+      - { name: crash, local_path: /var/crash, server_path: /volume2/crash, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
+      - { name: scratch, local_path: /synology/scratch, server_path: /volume2/scratch, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
+      - { name: backup, local_path: /synology/backup, server_path: /volume2/backup, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
+      - { name: web, local_path: /synology/web, server_path: /volume2/web, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
+      - { name: music, local_path: /synology/music, server_path: /volume2/music, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
+      - { name: document, local_path: /synology/document, server_path: /volume2/document, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
+      - { name: video, local_path: /synology/video, server_path: /volume2/video, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
+
+  tasks:
+    - name: Create NFS mounts
+      nfs_mount:
+        name: "{{ item.name }}"
+        path: "{{ item.local_path }}"
+        server: 192.168.1.30
+        export_path: "{{ item.server_path }}"
+        options: "{{ item.options }}"
+        state: mounted
+      with_items: "{{ nfs_mounts }}"

@@ -2,6 +2,7 @@
 collections:
   - name: ansible.windows
   - name: ansible.utils
+  - name: ansible.posix
   - name: community.routeros
   - name: community.general
   - name: redhat.rhel_system_roles
