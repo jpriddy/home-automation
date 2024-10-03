@@ -16,7 +16,7 @@
 
   tasks:
     - name: Mount NFS shares
-      posix_mount:
+      ansible.posix.mount:
         name: "{{ item.name }}"
         device: "192.168.1.30:/volume2/{{ item.server_path }}"
         dir: "{{ item.local_path }}"
