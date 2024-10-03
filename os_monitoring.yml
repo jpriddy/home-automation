@@ -10,9 +10,9 @@
         state: present
       with_items:
         - tuned
-        - iftop
-        - perf  ## doesn't exist on debian
-        - htop
+        #- iftop #not working on rhel
+        #- perf  ## doesn't exist on debian
+        #- htop #not working on rhel
 
     - name: Enable and start tuned
       ansible.builtin.systemd:
