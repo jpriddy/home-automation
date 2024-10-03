@@ -53,7 +53,7 @@
       when: "'RedHat' in ansible_distribution"
 
 
-# package not found?
+#package not found?
 #    - name: Install katello-host-tools-tracer for additional functionality
 #      ansible.builtin.package:
 #        name: katello-host-tools-tracer
