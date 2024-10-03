@@ -1,25 +1,26 @@
-- name: Create multiple NFS mounts
+- name: Mount NFS shares from 192.168.1.30
   hosts: all
   become: yes
 
   vars:
-      - { name: iso, local_path: /synology/iso, server_path: /volume2/iso, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
-      - { name: download, local_path: /synology/download, server_path: /volume1/download, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
-      - { name: crash, local_path: /var/crash, server_path: /volume2/crash, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
-      - { name: scratch, local_path: /synology/scratch, server_path: /volume2/scratch, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
-      - { name: backup, local_path: /synology/backup, server_path: /volume2/backup, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
-      - { name: web, local_path: /synology/web, server_path: /volume2/web, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
-      - { name: music, local_path: /synology/music, server_path: /volume2/music, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
-      - { name: document, local_path: /synology/document, server_path: /volume2/document, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
-      - { name: video, local_path: /synology/video, server_path: /volume2/video, options: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev" }
+    nfs_mounts:
+      - { name: iso, local_path: /synology/iso, server_path: /volume2/iso }
+      - { name: download, local_path: /synology/download, server_path: /volume1/download }
+      - { name: crash, local_path: /var/crash, server_path: /volume2/crash }
+      - { name: scratch, local_path: /synology/scratch, server_path: /volume2/scratch }
+      - { name: backup, local_path: /synology/backup, server_path: /volume2/backup }
+      - { name: web, local_path: /synology/web, server_path: /volume2/web }
+      - { name: music, local_path: /synology/music, server_path: /volume2/music }
+      - { name: document, local_path: /synology/document, server_path: /volume2/document }
+      - { name: video, local_path: /synology/video, server_path: /volume2/video }
 
   tasks:
-    - name: Create NFS mounts
-      ansible.posix.mount:
+    - name: Mount NFS shares
+      posix_mount:
         name: "{{ item.name }}"
-        path: "{{ item.local_path }}"
-        server: 192.168.1.30
-        export_path: "{{ item.server_path }}"
-        options: "{{ item.options }}"
+        device: "192.168.1.30:/volume2/{{ item.server_path }}"
+        dir: "{{ item.local_path }}"
+        fstype: nfs
+        opts: "rw,relatime,vers=3,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,local_lock=none,_netdev"
         state: mounted
       with_items: "{{ nfs_mounts }}"
