@@ -29,7 +29,7 @@
             IdleTimeout: 15
             Banner: /etc/motd # see here: https://cockpit-project.org/faq.html#error-message-about-being-offline
         cockpit_enabled: true
-        cockpit_started: true
+        #cockpit_started: true  #results in error?
         # cockpit_port: 9090 
         # ^^ need an offramp for redhat satellite and 
         # other services that may use 9090
