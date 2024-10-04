@@ -4,7 +4,7 @@
   
   tasks:
       - user:
-          name: "{{ user_name }}"
+          name: root
           password: "{{ my_password | password_hash('sha512') }}"
         vars:
           my_password: "{{ lookup('vars', type_password|default('dynamic_password')) }}"
