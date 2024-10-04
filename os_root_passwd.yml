@@ -4,5 +4,4 @@
   
   tasks:
     - name: Set root password
-  #not working
-  ##    user: name=root password="{ ds_admin_password }"
+      user: name=root password="{{ ds_admin_password }}"
