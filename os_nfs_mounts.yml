@@ -17,7 +17,7 @@
   tasks:
     - name: Mount NFS shares
       ansible.posix.mount:
-        name: "{{ item.name }}"
+        #name: "{{ item.name }}"
         src: "192.168.1.30:{{ item.server_path }}"
         path: "'/synology/'{{ item.name }}"
         fstype: nfs
