@@ -1,5 +1,5 @@
 ---
-- name: Configure autofs to mount synology shares
+- name: Install/Configure autofs
   hosts: all
   become: true
   tasks:

@@ -18,7 +18,6 @@
         name: redhat.rhel_system_roles.cockpit
       vars:
         cockpit_packages:
-          - cockpit
           - cockpit-networkmanager
           - cockpit-bridge
           - cockpit-packagekit

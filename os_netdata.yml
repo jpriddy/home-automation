@@ -17,7 +17,7 @@
         mode: +x
 
     - name: Run it
-      ansible.builtin.command: /tmp/netdata_kickstart.sh  --reinstall-even-if-unsafe --dont-wait --native-only  --stable-channel --no-updates --disable-telemetry
+      ansible.builtin.command: /tmp/netdata_kickstart.sh  --reinstall-even-if-unsafe --dont-wait --native-only --stable-channel --no-updates --disable-telemetry
       register: output
       changed_when: my_output.rc != 0
 
