@@ -4,7 +4,7 @@
   become: true
   tasks:
 
-   - name: Install a bunch of packages
+   - name: Install a bunch of packages from the base repos
      ansible.builtin.package:
       name: "{{ item }}"
       state: present
@@ -13,11 +13,10 @@
       - mlocate
       - rsync
       - nmap
-      - tuned
-      
+      - tuned      
       - cifs-utils
       - nfs-utils
-      - python3-libselinux # required for ansible to work on fedora?
+      #- python3-libselinux # required for ansible to work on fedora?
       #- util-linux # for netdata to reclaim nodes
       #- iftop   # not available on rhel 
 

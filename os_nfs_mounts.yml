@@ -4,8 +4,8 @@
 
   vars:
     nfs_mounts:
-      - { name: iso, server_path: /volume2/iso }
       - { name: download, server_path: /volume1/download }
+      - { name: iso, server_path: /volume2/iso }
       - { name: crash, server_path: /volume2/crash }
       - { name: scratch, server_path: /volume2/scratch }
       - { name: backup, server_path: /volume2/backup }
