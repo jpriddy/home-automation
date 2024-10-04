@@ -33,13 +33,12 @@
      ansible.builtin.include_role:
       name: redhat.rhel_system_roles.sshd
      vars:
-      sshd_config_owner: root
-      sshd_config_group: root
-      sshd_config_mode: 0600
-      sshd_hostkey_owner: root
-      sshd_hostkey_group: root
-      sshd_hostkey_mode: 0600
-      # sshd_verify_hostkeys: []    # must set permissions above or skip verification
+      #sshd_config_owner: root
+      #sshd_config_group: root
+      #sshd_config_mode: 0600
+      #sshd_hostkey_owner: root
+      #sshd_hostkey_group: root
+      #sshd_hostkey_mode: 0600
       sshd_PermitRootLogin: yes
       sshd_X11Forwarding: yes
       sshd_GSSAPIAuthentication: yes
@@ -50,11 +49,4 @@
      ansible.builtin.package:
        name: qemu-guest-agent
        state: present
-     when: ansible_virtualization_role == "guest"
-   
-   - name: Start guest agent if virtualized
-     ansible.builtin.service:
-       name: qemu-guest-agent
-       state: started
-       enabled: true
      when: ansible_virtualization_role == "guest"
