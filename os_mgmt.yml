@@ -42,8 +42,8 @@
         # other services that may use 9090
 
 # role is enabling, but not starting cockpit... so we do it here
-    - name: Start and enable cockpit
-      ansible.builtin.service:
-        name: cockpit.socket
-        enabled: true
-        state: started
+#    - name: Start and enable cockpit
+#      ansible.builtin.service:
+#        name: cockpit.socket
+#        enabled: true
+#        state: started
