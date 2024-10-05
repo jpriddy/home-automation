@@ -30,3 +30,14 @@
       debug:
         msg: "Image {{ item.item }} has an update available. New image ID: {{ item.results.stdout.split()[0] }}"
       when: image_updates.results.stdout != container_image_id
+
+
+    - name: Delete old image if an update is available
+      command: podman rmi {{ item.results.stdout.split()[0] }}
+      when: image_updates.results.stdout != container_image_id
+      with_items: "{{ container_image_name }}"
+
+    - name: Restart container if image was deleted
+      podman: state=restart
+      when: image_updates.results.stdout != container_image_id
+      with_items: "{{ container_image_id }}"
