@@ -19,7 +19,7 @@
         name: linux-system-roles.logging
       vars:
         logging_inputs:
-          - name: basic_input
+          - name: kernel_messages_input
             type: basics
             kernel_message: true
         logging_outputs:
@@ -31,5 +31,5 @@
             udp_port: 514
         logging_flows:
           - name: flows0
-            inputs: [basic_input]
+            inputs: [kernel_messages_input]
             outputs: [forward_output0]
