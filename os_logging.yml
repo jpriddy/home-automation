@@ -12,3 +12,9 @@
         journald_max_disk_size: 256
         journald_per_user: true
         journald_sync_interval: 1
+
+  roles:
+    - role: community.general.rsyslog
+      remote_host: 192.168.1.30
+      remote_port: 514
+      log_level: info
