@@ -23,7 +23,7 @@
             type: basics
             kernel_message: true
         logging_outputs:
-          - name: forward_output0
+          - name: synology_output
             type: forwards
             #severity: info  #should default to *
             #facility: info  #should default to *
@@ -32,4 +32,4 @@
         logging_flows:
           - name: flows0
             inputs: [kernel_messages_input]
-            outputs: [forward_output0]
+            outputs: [fsynology_output]
