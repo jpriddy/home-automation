@@ -13,8 +13,23 @@
         journald_per_user: true
         journald_sync_interval: 1
 
-  roles:
-    - role: community.general.rsyslog
-      remote_host: 192.168.1.30
-      remote_port: 514
-      log_level: info
+
+    - name: Use system role to configure journald
+      ansible.builtin.include_role:
+        name: linux-system-roles.logging
+      vars:
+        logging_inputs:
+          - name: basic_input
+            type: basics
+            kernel_message: true
+        logging_outputs:
+          - name: forward_output0
+            type: forwards
+            #severity: info  #should default to *
+            #facility: info  #should default to *
+            target: 192.168.1.30
+            udp_port: 514
+        logging_flows:
+          - name: flows0
+            inputs: [basic_input]
+            outputs: [forward_output0]
