@@ -1,5 +1,5 @@
 ---
-- name: Configure logging
+- name: Configure local and remote logging
   hosts: all
   become: true
   tasks:
@@ -14,9 +14,9 @@
         journald_sync_interval: 1
 
 
-    - name: Use system role to configure journald
+    - name: Use logging role to configure rsyslog to send to remote
       ansible.builtin.include_role:
-        name: linux-system-roles.logging
+        name: redhat.rhel_system_roles.logging
       vars:
         logging_inputs:
           - name: kernel_messages_input
