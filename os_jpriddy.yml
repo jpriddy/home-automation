@@ -9,4 +9,4 @@
             state=present
             group=wheel
             comment="John Priddy"
-            password={{ ds_admin_password }}
+            password={{ homelab root password }}
