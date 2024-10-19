@@ -1,0 +1,12 @@
+- name: Add user jpriddy
+  hosts: all
+  gather_facts: true
+  become: yes
+
+  tasks:
+    - name: Create user jpriddy
+      user: name=jpriddy
+            state=present
+            group=wheel
+            comment="John Priddy"
+            password={{ ds_admin_password }}
